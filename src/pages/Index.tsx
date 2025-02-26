@@ -2,8 +2,12 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import DirectBooking from '../components/DirectBooking';
 import { MapPin, Calendar, DollarSign } from 'lucide-react';
+import DirectBooking from '../components/DirectBooking';
+import homeImage from '../images/home2.jpeg';
+import Sigiriya from '../images/sigiriya.jpg';
+import Ella from '../images/ella.jpg';
+import Galle from '../images/galle.jpg';
 
 const Index = () => {
   const navigate = useNavigate();
@@ -40,7 +44,7 @@ const Index = () => {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1588258524695-eb9e0e440165?q=80&w=2000"
+            src={homeImage}
             alt="Sri Lanka Landscape"
             className="w-full h-full object-cover"
           />
@@ -112,17 +116,17 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <DestinationCard
-              image="https://images.unsplash.com/photo-1586551065109-29c4b6e4b19e?q=80&w=800"
+              image={Sigiriya}
               title="Sigiriya"
               description="Ancient palace and fortress complex"
             />
             <DestinationCard
-              image="https://images.unsplash.com/photo-1586183189334-1ad3cd238e88?q=80&w=800"
+              image={Ella}
               title="Ella"
               description="Scenic mountain village and hiking trails"
             />
             <DestinationCard
-              image="https://images.unsplash.com/photo-1578128178799-ffac19d3978e?q=80&w=800"
+              image={Galle}
               title="Galle"
               description="Historic coastal fort and colonial architecture"
             />
@@ -136,7 +140,7 @@ const Index = () => {
 };
 
 const FeatureCard = ({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) => (
-  <div className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow animate-on-scroll opacity-0">
+  <div className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow animate-on-scroll opacity-0 hover:bg-[#F0F8FF] hover:text-white">
     <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4">
       {icon}
     </div>

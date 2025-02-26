@@ -7,6 +7,7 @@ export interface BaseProfile {
   bio?: string;
   profilePicture?: string;
   contactDetails?: {
+    email: string;
     phone?: string;
     address?: string;
   };
@@ -27,6 +28,8 @@ export interface TravelerProfile extends BaseProfile {
 }
 
 export interface GuideProfile extends BaseProfile {
+  languages: any;
+  specialization: string;
   experience: number;
   certifications: Certification[];
   specialties: string[];

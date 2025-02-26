@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <h3 className="text-2xl font-semibold text-primary">SriLanka</h3>
+            <h3 className="text-2xl font-semibold text-primary">CheapChaser</h3>
             <p className="text-gray-600">
               Discover the beauty of Sri Lanka with our curated budget travel experiences.
             </p>
@@ -44,7 +44,7 @@ const Footer = () => {
 
         <div className="mt-12 pt-8 border-t border-gray-200">
           <p className="text-center text-gray-600">
-            © {new Date().getFullYear()} SriLanka Budget Travel. All rights reserved.
+            © {new Date().getFullYear()} CheapChaser Budget Travel. All rights reserved.
           </p>
         </div>
       </div>

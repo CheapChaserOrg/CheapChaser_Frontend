@@ -39,7 +39,7 @@ const Contact = () => {
                 <ContactItem 
                   icon={<Mail className="text-primary" />}
                   title="Email"
-                  detail="info@srilanka-travel.com"
+                  detail="info@CheapChaser.com"
                 />
                 <ContactItem 
                   icon={<Phone className="text-primary" />}
@@ -54,7 +54,7 @@ const Contact = () => {
                 <ContactItem 
                   icon={<MessageSquare className="text-primary" />}
                   title="Social Media"
-                  detail="@srilankatravel"
+                  detail="@CheapChaser"
                 />
               </div>
 
