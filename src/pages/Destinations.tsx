@@ -2,6 +2,17 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Card } from '@/components/ui/card';
+import Sigirya from '../images/sigiriya.jpg'
+import ella from '../images/ella.jpg'
+import gallefort from '../images/galle.jpg'
+import yala from '../images/yala.jpg'
+import mirissa from '../images/mirissa.jpg'
+import kandy from '../images/kandy.jpg'
+import sripada from '../images/sripada.jpg'
+import dambulla from '../images/Dambulla-mobile.jpg'
+import nuwaraeliya from '../images/Nuwara-Eliya-City-Tour-1200x630-1.jpg'
+
+
 
 interface Destination {
   id: number;
@@ -17,42 +28,63 @@ const destinations: Destination[] = [
     name: "Sigiriya",
     description: "Ancient palace and fortress complex",
     details: "Known as the 'Lion Rock', this UNESCO World Heritage site features ancient frescoes and water gardens dating back to the 5th century.",
-    image: "https://images.unsplash.com/photo-1586551065109-29c4b6e4b19e?q=80&w=800"
+    image: Sigirya
   },
   {
     id: 2,
     name: "Ella",
     description: "Scenic mountain village",
     details: "A picturesque hill country village famous for tea plantations, hiking trails, and the iconic Nine Arch Bridge.",
-    image: "https://images.unsplash.com/photo-1586183189334-1ad3cd238e88?q=80&w=800"
+    image: ella
   },
   {
     id: 3,
     name: "Galle Fort",
     description: "Historic coastal fortress",
     details: "A Dutch colonial-era fortress featuring historic architecture, boutique shops, and stunning ocean views.",
-    image: "https://images.unsplash.com/photo-1578128178799-ffac19d3978e?q=80&w=800"
+    image: gallefort
   },
   {
     id: 4,
     name: "Yala National Park",
     description: "Wildlife sanctuary",
     details: "Home to leopards, elephants, and diverse wildlife. One of Sri Lanka's premier national parks for safari experiences.",
-    image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80&w=800"
+    image: yala
   },
   {
     id: 5,
     name: "Kandy",
     description: "Cultural capital",
     details: "Home to the Temple of the Tooth Relic and surrounded by tea plantations, Kandy is the cultural heart of Sri Lanka.",
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800"
+    image: kandy
   },
   {
     id: 6,
     name: "Mirissa",
     description: "Coastal paradise",
     details: "Famous for whale watching, surfing, and pristine beaches. Perfect for both relaxation and adventure.",
-    image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=800"
+    image: mirissa
+  },
+  {
+    id: 7,
+    name: "Sri Pada",
+    description: "A sacred pilgrimage",
+    details: "A sacred pilgrimage site with a footprint-shaped rock revered by multiple religions.",
+    image: sripada
+  },
+  {
+    id: 8,
+    name: "Dambulla Cave Temple",
+    description: "A historic cave ",
+    details: " A historic cave monastery filled with ancient Buddhist murals and over 150 Buddha statues.",
+    image: dambulla
+  },
+  {
+    id: 9,
+    name: "Nuwara Eliya",
+    description: "Little England",
+    details: "A charming hill station known as “Little England,” famous for its cool climate and lush tea estates.",
+    image: nuwaraeliya
   }
 ];
 

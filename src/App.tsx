@@ -6,6 +6,13 @@ import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile";
+import AboutUs from "./pages/AboutUs";
+
+// import NotFound from "./pages/NotFound";
+// import Bookings from "./pages/Bookings";
+// import BookingHistory from "./pages/BookingHistory";
+// import Feedback from "./pages/Feedback";
+// import ViewRatings from "./pages/ViewRatings";
 
 function App() {
   return (
@@ -18,6 +25,8 @@ function App() {
         <Route path="/login/:userType" element={<Login />} />
         <Route path="/signup/:userType" element={<SignUp />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/about" element={<AboutUs />} />
+        
       </Routes>
     </Router>
   );
