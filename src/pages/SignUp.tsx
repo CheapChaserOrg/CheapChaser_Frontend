@@ -4,21 +4,67 @@ import Footer from '../components/Footer';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { useToast } from '../components/ui/use-toast';
+import { Textarea } from '../components/ui/textarea';
+import { Label } from '../components/ui/label';
+import { Checkbox } from '../components/ui/checkbox';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../components/ui/select';
+import { useState } from 'react';
+import { Eye, EyeOff } from 'lucide-react'; // Import icons for show/hide password
 
 const SignUp = () => {
   const { userType } = useParams();
   const { toast } = useToast();
+  const [hotelAmenities, setHotelAmenities] = useState<string[]>([]);
+  const [roomFacilities, setRoomFacilities] = useState<string[]>([]);
+  const [services, setServices] = useState<string[]>([]);
+  const [languages, setLanguages] = useState<string[]>([]);
+  const [preferences, setPreferences] = useState<string[]>([]);
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  // Password validation function
+  const validatePassword = (password: string) => {
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,14}$/;
+    return regex.test(password);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate password
+    if (!validatePassword(password)) {
+      toast({
+        title: "Invalid Password",
+        description: "Password must be 8-14 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Check if passwords match
+    if (password !== confirmPassword) {
+      toast({
+        title: "Error",
+        description: "Passwords do not match",
+        variant: "destructive",
+      });
+      return;
+    }
+
     toast({
-      title: "Sign Up Attempted",
+      title: "Registration Attempted",
       description: `Attempted to register as ${userType}`,
     });
   };
 
-<<<<<<< Updated upstream
-=======
   if (userType === 'guide') {
     return (
       <div className="min-h-screen bg-gray-50">
@@ -111,7 +157,6 @@ const SignUp = () => {
                 </div>
               </div>
 
-
               {/* Professional Details */}
               <div className="space-y-4">
                 <h2 className="text-xl font-semibold text-gray-800">Professional Details</h2>
@@ -174,7 +219,7 @@ const SignUp = () => {
 
               {/* Pricing & Payments */}
               <div className="space-y-4">
-                <h2 className="text-xl font-semibold text-gray-800">Payments Details</h2>
+                <h2 className="text-xl font-semibold text-gray-800">Payment Details</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="md:col-span-2">
                     <Label htmlFor="bankDetails">Bank Account Details</Label>
@@ -314,6 +359,7 @@ const SignUp = () => {
                 </div>
               </div>
 
+              
 
               {/* Travel Preferences */}
               <div className="space-y-4">
@@ -358,6 +404,21 @@ const SignUp = () => {
                         <SelectItem value="luxury">Luxury ($150+/day)</SelectItem>
                       </SelectContent>
                     </Select>
+                  </div>
+                </div>
+              </div>
+
+              {/* Additional Features */}
+              <div className="space-y-4">
+                <h2 className="text-xl font-semibold text-gray-800">Additional Features</h2>
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="newsletter" />
+                    <Label htmlFor="newsletter">Subscribe to Newsletter</Label>
+                  </div>
+                  <div>
+                    <Label htmlFor="referralCode">Referral Code (Optional)</Label>
+                    <Input id="referralCode" placeholder="Enter referral code" />
                   </div>
                 </div>
               </div>
@@ -515,6 +576,7 @@ const SignUp = () => {
                 </div>
               </div>
 
+
               {/* Activity Details */}
               <div className="space-y-4">
                 <h2 className="text-xl font-semibold text-gray-800">Activity Details</h2>
@@ -622,11 +684,44 @@ const SignUp = () => {
 
               {/* Payment & Legal Compliance */}
               <div className="space-y-4">
-                <h2 className="text-xl font-semibold text-gray-800">Payment Details</h2>
+                <h2 className="text-xl font-semibold text-gray-800">Payment & Legal Compliance</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="md:col-span-2">
+                    <Label>Accepted Payment Methods</Label>
+                    <div className="grid grid-cols-2 gap-2 mt-2">
+                      <div className="flex items-center space-x-2">
+                        <Checkbox id="bankTransfer" />
+                        <Label htmlFor="bankTransfer">Bank Transfer</Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <Checkbox id="onlinePayment" />
+                        <Label htmlFor="onlinePayment">Online Payment</Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <Checkbox id="cash" />
+                        <Label htmlFor="cash">Cash</Label>
+                      </div>
+                    </div>
+                  </div>
                   <div className="md:col-span-2">
                     <Label htmlFor="bankDetails">Bank Account Details</Label>
                     <Textarea id="bankDetails" placeholder="Enter bank account details" required />
+                  </div>
+                  <div>
+                    <Label htmlFor="insurance">Liability Insurance</Label>
+                    <Select>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="yes">Yes</SelectItem>
+                        <SelectItem value="no">No</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div>
+                    <Label htmlFor="insuranceProof">Upload Insurance Proof</Label>
+                    <Input id="insuranceProof" type="file" accept=".pdf,.jpg,.jpeg,.png" />
                   </div>
                 </div>
               </div>
@@ -807,62 +902,6 @@ const SignUp = () => {
                 </div>
               </div>
 
-              {/* Account Security */}
-              <div className="space-y-4">
-                <h2 className="text-xl font-semibold text-gray-800">Account Security</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="username">Username</Label>
-                    <Input id="username" placeholder="Enter your username" required />
-                  </div><br></br>
-                  <div>
-                    <Label htmlFor="password">Password</Label>
-                    <div className="relative">
-                      <Input
-                        id="password"
-                        type={showPassword ? "text" : "password"}
-                        placeholder="Enter your password"
-                        required
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                      <button
-                        type="button"
-                        className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
-                        onClick={() => setShowPassword(!showPassword)}
-                      >
-                        {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-                      </button>
-                    </div>
-                    <p className="text-sm text-gray-500 mt-1">
-                      Password must be 8-14 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.
-                    </p>
-                  </div>
-                  <div>
-                    <Label htmlFor="confirmPassword">Confirm Password</Label>
-                    <div className="relative">
-                      <Input
-                        id="confirmPassword"
-                        type={showConfirmPassword ? "text" : "password"}
-                        placeholder="Confirm your password"
-                        required
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                      />
-                      <button
-                        type="button"
-                        className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
-                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                      >
-                        {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-                      </button>
-                    </div>
-                    <p className="text-sm text-gray-500 mt-1">
-                      Password must be 8-14 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.
-                    </p>
-                  </div>
-                </div>
-              </div>
 
               {/* Location & Accessibility */}
               <div className="space-y-4">
@@ -1014,6 +1053,63 @@ const SignUp = () => {
                 </div>
               </div>
 
+              {/* Account Security */}
+              <div className="space-y-4">
+                <h2 className="text-xl font-semibold text-gray-800">Account Security</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <Label htmlFor="username">Username</Label>
+                    <Input id="username" placeholder="Enter your username" required />
+                  </div><br></br>
+                  <div>
+                    <Label htmlFor="password">Password</Label>
+                    <div className="relative">
+                      <Input
+                        id="password"
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Enter your password"
+                        required
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                      <button
+                        type="button"
+                        className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
+                        onClick={() => setShowPassword(!showPassword)}
+                      >
+                        {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                      </button>
+                    </div>
+                    <p className="text-sm text-gray-500 mt-1">
+                      Password must be 8-14 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.
+                    </p>
+                  </div>
+                  <div>
+                    <Label htmlFor="confirmPassword">Confirm Password</Label>
+                    <div className="relative">
+                      <Input
+                        id="confirmPassword"
+                        type={showConfirmPassword ? "text" : "password"}
+                        placeholder="Confirm your password"
+                        required
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                      />
+                      <button
+                        type="button"
+                        className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
+                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                      >
+                        {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                      </button>
+                    </div>
+                    <p className="text-sm text-gray-500 mt-1">
+                      Password must be 8-14 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
               {/* Legal Compliance */}
               <div className="space-y-4">
                 <h2 className="text-xl font-semibold text-gray-800">Legal Compliance</h2>
@@ -1038,7 +1134,6 @@ const SignUp = () => {
     );
   }
 
->>>>>>> Stashed changes
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
@@ -1077,24 +1172,49 @@ const SignUp = () => {
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
                 Password
               </label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="Enter your password"
-                required
-              />
+              <div className="relative">
+                <Input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Enter your password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <button
+                  type="button"
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                </button>
+              </div>
+              <p className="text-sm text-gray-500 mt-1">
+                Password must be 8-14 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.
+              </p>
             </div>
 
             <div>
               <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
                 Confirm Password
               </label>
-              <Input
-                id="confirmPassword"
-                type="password"
-                placeholder="Confirm your password"
-                required
-              />
+              <div className="relative">
+                <Input
+                  id="confirmPassword"
+                  type={showConfirmPassword ? "text" : "password"}
+                  placeholder="Confirm your password"
+                  required
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                <button
+                  type="button"
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                >
+                  {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                </button>
+              </div>
             </div>
 
             <Button type="submit" className="w-full">
