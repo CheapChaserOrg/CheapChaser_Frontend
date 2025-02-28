@@ -1,126 +1,121 @@
+
 import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/components/ui/use-toast";
+import { Label } from "@/components/ui/label";
 import { Star } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
-const formSchema = z.object({
-  bookingId: z.string().min(1, "Booking ID is required"),
-  rating: z.string().min(1, "Rating is required"),
-  comment: z.string().min(10, "Comment must be at least 10 characters"),
-});
+interface FeedbackFormProps {
+  onSubmit: (feedback: {
+    rating: number;
+    country: string;
+    age: string;
+    comment: string;
+  }) => void;
+}
 
-const FeedbackForm = () => {
+export const FeedbackForm = ({ onSubmit }: FeedbackFormProps) => {
   const [rating, setRating] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
+  const [hoveredStar, setHoveredStar] = useState(0);
+  const [country, setCountry] = useState("");
+  const [age, setAge] = useState("");
+  const [comment, setComment] = useState("");
   const { toast } = useToast();
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      bookingId: "",
-      rating: "",
-      comment: "",
-    },
-  });
-
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    try {
-      setIsLoading(true);
-      console.log("Submitting feedback:", values);
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!rating || !country || !age || !comment) {
       toast({
-        title: "Feedback Submitted!",
-        description: "Thank you for your feedback.",
-      });
-      
-      form.reset();
-      setRating(0);
-    } catch (error) {
-      console.error("Feedback error:", error);
-      toast({
-        title: "Submission Failed",
-        description: "There was an error submitting your feedback. Please try again.",
+        title: "Error",
+        description: "Please fill in all fields",
         variant: "destructive",
       });
-    } finally {
-      setIsLoading(false);
+      return;
     }
+
+    onSubmit({ rating, country, age, comment });
+    setRating(0);
+    setCountry("");
+    setAge("");
+    setComment("");
+    
+    toast({
+      title: "Success",
+      description: "Thank you for your feedback!",
+    });
   };
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 bg-white/80 backdrop-blur-md p-6 rounded-lg shadow-md">
-        <FormField
-          control={form.control}
-          name="bookingId"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Booking ID</FormLabel>
-              <FormControl>
-                <Input placeholder="Enter your booking ID" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+    <form onSubmit={handleSubmit} className="glass-card p-6 rounded-lg space-y-6 max-w-md mx-auto">
+      <div className="space-y-2">
+        <Label>Rating</Label>
+        <div className="flex gap-1">
+          {[1, 2, 3, 4, 5].map((star) => (
+            <button
+              key={star}
+              type="button"
+              className="transition-transform hover:scale-110 focus:outline-none"
+              onMouseEnter={() => setHoveredStar(star)}
+              onMouseLeave={() => setHoveredStar(0)}
+              onClick={() => setRating(star)}
+            >
+              <Star
+                className={`w-8 h-8 ${
+                  star <= (hoveredStar || rating)
+                    ? "fill-yellow-400 text-yellow-400"
+                    : "text-gray-300"
+                }`}
+              />
+            </button>
+          ))}
+        </div>
+      </div>
 
-        <FormField
-          control={form.control}
-          name="rating"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Rating</FormLabel>
-              <div className="flex gap-2">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <Star
-                    key={star}
-                    className={`cursor-pointer ${
-                      star <= rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
-                    }`}
-                    onClick={() => {
-                      setRating(star);
-                      field.onChange(star.toString());
-                    }}
-                  />
-                ))}
-              </div>
-              <FormMessage />
-            </FormItem>
-          )}
+      <div className="space-y-2">
+        <Label htmlFor="country">Country</Label>
+        <Input
+          id="country"
+          value={country}
+          onChange={(e) => setCountry(e.target.value)}
+          placeholder="Enter your country"
+          className="bg-white/50"
         />
+      </div>
 
-        <FormField
-          control={form.control}
-          name="comment"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Comment</FormLabel>
-              <FormControl>
-                <Textarea 
-                  placeholder="Share your experience..."
-                  className="min-h-[100px]"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+      <div className="space-y-2">
+        <Label htmlFor="age">Age Range</Label>
+        <select
+          id="age"
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
+          className="w-full p-2 rounded-md bg-white/50 border border-gray-200"
+        >
+          <option value="">Select age range</option>
+          <option value="18-24">18-24</option>
+          <option value="25-34">25-34</option>
+          <option value="35-44">35-44</option>
+          <option value="45-54">45-54</option>
+          <option value="55+">55+</option>
+        </select>
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="comment">Comment</Label>
+        <Textarea
+          id="comment"
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+          placeholder="Share your experience..."
+          className="bg-white/50 min-h-[100px]"
         />
+      </div>
 
-        <Button type="submit" className="w-full bg-[#2A9D8F] hover:bg-[#238177]" disabled={isLoading}>
-          {isLoading ? "Submitting..." : "Submit Feedback"}
-        </Button>
-      </form>
-    </Form>
+      <Button type="submit" className="w-full bg-black hover:bg-black/90 text-white">
+        Submit Feedback
+      </Button>
+    </form>
   );
 };
-
-export default FeedbackForm;
