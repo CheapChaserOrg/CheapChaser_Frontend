@@ -154,7 +154,7 @@ const ActivityBookingForm = () => {
           )}
         />
 
-        <Button type="submit" className="w-full bg-[#61dafbaa] hover:bg-[#61dafb]" disabled={isLoading}>
+        <Button type="submit" className="w-full bg-[#2a9d8f] hover:bg-[#2a9d8f]/80 text-white" disabled={isLoading}>
           {isLoading ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
