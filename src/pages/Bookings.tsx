@@ -29,7 +29,18 @@ const Bookings = () => {
           className="w-full max-w-3xl mx-auto"
           onValueChange={(value) => setActiveTab(value)}
         >
-            
+          <TabsList className="grid w-full grid-cols-2 mb-8">
+            <TabsTrigger value="activity">Activity Booking</TabsTrigger>
+            <TabsTrigger value="hotel">Hotel Booking</TabsTrigger>
+          </TabsList>
+          
+          <TabsContent value="activity" className="animate-fade-in">
+            <ActivityBookingForm />
+          </TabsContent>
+          
+          <TabsContent value="hotel" className="animate-fade-in">
+            <HotelBookingForm />
+          </TabsContent>
         </Tabs>
       </div>
     </div>
