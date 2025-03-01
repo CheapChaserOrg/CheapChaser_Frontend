@@ -15,7 +15,7 @@ const mockActivityBookings = [
   },
   {
     id: 2,
-    activityName: "Hiking Tour",
+    activityName: "Whale Watching",
     date: new Date("2024-04-20"),
     participants: 4,
     status: "pending",
