@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { MapPin, Calendar, DollarSign } from 'lucide-react';
 import DirectBooking from '../components/DirectBooking';
+import Feedback from '../components/Feedback';
 import homeImage from '../images/home2.jpeg';
 import Sigiriya from '../images/sigiriya.jpg';
 import Ella from '../images/ella.jpg';
@@ -101,6 +102,9 @@ const Index = () => {
 
       {/* Direct Booking Section */}
       <DirectBooking />
+
+      {/* Direct Booking Section */}
+      <Feedback />
 
       {/* Destinations Preview */}
       <section className="py-20 bg-gray-50">
