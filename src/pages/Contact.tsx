@@ -1,3 +1,7 @@
+<<<<<<< Updated upstream
+=======
+import { useState } from "react";
+>>>>>>> Stashed changes
 import { Mail, Phone, MapPin, MessageSquare } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -8,6 +12,7 @@ import { useToast } from "../components/ui/use-toast";
 
 const Contact = () => {
   const { toast } = useToast();
+<<<<<<< Updated upstream
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -15,6 +20,56 @@ const Contact = () => {
       title: "Message sent!",
       description: "We'll get back to you as soon as possible.",
     });
+=======
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://formspree.io/f/meoebdrb", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message sent!",
+          description: "We'll get back to you as soon as possible.",
+        });
+        setFormData({ name: "", email: "", subject: "", message: "" }); // Clear form
+      } else {
+        toast({
+          title: "Error",
+          description: "Something went wrong. Please try again later.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Network Error",
+        description: "Unable to send message. Check your internet connection.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+>>>>>>> Stashed changes
   };
 
   return (
@@ -39,12 +94,12 @@ const Contact = () => {
                 <ContactItem 
                   icon={<Mail className="text-primary" />}
                   title="Email"
-                  detail="info@CheapChaser.com"
+                  detail="cheapchaser001@gmail.com"
                 />
                 <ContactItem 
                   icon={<Phone className="text-primary" />}
                   title="Phone"
-                  detail="+94 11 234 5678"
+                  detail="+94 11 709 472"
                 />
                 <ContactItem 
                   icon={<MapPin className="text-primary" />}
@@ -54,7 +109,7 @@ const Contact = () => {
                 <ContactItem 
                   icon={<MessageSquare className="text-primary" />}
                   title="Social Media"
-                  detail="@CheapChaser"
+                  detail="CheapChaser.travel"
                 />
               </div>
 
@@ -74,21 +129,33 @@ const Contact = () => {
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                     Name
                   </label>
+<<<<<<< Updated upstream
                   <Input id="name" placeholder="Your name" required />
+=======
+                  <Input id="name" placeholder="Your name" required value={formData.name} onChange={handleChange} />
+>>>>>>> Stashed changes
                 </div>
                 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                     Email
                   </label>
+<<<<<<< Updated upstream
                   <Input id="email" type="email" placeholder="your@email.com" required />
+=======
+                  <Input id="email" type="email" placeholder="your@email.com" required value={formData.email} onChange={handleChange} />
+>>>>>>> Stashed changes
                 </div>
                 
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
                     Subject
                   </label>
+<<<<<<< Updated upstream
                   <Input id="subject" placeholder="How can we help?" required />
+=======
+                  <Input id="subject" placeholder="How can we help?" required value={formData.subject} onChange={handleChange} />
+>>>>>>> Stashed changes
                 </div>
                 
                 <div>
@@ -100,12 +167,22 @@ const Contact = () => {
                     placeholder="Tell us more about your travel plans..." 
                     className="min-h-[150px]"
                     required 
+<<<<<<< Updated upstream
+=======
+                    value={formData.message}
+                    onChange={handleChange}
+>>>>>>> Stashed changes
                   />
                 </div>
               </div>
 
+<<<<<<< Updated upstream
               <Button type="submit" className="w-full">
                 Send Message
+=======
+              <Button type="submit" className="w-full" disabled={isSubmitting}>
+                {isSubmitting ? "Sending..." : "Send Message"}
+>>>>>>> Stashed changes
               </Button>
             </form>
           </div>
@@ -137,4 +214,8 @@ const ContactItem = ({
   </div>
 );
 
+<<<<<<< Updated upstream
 export default Contact;
+=======
+export default Contact;
+>>>>>>> Stashed changes
