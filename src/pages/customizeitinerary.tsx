@@ -3,6 +3,8 @@ import { AccommodationCard } from "@/components/AccommodationCard";
 import { PreferencesForm } from "@/components/PreferencesForm";
 import { Activity } from "@/lib/types";
 import { Accommodation } from "@/lib/types";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const activities: Activity[] = [
   {
@@ -91,6 +93,7 @@ const accommodation: Accommodation[] = [
 const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-secondary to-background">
+      <Navbar/>
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold mb-8">Customize Your Trip</h1>
         
@@ -123,6 +126,7 @@ const Index = () => {
           
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };
