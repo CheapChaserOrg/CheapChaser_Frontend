@@ -162,7 +162,7 @@ const FilterButton = ({ children, isActive, onClick }: { children: React.ReactNo
     <button
       className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
         isActive 
-          ? "bg-primary text-primary-foreground" 
+          ? "bg-teal-600 text-primary-foreground" 
           : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
       }`}
       onClick={onClick}
@@ -180,7 +180,7 @@ const Destinations = () => {
     : destinations.filter(dest => dest.category === filter);
 
   return (
-    <div className="min-h-screen bg-background p-6">
+    <div className="min-h-screen bg-gradient-to-b from-secondary to-background">
       <div className="container mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.div
