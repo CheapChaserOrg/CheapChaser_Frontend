@@ -1,8 +1,7 @@
-
 import { useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Layout from "../components/Layout";
+import Layout from "../components/DestinationLayout";
 
 const featuredDestinations = [
   {
