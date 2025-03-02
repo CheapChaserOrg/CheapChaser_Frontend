@@ -101,7 +101,18 @@ const Dashboard = () => {
         </div>
 
         {/* Spending Chart */}
-        
+        <Card className="p-6 bg-white/80 backdrop-blur-sm h-[400px] animate-fade-in">
+          <h2 className="text-lg font-semibold mb-6">Weekly Spending</h2>
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={data}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Bar dataKey="amount" fill="hsl(169, 33%, 46%)" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </Card>
       </div>
     </div>
   );
