@@ -5,8 +5,10 @@ import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import { PiggyBank, Plane, Map, UtensilsCrossed, Hotel, Plus } from "lucide-react";
+import Navbar from "../components/Navbar";
 
 const ExpenseCard = ({ title, amount, icon: Icon, percentage }: { title: string; amount: number; icon: any; percentage: number }) => (
+  <Navbar />
   <Card className="p-6 bg-white/80 backdrop-blur-sm animate-fade-in hover:shadow-lg transition-shadow duration-300">
     <div className="flex items-center justify-between mb-4">
       <div className="p-2 rounded-lg bg-primary/10">
@@ -79,6 +81,13 @@ const Dashboard = () => {
             amount={2400}
             icon={Hotel}
             percentage={75}
+          />
+
+          <ExpenseCard
+            title="Transportation"
+            amount={1500}
+            icon={Plane}
+            percentage={60}
           />
           
           <ExpenseCard
