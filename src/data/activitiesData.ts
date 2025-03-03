@@ -1,3 +1,12 @@
+import safari from '../images/wild006.jpg';
+import wild02 from '../images/wild00.jpg';
+import wild03 from '../images/wild03.jpg';
+import wild04 from '../images/wild01.jpg';
+import wild05 from '../images/yala.jpg';
+import wild06 from '../images/wild004.jpg';
+import wild07 from '../images/wild.jpg';
+
+//import wild06 from '../images/wild006.jpg';
 
 export interface ActivityProps {
   id: string;
@@ -30,7 +39,7 @@ export const activitiesData: ActivityDetailsProps[] = [
     id: 'safari',
     title: 'Wildlife Safaris',
     description: 'Experience thrilling wildlife encounters at Yala National Park, home to the highest leopard density in the world, alongside elephants, bears, and exotic birds.',
-    image: 'https://images.unsplash.com/photo-1472396961693-142e6e269027',
+    image: safari,
     category: 'Adventure',
     location: 'Yala National Park',
     longDescription: "Sri Lanka offers some of the most thrilling wildlife safari experiences in Asia. The island's diverse landscapes support a remarkable variety of wildlife, making it a premier destination for nature enthusiasts. From dense forests to vast plains, visitors can witness magnificent creatures in their natural habitat, including the elusive Sri Lankan leopard, majestic elephants, and hundreds of bird species. National parks are well-maintained with professional guides who ensure safe and educational experiences, making wildlife safaris one of the most sought-after activities in Sri Lanka.",
@@ -54,23 +63,27 @@ export const activitiesData: ActivityDetailsProps[] = [
     ],
     gallery: [
       {
-        url: 'https://images.unsplash.com/photo-1472396961693-142e6e269027',
+        url: wild02,
         alt: 'Leopard resting on a tree branch in Yala National Park'
       },
       {
-        url: 'https://images.unsplash.com/photo-1581852017573-2d11a0048e68',
+        url: wild03,
         alt: 'Elephant herd crossing grasslands at sunset'
       },
       {
-        url: 'https://images.unsplash.com/photo-1503656142023-618e7d1f435a',
+        url: wild04,
         alt: 'Colorful birds in Sri Lankan national park'
       },
       {
-        url: 'https://images.unsplash.com/photo-1575840183209-125b8b8c9155',
+        url: wild06,
         alt: 'Safari jeep approaching wildlife in natural habitat'
       },
       {
-        url: 'https://images.unsplash.com/photo-1575118242668-b43f8d77fe64',
+        url: wild05,
+        alt: 'Crocodile sunbathing near water in Yala National Park'
+      },
+      {
+        url: wild07,
         alt: 'Crocodile sunbathing near water in Yala National Park'
       }
     ],
