@@ -141,6 +141,7 @@ const UpcomingActivities = () => {
         </div>
       </div>
     </section>
+    <Footer />
   );
 };
 
