@@ -416,21 +416,7 @@ const SignUp = () => {
                 </div>
               </div>
 
-              {/* Additional Features */}
-              <div className="space-y-4">
-                <h2 className="text-xl font-semibold text-gray-800">Additional Features</h2>
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-2">
-                    <Checkbox id="newsletter" />
-                    <Label htmlFor="newsletter">Subscribe to Newsletter</Label>
-                  </div>
-                  <div>
-                    <Label htmlFor="referralCode">Referral Code (Optional)</Label>
-                    <Input id="referralCode" placeholder="Enter referral code" />
-                  </div>
-                </div>
-              </div>
-
+              
               {/* Account Security */}
               <div className="space-y-4">
                 <h2 className="text-xl font-semibold text-gray-800">Account Security</h2>
