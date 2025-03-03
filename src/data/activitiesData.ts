@@ -22,6 +22,16 @@ import temp04 from '../images/tem04.jpg';
 import temp05 from '../images/tem05.jpg';
 import temp06 from '../images/tem06.jpg';
 
+import hike from '../images/hike.jpg';
+import hike01 from '../images/hike01.jpg';
+import hike02 from '../images/hike02.webp';
+import hike03 from '../images/hike03.jpg';
+import hike04 from '../images/hike04.jpg';
+import hike05 from '../images/hike05.jpg';
+import hike06 from '../images/hike06.jpg';
+
+
+
 //import wild06 from '../images/wild006.jpg';
 
 export interface ActivityProps {
@@ -265,7 +275,7 @@ export const activitiesData: ActivityDetailsProps[] = [
     id: 'hiking',
     title: 'Scenic Hiking',
     description: 'Trek through lush mountains, tea plantations, and breathtaking landscapes, including the iconic climb to Adam\'s Peak or exploring Horton Plains.',
-    image: 'https://images.unsplash.com/photo-1501854140801-50d01698950b',
+    image: hike,
     category: 'Adventure',
     location: 'Ella & Nuwara Eliya',
     longDescription: "Sri Lanka's diverse terrain offers exceptional hiking opportunities, from gentle walks through tea plantations to challenging mountain ascents. The central highlands, with their misty mountains and cool climate, provide some of the most scenic trails in Asia. Hikers can discover hidden waterfalls, encounter rare wildlife, and enjoy spectacular panoramic views. Many trails also pass through traditional villages, offering glimpses into rural Sri Lankan life. With varying difficulty levels, the island's hiking routes cater to everyone from casual walkers to serious trekkers.",
@@ -289,23 +299,27 @@ export const activitiesData: ActivityDetailsProps[] = [
     ],
     gallery: [
       {
-        url: 'https://images.unsplash.com/photo-1501854140801-50d01698950b',
+        url: hike01,
         alt: 'Sunrise view from Ella Rock overlooking mountains and valleys'
       },
       {
-        url: 'https://images.unsplash.com/photo-1531968455001-062b0cb6d0ed',
+        url: hike02,
         alt: 'Hiking trail through tea plantations in Nuwara Eliya'
       },
       {
-        url: 'https://images.unsplash.com/photo-1586611292717-f828b167408c',
+        url: hike03,
         alt: 'Dramatic view of World\'s End cliff in Horton Plains'
       },
       {
-        url: 'https://images.unsplash.com/photo-1544162266-010d39573516',
+        url: hike04,
         alt: 'Pilgrims climbing steps to Adam\'s Peak before sunrise'
       },
       {
-        url: 'https://images.unsplash.com/photo-1508035460735-3ded1a9878fe',
+        url: hike05,
+        alt: 'Lush green trails in Knuckles Mountain Range'
+      },
+      {
+        url: hike06,
         alt: 'Lush green trails in Knuckles Mountain Range'
       }
     ],
