@@ -68,7 +68,11 @@ export const NotificationCard = ({ notification }: NotificationCardProps) => {
             </div>
             <div className="flex space-x-2">
               {!notification.read && (
-                
+                <button
+                onClick={handleMarkAsRead}
+                className="p-1 text-notification hover:bg-notification-light rounded-full transition-colors duration-200"
+                style={{ color: 'hsl(169, 33%, 46%)' }}
+              >
                   <Check className="w-4 h-4" />
                 </button>
               )}
