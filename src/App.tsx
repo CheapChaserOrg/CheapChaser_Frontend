@@ -7,7 +7,9 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile";
 import AboutUs from "./pages/AboutUs";
-
+import ActivityDetails from "./pages/ActivityDetails";
+import ActivityCom from "./pages/ActivityCom";
+import Gallery from "./pages/GalleryCom";
 // import NotFound from "./pages/NotFound";
 // import Bookings from "./pages/Bookings";
 // import BookingHistory from "./pages/BookingHistory";
@@ -26,7 +28,9 @@ function App() {
         <Route path="/signup/:userType" element={<SignUp />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/about" element={<AboutUs />} />
-        
+        <Route path="/activity/:id" element={<ActivityDetails />} />
+        <Route path="/activity" element={<ActivityCom />} />
+        <Route path="/gallery" element={<Gallery/>} />
       </Routes>
     </Router>
   );
