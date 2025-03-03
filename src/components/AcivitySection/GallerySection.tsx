@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from 'react';
 
 const images = [
@@ -43,8 +42,8 @@ const GallerySection = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          titleRef.current?.classList.add('animate-slide-up');
-          galleryRef.current?.classList.add('animate-fade-in');
+          titleRef.current?.classList.add('animate-slide-up', 'opacity-100');
+          galleryRef.current?.classList.add('animate-fade-in', 'opacity-100');
           observer.unobserve(entry.target);
         }
       },
@@ -70,13 +69,14 @@ const GallerySection = () => {
       className="py-20 px-6 md:px-12 bg-gray-50"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="mb-16 text-center">
+        {/* Title */}
+        <div className="mb-12 text-center">
           <span className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
             Visual Journey
           </span>
           <h2 
             ref={titleRef}
-            className="text-3xl md:text-5xl font-bold mb-6 opacity-0 transform translate-y-8"
+            className="text-3xl md:text-5xl font-bold mb-6 opacity-0 transition-transform duration-700"
           >
             Sri Lanka <span className="text-primary">Gallery</span>
           </h2>
@@ -86,14 +86,15 @@ const GallerySection = () => {
           </p>
         </div>
 
+        {/* Image Grid */}
         <div 
           ref={galleryRef}
-          className="grid grid-cols-1 md:grid-cols-3 gap-4 opacity-0"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 grid-auto-rows opacity-0 transition-opacity duration-700"
         >
           {images.map((image, index) => (
             <div 
               key={index}
-              className={`relative rounded-xl overflow-hidden image-shine-effect shadow-md ${
+              className={`relative rounded-xl overflow-hidden shadow-md transition-all duration-700 ${
                 image.size === 'large' ? 'md:col-span-2 aspect-[16/9]' : 'aspect-square'
               }`}
             >
@@ -123,7 +124,9 @@ const GallerySection = () => {
             </div>
           ))}
         </div>
-        <div className="mt-8 text-center">
+
+        {/* View All Button */}
+        <div className="mt-10 text-center">
           <a 
             href="#" 
             className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium"

@@ -1,5 +1,4 @@
-
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 
@@ -21,29 +20,25 @@ const ActivityCard: React.FC<ActivityCardProps> = ({ activity, index }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      {
-        threshold: 0.1,
+  // Use a single observer instance
+  const observerCallback = useCallback((entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
       }
-    );
-
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
-    }
-
-    return () => {
-      if (cardRef.current) {
-        observer.unobserve(cardRef.current);
-      }
-    };
+    });
   }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(observerCallback, {
+      rootMargin: '100px', // Load earlier before it appears
+      threshold: 0, // Triggers when it first appears
+    });
+
+    if (cardRef.current) observer.observe(cardRef.current);
+
+    return () => observer.disconnect();
+  }, [observerCallback]);
 
   return (
     <Link to={`/activity/${activity.id}`} className="block h-full">
@@ -51,16 +46,16 @@ const ActivityCard: React.FC<ActivityCardProps> = ({ activity, index }) => {
         ref={cardRef}
         className={cn(
           'activity-card h-full bg-white rounded-2xl overflow-hidden transition-all duration-700 fade-in-section hover:shadow-md',
-          isVisible ? 'is-visible' : '',
-          index % 2 === 0 ? 'translate-y-4' : 'translate-y-0'
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         )}
-        style={{ transitionDelay: `${100 * index}ms` }}
+        style={{ transitionDelay: `${index * 50}ms` }} // Reduce delay for smoother transition
       >
         <div className="relative overflow-hidden aspect-[4/3]">
           <img
             src={activity.image}
             alt={activity.title}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            loading="lazy" // Lazy loading for better performance
+            className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60" />
           <div className="absolute top-4 left-4 z-10">
@@ -95,10 +90,7 @@ const ActivityCard: React.FC<ActivityCardProps> = ({ activity, index }) => {
             </span>
             <button 
               className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors"
-              onClick={(e) => {
-                e.preventDefault(); // Prevent navigation to the details page
-                // Favorite logic would go here
-              }}
+              onClick={(e) => e.preventDefault()} // Prevent navigation
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

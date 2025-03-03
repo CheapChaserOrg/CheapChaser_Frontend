@@ -58,6 +58,8 @@ const ActivityCom = () => {
       <main className="overflow-hidden">
         <Hero />
         <ActivitiesSection />
+        <GallerySection />
+        <ContactSection />
       </main>
       <Footer />
     </>
