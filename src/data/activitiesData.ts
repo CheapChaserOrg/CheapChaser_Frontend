@@ -46,6 +46,22 @@ import cook04 from '../images/cook04.jpg';
 import cook05 from '../images/cook05.jpg';
 import cook06 from '../images/cook06.jpg';
 
+import train from '../images/train.jpg';
+import train01 from '../images/train01.jpg';
+import train02 from '../images/train02.webp';
+import train03 from '../images/train03.jpg';
+import train04 from '../images/train04.jpg';
+import train05 from '../images/train05.jpg';
+import train06 from '../images/train06.jpg';
+
+import Ayrweda from '../images/ayu.webp';
+import Ayrweda01 from '../images/ayu01.webp';
+import Ayrweda02 from '../images/ayu02.jpg';
+import Ayrweda03 from '../images/ayu03.webp';
+import Ayrweda04 from '../images/ayu04.avif';
+import Ayrweda05 from '../images/ayu05.png';
+import Ayrweda06 from '../images/ayu06.jpg';
+
 //import wild06 from '../images/wild006.jpg';
 
 export interface ActivityProps {
@@ -499,7 +515,7 @@ export const activitiesData: ActivityDetailsProps[] = [
     id: 'trains',
     title: 'Scenic Train Journeys',
     description: 'Take one of the world\'s most beautiful train rides through misty mountains, tea plantations and tunnels carved through rocky hillsides.',
-    image: 'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86',
+    image: train,
     category: 'Transportation',
     location: 'Kandy to Ella',
     longDescription: "Sri Lanka's railway journeys are often ranked among the most scenic in the world, particularly the routes that wind through the central highlands. As the trains move at a leisurely pace through misty mountains, lush tea plantations, and quaint villages, passengers are treated to ever-changing panoramas of exceptional beauty. These journeys provide not just transportation but a memorable experience, with opportunities to interact with locals and witness daily life unfolding along the tracks. The colonial-era railway infrastructure, including impressive viaducts and tunnels, adds historical interest to the visual splendor.",
@@ -523,23 +539,27 @@ export const activitiesData: ActivityDetailsProps[] = [
     ],
     gallery: [
       {
-        url: 'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86',
+        url: train01,
         alt: 'Train crossing the famous Nine Arch Bridge in Ella'
       },
       {
-        url: 'https://images.unsplash.com/photo-1594707758338-83b5182c3e63',
+        url: train02,
         alt: 'Blue train winding through lush green tea plantations'
       },
       {
-        url: 'https://images.unsplash.com/photo-1584450150050-4b9bdbd51f68',
+        url: train03,
         alt: 'Passengers enjoying views from open train doorway in hill country'
       },
       {
-        url: 'https://images.unsplash.com/photo-1591804871195-a37f1f96755a',
+        url: train04,
         alt: 'Misty mountain views from train window at sunrise'
       },
       {
-        url: 'https://images.unsplash.com/photo-1530841344029-29fb5ad7ff79',
+        url: train05,
+        alt: 'Colonial-era train station in Nuwara Eliya with flowers and architecture'
+      },
+      {
+        url: train06,
         alt: 'Colonial-era train station in Nuwara Eliya with flowers and architecture'
       }
     ],
@@ -565,7 +585,7 @@ export const activitiesData: ActivityDetailsProps[] = [
     id: 'ayurveda',
     title: 'Ayurvedic Retreats',
     description: 'Indulge in traditional Ayurvedic treatments, massages, and wellness therapies at specialized retreats across the island.',
-    image: 'https://images.unsplash.com/photo-1518495973542-4542c06a5843',
+    image: Ayrweda,
     category: 'Wellness',
     location: 'South Coast',
     longDescription: "Sri Lanka is a global center for authentic Ayurvedic healing, with a tradition stretching back over 3,000 years. This ancient holistic healing system focuses on achieving balance between mind, body, and spirit through personalized treatments, herbal remedies, dietary adjustments, and wellness practices. The island's Ayurvedic retreats range from luxury wellness resorts to traditional centers where treatments are administered by practitioners from families with generations of expertise. Many retreats are set in serene natural environments, enhancing the healing process with the therapeutic benefits of Sri Lanka's natural beauty.",
@@ -589,23 +609,27 @@ export const activitiesData: ActivityDetailsProps[] = [
     ],
     gallery: [
       {
-        url: 'https://images.unsplash.com/photo-1518495973542-4542c06a5843',
+        url: Ayrweda01,
         alt: 'Ayurvedic oil treatment being applied in traditional wooden therapy room'
       },
       {
-        url: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874',
+        url: Ayrweda02,
         alt: 'Herbal preparations and indigenous medicinal plants used in treatments'
       },
       {
-        url: 'https://images.unsplash.com/photo-1531947044935-8599738d023f',
+        url: Ayrweda03,
         alt: 'Serene yoga pavilion in tropical garden at Ayurvedic retreat'
       },
       {
-        url: 'https://images.unsplash.com/photo-1619730312592-52004f7a6e07',
+        url: Ayrweda04,
         alt: 'Traditional steam treatment using local herbs and aromatic plants'
       },
       {
-        url: 'https://images.unsplash.com/photo-1487764241075-2f1fe6e1e0a2',
+        url: Ayrweda05,
+        alt: 'Meditation session at beachfront Ayurvedic wellness center'
+      },
+      {
+        url: Ayrweda06,
         alt: 'Meditation session at beachfront Ayurvedic wellness center'
       }
     ],
