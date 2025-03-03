@@ -529,10 +529,6 @@ const SignUp = () => {
                     <Label htmlFor="certificate">Business Registration Certificate</Label>
                     <Input id="certificate" type="file" accept=".pdf,.jpg,.jpeg,.png" required />
                   </div>
-                  <div>
-                    <Label htmlFor="tin">Tax Identification Number (Optional)</Label>
-                    <Input id="tin" placeholder="Enter TIN" />
-                  </div>
                 </div>
               </div>
 
@@ -599,11 +595,15 @@ const SignUp = () => {
                         <SelectValue placeholder="Select location" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="arugam-bay">Arugam Bay</SelectItem>
-                        <SelectItem value="ella">Ella</SelectItem>
-                        <SelectItem value="kandy">Kandy</SelectItem>
-                        <SelectItem value="sigiriya">Sigiriya</SelectItem>
+                        <SelectItem value="hikkaduwa">Hikkaduwa"</SelectItem>
                         <SelectItem value="galle">Galle</SelectItem>
+                        <SelectItem value="waligama">Waligama"</SelectItem>
+                        <SelectItem value="mirissa">Mirissa</SelectItem>
+                        <SelectItem value="matara">Matara</SelectItem>
+                        <SelectItem value="hirakatiya">Hirakatiya</SelectItem>
+                        <SelectItem value="Tangalla">Tangalla</SelectItem>
+                        <SelectItem value="hambantota">Hambantota</SelectItem>
+                        <SelectItem value="yala">Yala</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -617,7 +617,7 @@ const SignUp = () => {
                   </div>
                   <div>
                     <Label htmlFor="maxGroup">Maximum Group Size</Label>
-                    <Input id="maxGroup" type="number" min="1" placeholder="Enter maximum group size" required />
+                    <Input id="maxGroup" type="number" min="2" placeholder="Enter maximum group size" required />
                   </div>
                   <div>
                     <Label htmlFor="ageRestrictions">Age Restrictions</Label>
@@ -671,25 +671,8 @@ const SignUp = () => {
 
               {/* Payment & Legal Compliance */}
               <div className="space-y-4">
-                <h2 className="text-xl font-semibold text-gray-800">Payment & Legal Compliance</h2>
+                <h2 className="text-xl font-semibold text-gray-800">Payments Details</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="md:col-span-2">
-                    <Label>Accepted Payment Methods</Label>
-                    <div className="grid grid-cols-2 gap-2 mt-2">
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="bankTransfer" />
-                        <Label htmlFor="bankTransfer">Bank Transfer</Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="onlinePayment" />
-                        <Label htmlFor="onlinePayment">Online Payment</Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="cash" />
-                        <Label htmlFor="cash">Cash</Label>
-                      </div>
-                    </div>
-                  </div>
                   <div className="md:col-span-2">
                     <Label htmlFor="bankDetails">Bank Account Details</Label>
                     <Textarea id="bankDetails" placeholder="Enter bank account details" required />
