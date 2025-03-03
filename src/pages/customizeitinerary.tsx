@@ -128,6 +128,14 @@ const accommodation: Accommodation[] = [
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCQsQRCTnuF2kFmuk3il4idKGPtWLW42txkQ&s,
     
   },
+  {
+    id: "14",
+    title: "Lantern Boutique Hotel",
+    description: "A small boutique hotel in Mirissa offering beachfront access, modern decor, and personalized service.",
+    price: 149.99,
+    image: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/467252725.jpg?k=60b186b3079a45cc200863075184e300df18ff223804bb38a29460acf58a051a&o=&hp=1,
+    
+  },
 ];
 
 const Index = () => {
