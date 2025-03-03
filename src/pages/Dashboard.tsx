@@ -120,6 +120,7 @@ const Dashboard = () => {
           </ResponsiveContainer>
         </Card>
       </div>
+      <Footer />
     </div>
 
   );
