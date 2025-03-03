@@ -75,7 +75,12 @@ const Dashboard = () => {
 
         {/* Expense Categories */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-scale-in">
-          
+        <ExpenseCard
+            title="Accommodation"
+            amount={2400}
+            icon={Hotel}
+            percentage={75}
+          />
 
           <ExpenseCard
             title="Transportation"
