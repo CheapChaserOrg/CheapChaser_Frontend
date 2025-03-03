@@ -137,6 +137,14 @@ const destinations = [
     description: "Known for its scenic beauty, sea turtle hatchery, and Koggala Lake.",
     image: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/120196564.jpg?k=31c2ef583d757cacc7cbdbbdeb24647384594e1f38feb3b7d8418bdd67706c28&o=&hp=1",
     category: "Beaches"
+  },
+  {
+    id: 18,
+    name: "Star Fort, Matara ",
+    location: "Matara",
+    description: "A small but well-preserved Dutch colonial fort.",
+    image: "https://mahaweli.lk/wp-content/uploads/2022/12/Star-Fort-in-Matara.jpg",
+    category: "Historical"
   }
   
   
