@@ -48,9 +48,6 @@ const Dashboard = () => {
             <h1 className="text-3xl font-bold text-gray-900">Budget Dashboard</h1>
             <p className="text-gray-600 mt-1">Track your Sri Lanka tour expenses</p>
           </div>
-          <Button className="bg-primary hover:bg-primary-dark text-white">
-            <Plus className="w-4 h-4 mr-2" /> Add Expense
-          </Button>
         </div>
 
         {/* Budget Overview */}
