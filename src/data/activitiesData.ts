@@ -38,7 +38,13 @@ import dive04 from '../images/div04.jpg';
 import dive05 from '../images/div05.jpg';
 import dive06 from '../images/div06.jpg';
 
-
+import cook from '../images/cook.jpeg';
+import cook01 from '../images/cook01.jpg';
+import cook02 from '../images/cook02.jpg';
+import cook03 from '../images/cook03.jpg';
+import cook04 from '../images/cook04.jpg';
+import cook05 from '../images/cook05.jpg';
+import cook06 from '../images/cook06.jpg';
 
 //import wild06 from '../images/wild006.jpg';
 
@@ -423,7 +429,7 @@ export const activitiesData: ActivityDetailsProps[] = [
     id: 'cooking',
     title: 'Cooking Classes',
     description: 'Learn to prepare authentic Sri Lankan cuisine, known for its complex flavors, spices, and unique cooking techniques from local experts.',
-    image: 'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07',
+    image: cook,
     category: 'Culinary',
     location: 'Galle & Colombo',
     longDescription: "Sri Lankan cooking classes offer an immersive cultural experience that engages all the senses. Participants learn to blend the complex spices that form the foundation of Sri Lankan cuisine, master traditional cooking techniques, and understand the cultural significance of different dishes. Classes typically begin with visits to local markets where instructors explain indigenous ingredients, followed by hands-on preparation and, of course, enjoying the delicious results. These experiences provide not only culinary skills but also insights into Sri Lankan family life and cultural traditions centered around food.",
@@ -447,23 +453,27 @@ export const activitiesData: ActivityDetailsProps[] = [
     ],
     gallery: [
       {
-        url: 'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07',
+        url: cook01,
         alt: 'Colorful Sri Lankan spices in traditional clay pots'
       },
       {
-        url: 'https://images.unsplash.com/photo-1561626486-9f38e8326b6b',
+        url: cook02,
         alt: 'Chef teaching students how to make hoppers (rice flour pancakes)'
       },
       {
-        url: 'https://images.unsplash.com/photo-1596560548464-f010549b84d7',
+        url: cook03,
         alt: 'Hands grinding spices on traditional stone grinder'
       },
       {
-        url: 'https://images.unsplash.com/photo-1535400255456-184daa711f6e',
+        url: cook04,
         alt: 'Traditional Sri Lankan clay pot cooking demonstration'
       },
       {
-        url: 'https://images.unsplash.com/photo-1542528180-1c2803fa048c',
+        url: cook05,
+        alt: 'Colorful spread of completed Sri Lankan curry dishes'
+      },
+      {
+        url: cook06,
         alt: 'Colorful spread of completed Sri Lankan curry dishes'
       }
     ],
