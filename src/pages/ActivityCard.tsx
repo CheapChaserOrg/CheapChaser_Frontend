@@ -4,6 +4,7 @@ import { Calendar, MapPin, Clock, Users, DollarSign } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import Navbar from '../components/Navbar';
 
 export interface ActivityProps {
   id: string;
@@ -30,6 +31,7 @@ const ActivityCard = ({
   description
 }: ActivityProps) => {
   return (
+    <Navbar />
     <Card className="activity-card overflow-hidden border border-border/40 bg-white/80 transition-all duration-300 hover:bg-white animate-fade-in">
       <div className="relative h-48 w-full overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
