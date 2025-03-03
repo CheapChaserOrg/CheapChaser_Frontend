@@ -80,12 +80,7 @@ const Dashboard = () => {
             icon={Hotel}
             percentage={75}
           />
-          <ExpenseCard
-            title="Transportation"
-            amount={1500}
-            icon={Plane}
-            percentage={60}
-          />
+          
           <ExpenseCard
             title="Activities"
             amount={1200}
