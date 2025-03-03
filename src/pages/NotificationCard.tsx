@@ -76,7 +76,10 @@ export const NotificationCard = ({ notification }: NotificationCardProps) => {
                   <Check className="w-4 h-4" />
                 </button>
               )}
-             
+              <button
+                onClick={handleDelete}
+                className="p-1 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors duration-200"
+              >
                 
                 <Trash2 className="w-4 h-4" />
               </button>
