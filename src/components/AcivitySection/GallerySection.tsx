@@ -86,25 +86,42 @@ const GallerySection = () => {
         </div>
 
         {/* Image Grid */}
-        <div ref={galleryRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 grid-auto-rows opacity-0 transition-opacity duration-700">
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className={`relative rounded-xl overflow-hidden shadow-md transition-all duration-700 ${
-                image.size === 'large' ? 'md:col-span-2 aspect-[16/9]' : 'aspect-square'
-              }`}
-            >
-              <img src={image.url} alt={image.alt} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-              <div className="absolute inset-0 bg-black/20 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <button className="bg-white/80 backdrop-blur-sm p-2 rounded-full">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+        <div 
+  ref={galleryRef}
+  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[250px] opacity-0 transition-opacity duration-700"
+>
+  {images.map((image, index) => (
+    <div 
+      key={index}
+      className={`relative rounded-xl overflow-hidden shadow-md transition-all duration-700`}
+    >
+      <img
+        src={image.url}
+        alt={image.alt}
+        className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+      />
+      <div className="absolute inset-0 bg-black/20 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+        <button className="bg-white/80 backdrop-blur-sm p-2 rounded-full">
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            className="h-6 w-6 text-gray-900" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+          >
+            <path 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              strokeWidth={2} 
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" 
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  ))}
+</div>
+
 
         {/* View All Button */}
         <div className="mt-10 text-center">
