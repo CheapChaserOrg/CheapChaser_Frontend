@@ -8,7 +8,7 @@ import GallerySection from '@/components/AcivitySection/GallerySection';
 import ContactSection from '@/components/AcivitySection/ContactSection';
 import Footer from '@/components/Footer';
 
-const Index = () => {
+const ActivityCom = () => {
   useEffect(() => {
     // Fade-in animation for sections as they come into view
     const observeElements = () => {
@@ -67,4 +67,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default ActivityCom;

@@ -50,14 +50,11 @@ const ActivitiesSection = () => {
           <span className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
             Experience Sri Lanka
           </span>
-          <h2 
-            ref={titleRef}
-            className="text-3xl md:text-5xl font-bold mb-6 opacity-0 transform translate-y-8"
-          >
-            Unforgettable <span className="text-primary">Activities</span>
+          <h2 ref={titleRef} className="text-3xl md:text-5xl font-bold mb-6">
+            <p>Unforgettable</p> <span className="text-primary">Activities</span>
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            From thrilling adventures to cultural immersions, discover the diverse experiences 
+            From thrilling adventures to cultural immersions, discover the diverse experiences
             Sri Lanka has to offer for every type of traveler.
           </p>
         </div>
@@ -67,11 +64,10 @@ const ActivitiesSection = () => {
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeFilter === filter
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeFilter === filter
                   ? 'bg-primary text-white shadow-md'
                   : 'bg-white text-gray-600 hover:bg-gray-100'
-              }`}
+                }`}
             >
               {filter}
             </button>
