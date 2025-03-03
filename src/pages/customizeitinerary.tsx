@@ -46,6 +46,14 @@ const activities: Activity[] = [
     image: "https://static.saltinourhair.com/wp-content/uploads/2016/11/23154331/galle-dutch-fort-sri-lanka-lighthouse.jpg",
     
   },
+  {
+    id: "6",
+    title: "Visit the Japanese Peace Pagoda",
+    description: "A serene Buddhist temple offering panoramic views.",
+    price: 149.99,
+    image: "https://www.villathawthisa.com/images/Things_to_do/photos/f01459bd34b7293bc22c01313ef052a9.jpg",
+    
+  },
 ];
 
 const accommodation: Accommodation[] = [
