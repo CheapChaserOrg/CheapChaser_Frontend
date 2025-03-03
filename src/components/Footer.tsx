@@ -26,9 +26,10 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-gray-900 mb-4">Connect With Us</h4>
             <div className="flex space-x-4">
-              <SocialLink href="#" icon={<Facebook size={20} />} />
-              <SocialLink href="#" icon={<Instagram size={20} />} />
-              <SocialLink href="#" icon={<Twitter size={20} />} />
+              <SocialLink href="https://www.facebook.com/share/1BKK2qgLi6/?mibextid=qi2Omg" icon={<Facebook size={20} />} />
+              <SocialLink href="https://www.instagram.com/cheapchaser.travel?igsh=bzZ3bWZpcW1oMHhi"  icon={<Instagram size={20} />} />
+              <SocialLink href="https://www.twitter.com" icon={<Twitter size={20} />} />
+              <SocialLink href="https://youtube.com/@cheapchaser?si=wpmDQTJW5Ogo4hxW" icon={<Youtube size={20} />} />
             </div>
           </div>
         </div>
