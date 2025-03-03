@@ -36,6 +36,7 @@ const Navbar = () => {
             <NavLink to="/destinations">Destinations</NavLink>
             <NavLink to="/about">About Us</NavLink>
             <NavLink to="/contact">Contact</NavLink>
+            <NavLink to="/activity">Activities</NavLink>
             
             {/* Login Menu */}
             <div className="relative">
@@ -108,7 +109,8 @@ const Navbar = () => {
             <div className="px-2 pt-2 pb-3 space-y-1">
               <MobileNavLink to="/destinations">Destinations</MobileNavLink>
               <MobileNavLink to="/about">About Us</MobileNavLink>
-              <MobileNavLink to="/contact">Contact</MobileNavLink>
+              <NavLink to="/contact">Contact</NavLink>
+              <NavLink to="/activity">Activities</NavLink>
               <div className="pt-4 pb-3 border-t border-gray-200">
                 <div className="px-2 space-y-1">
                   <p className="px-3 py-2 text-sm font-medium text-gray-500">Login as:</p>
