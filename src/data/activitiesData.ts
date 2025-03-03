@@ -14,6 +14,13 @@ import beach04 from '../images/beach04.webp';
 import beach05 from '../images/beach05.jpg';
 import beach06 from '../images/beach06.jpg'
 
+import temp from '../images/tem00.jpg';
+import temp01 from '../images/tem01.jpg';
+import temp02 from '../images/tem02.jpg';
+import temp03 from '../images/tem03.jpg';
+import temp04 from '../images/tem04.jpg';
+import temp05 from '../images/tem05.jpg';
+import temp06 from '../images/tem06.jpg';
 
 //import wild06 from '../images/wild006.jpg';
 
@@ -188,7 +195,7 @@ export const activitiesData: ActivityDetailsProps[] = [
     id: 'temples',
     title: 'Ancient Temples',
     description: 'Discover Sri Lanka\'s rich cultural heritage by visiting ancient Buddhist temples and sacred sites that date back thousands of years.',
-    image: 'https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151',
+    image: temp01,
     category: 'Cultural',
     location: 'Anuradhapura & Polonnaruwa',
     longDescription: "Sri Lanka's ancient temples represent over 2,000 years of Buddhist heritage and architectural innovation. These sacred sites are not only places of worship but also masterpieces of ancient engineering and artistry. From massive stupas to intricately carved stone sculptures, these temples embody the island's spiritual devotion and cultural sophistication. Many temples continue to be active places of worship, allowing visitors to witness traditional ceremonies and gain insights into the living Buddhist traditions that form an integral part of Sri Lankan identity.",
@@ -212,23 +219,27 @@ export const activitiesData: ActivityDetailsProps[] = [
     ],
     gallery: [
       {
-        url: 'https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151',
+        url: temp,
         alt: 'Golden Buddha statues in Dambulla Cave Temple'
       },
       {
-        url: 'https://images.unsplash.com/photo-1540326676925-a25e7d26f315',
+        url: temp02,
         alt: 'Ancient stupa in Anuradhapura sacred city'
       },
       {
-        url: 'https://images.unsplash.com/photo-1593418231966-b43760d8efd8',
+        url: temp03,
         alt: 'Reclining Buddha statue at Gal Vihara, Polonnaruwa'
       },
       {
-        url: 'https://images.unsplash.com/photo-1571435696692-796338baebfe',
+        url: temp04,
         alt: 'Temple of the Sacred Tooth Relic in Kandy'
       },
       {
-        url: 'https://images.unsplash.com/photo-1605138090042-07f58f627c0b',
+        url: temp05,
+        alt: 'Intricate wall paintings in ancient Buddhist temple'
+      },
+      {
+        url: temp06,
         alt: 'Intricate wall paintings in ancient Buddhist temple'
       }
     ],
