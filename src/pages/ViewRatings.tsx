@@ -55,6 +55,13 @@ const ViewRatings = () => {
               key={rating.id}
               className="bg-white/80 backdrop-blur-md p-6 rounded-lg shadow-md animate-fade-in"
             >
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <h3 className="font-semibold text-lg">{rating.userName}</h3>
+                  <p className="text-sm text-gray-600">Booking ID: {rating.bookingId}</p>
+                </div>
+                
+              </div>
               <p className="text-gray-700">{rating.comment}</p>
               <p className="text-sm text-gray-500 mt-2">
                 {new Date(rating.date).toLocaleDateString()}
