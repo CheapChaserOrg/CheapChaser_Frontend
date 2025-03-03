@@ -54,6 +54,14 @@ const activities: Activity[] = [
     image: "https://www.villathawthisa.com/images/Things_to_do/photos/f01459bd34b7293bc22c01313ef052a9.jpg",
     
   },
+  {
+    id: "7",
+    title: "Stilt Fishing in Koggala",
+    description: "Observe or try this traditional fishing method.",
+    price: 149.99,
+    image: "https://i.pinimg.com/736x/b5/12/8f/b5128fd144eed63f5392b23395137ce3.jpg",
+    
+  },
 ];
 
 const accommodation: Accommodation[] = [
