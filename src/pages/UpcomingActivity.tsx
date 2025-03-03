@@ -92,6 +92,7 @@ const UpcomingActivities = () => {
     : southernActivities;
 
   return (
+    <Navbar />
     <section className="py-12 px-4 md:px-6">
       <div className="container mx-auto max-w-7xl">
         <div className="mb-2">
