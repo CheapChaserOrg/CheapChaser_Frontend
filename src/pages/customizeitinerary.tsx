@@ -104,6 +104,14 @@ const accommodation: Accommodation[] = [
     image: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/175203022.jpg?k=fed4d2340a96e68ebc65fe1de4e492ed42ed35ff5fa4f0d28c3c948cc8a2278b&o=&hp=1",
     
   },
+  {
+    id: "11",
+    title: "The Fort Bazaar",
+    description: "A stylish boutique hotel in the heart of Galle Fort, featuring elegant rooms and a tranquil courtyard restaurant. Perfect for couples and history lovers.",
+    price: 149.99,
+    image: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/149023700.jpg?k=2a2a5d1a9d50bd2cccd17fe2f87e8eac7ee9eec8093f907de14fdab3ee66205c&o=&hp=1,
+    
+  },
 ];
 
 const Index = () => {
