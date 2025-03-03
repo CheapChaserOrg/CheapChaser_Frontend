@@ -5,6 +5,7 @@ import { Bell, BellDot, Check, Trash2 } from 'lucide-react';
 import { useNotifications } from '@/contexts/NotificationContext';
 import { useState } from 'react';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 interface NotificationCardProps {
   notification: Notification;
