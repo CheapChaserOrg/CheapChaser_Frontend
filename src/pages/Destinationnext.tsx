@@ -129,7 +129,16 @@ const destinations = [
     description: "A calm beach perfect for snorkeling and swimming with turtles.",
     image: "https://www.lovesrilanka.org/wp-content/uploads/2020/06/LSL_B2_polhena-beach_800x1000.jpg",
     category: "Beaches"
+  },
+  {
+    id: 17,
+    name: "Koggala Beach",
+    location: "Galle",
+    description: "Known for its scenic beauty, sea turtle hatchery, and Koggala Lake.",
+    image: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/120196564.jpg?k=31c2ef583d757cacc7cbdbbdeb24647384594e1f38feb3b7d8418bdd67706c28&o=&hp=1",
+    category: "Beaches"
   }
+  
   
 ];
 
