@@ -46,7 +46,23 @@ const ViewRatings = () => {
       </div>
 
       {/* Content */}
-      
+      <div className="relative z-10 container mx-auto px-4 py-8">
+        <h1 className="text-4xl font-bold text-center mb-8 text-white animate-fade-in">Customer Reviews</h1>
+        
+        <div className="grid gap-6 max-w-4xl mx-auto">
+          {ratings.map((rating) => (
+            <div 
+              key={rating.id}
+              className="bg-white/80 backdrop-blur-md p-6 rounded-lg shadow-md animate-fade-in"
+            >
+              <p className="text-gray-700">{rating.comment}</p>
+              <p className="text-sm text-gray-500 mt-2">
+                {new Date(rating.date).toLocaleDateString()}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
