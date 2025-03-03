@@ -189,6 +189,40 @@ const Itinerary = () => {
             description: "Amangalla Resort, Galle. Fine dining with Sri Lankan and international cuisine."
           }
         ]
+      },
+      {
+        day: "Day 6",
+        date: "Nov 15, 2023",
+        activities: [
+          {
+            type: "sightseeing",
+            icon: <Palmtree size={18} />,
+            time: "08:30 AM",
+            title: "Mirissa Whale Watching",
+            description: "Private boat tour to see blue whales and dolphins. 3-4 hour excursion."
+          },
+          {
+            type: "dining",
+            icon: <Utensils size={18} />,
+            time: "01:00 PM",
+            title: "Lunch at No. 1 Roti Shop",
+            description: "Mirissa Beach Road. Famous for traditional Sri Lankan roti and curries."
+          },
+          {
+            type: "sightseeing",
+            icon: <MapPin size={18} />,
+            time: "03:00 PM",
+            title: "Stilt Fishermen at Koggala",
+            description: "Witness traditional Sri Lankan fishing technique, photography opportunity."
+          },
+          {
+            type: "dining",
+            icon: <Utensils size={18} />,
+            time: "07:00 PM",
+            title: "Dinner at Church Street Social",
+            description: "Amangalla Resort, Galle. Fine dining with Sri Lankan and international cuisine."
+          }
+        ]
       }
     ]
   };
