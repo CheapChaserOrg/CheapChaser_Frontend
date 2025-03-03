@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 
 const Hero = () => {
@@ -8,22 +7,23 @@ const Hero = () => {
 
   useEffect(() => {
     if (titleRef.current) {
-      titleRef.current.classList.add('animate-slide-down');
+      titleRef.current.classList.add('opacity-100', 'translate-y-0', 'transition-all', 'duration-700');
     }
     if (subtitleRef.current) {
       setTimeout(() => {
-        subtitleRef.current?.classList.add('animate-slide-up');
+        subtitleRef.current?.classList.add('opacity-100', 'translate-y-0', 'transition-all', 'duration-700');
       }, 300);
     }
     if (imageRef.current) {
       setTimeout(() => {
-        imageRef.current?.classList.add('animate-fade-in');
+        imageRef.current?.classList.add('opacity-100', 'scale-100', 'transition-all', 'duration-700');
       }, 600);
     }
   }, []);
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-gray-50">
+      {/* Background Image with Blur Effect */}
       <div 
         className="absolute inset-0 z-0 opacity-20"
         style={{
@@ -35,6 +35,7 @@ const Hero = () => {
       />
       
       <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col md:flex-row items-center">
+        {/* Text Content */}
         <div className="md:w-1/2 pt-20 md:pt-0">
           <div className="mb-2">
             <span className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
@@ -43,13 +44,13 @@ const Hero = () => {
           </div>
           <h1 
             ref={titleRef}
-            className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 opacity-0"
+            className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 opacity-0 translate-y-4"
           >
             Discover the Magic of <span className="text-primary">Sri Lanka</span>
           </h1>
           <p 
             ref={subtitleRef}
-            className="text-lg md:text-xl text-gray-600 mb-8 max-w-lg opacity-0"
+            className="text-lg md:text-xl text-gray-600 mb-8 max-w-lg opacity-0 translate-y-4"
           >
             From pristine beaches to ancient ruins, lush tea plantations to wildlife safaris, 
             explore the endless activities this island paradise has to offer.
@@ -70,13 +71,14 @@ const Hero = () => {
           </div>
         </div>
         
+        {/* Image Section */}
         <div 
           ref={imageRef}
-          className="md:w-1/2 mt-12 md:mt-0 opacity-0"
+          className="md:w-1/2 mt-12 md:mt-0 opacity-0 scale-95"
         >
           <div className="relative">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-blue-600 rounded-2xl blur opacity-30 animate-pulse"></div>
-            <div className="relative overflow-hidden rounded-2xl image-shine-effect">
+            <div className="relative overflow-hidden rounded-2xl">
               <img 
                 src="https://images.unsplash.com/photo-1482938289607-e9573fc25ebb" 
                 alt="Sri Lanka landscape" 
@@ -87,6 +89,7 @@ const Hero = () => {
         </div>
       </div>
       
+      {/* Scroll Indicator */}
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
         <a href="#activities" className="flex flex-col items-center text-gray-600">
           <span className="text-sm mb-2">Scroll to explore</span>
