@@ -127,6 +127,9 @@
   background-attachment: fixed;
 }
 
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
 @layer base {
   * {
     @apply border-border;
