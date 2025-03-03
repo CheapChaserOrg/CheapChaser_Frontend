@@ -133,7 +133,15 @@ const accommodation: Accommodation[] = [
     title: "Lantern Boutique Hotel",
     description: "A small boutique hotel in Mirissa offering beachfront access, modern decor, and personalized service.",
     price: 149.99,
-    image: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/467252725.jpg?k=60b186b3079a45cc200863075184e300df18ff223804bb38a29460acf58a051a&o=&hp=1,
+    image: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/467252725.jpg?k=60b186b3079a45cc200863075184e300df18ff223804bb38a29460acf58a051a&o=&hp=1",
+    
+  },
+  {
+    id: "15",
+    title: "Anantara Peace Haven Tangalle Resort",
+    description: "A world-class resort with beachside villas, Ayurveda spa treatments, and fine dining.",
+    price: 149.99,
+    image: "https://assets.anantara.com/image/upload/q_auto,f_auto,c_limit,w_1920/media/minor/anantara/images/anantara-peace-haven-tangalle-resort/gallery/leisure/anantara_peace_haven_tangalle_resort_aerial_view_1920x1037.jpg",
     
   },
 ];
