@@ -32,7 +32,7 @@ const data = [
 ];
 
 const Dashboard = () => {
-  <Navbar />
+  
   const [totalBudget] = useState(10000);
   const [spentAmount] = useState(6300);
   const remainingBudget = totalBudget - spentAmount;
@@ -40,6 +40,7 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-background-light p-6 md:p-8">
+      <Navbar />
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -120,6 +121,7 @@ const Dashboard = () => {
         </Card>
       </div>
     </div>
+
   );
 };
 
