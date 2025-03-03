@@ -677,22 +677,6 @@ const SignUp = () => {
                     <Label htmlFor="bankDetails">Bank Account Details</Label>
                     <Textarea id="bankDetails" placeholder="Enter bank account details" required />
                   </div>
-                  <div>
-                    <Label htmlFor="insurance">Liability Insurance</Label>
-                    <Select>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="yes">Yes</SelectItem>
-                        <SelectItem value="no">No</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div>
-                    <Label htmlFor="insuranceProof">Upload Insurance Proof</Label>
-                    <Input id="insuranceProof" type="file" accept=".pdf,.jpg,.jpeg,.png" />
-                  </div>
                 </div>
               </div>
 
