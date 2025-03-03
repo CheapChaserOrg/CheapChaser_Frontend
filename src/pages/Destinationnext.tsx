@@ -121,7 +121,16 @@ const destinations = [
     description: "Displays artifacts from ancient trade routes and shipwrecks.",
     image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/be/91/39/interior.jpg?w=1200&h=-1&s=1",
     category: "Historical"
+  },
+  {
+    id: 16,
+    name: "Polhena Beach",
+    location: "Matara",
+    description: "A calm beach perfect for snorkeling and swimming with turtles.",
+    image: "https://www.lovesrilanka.org/wp-content/uploads/2020/06/LSL_B2_polhena-beach_800x1000.jpg",
+    category: "Beaches"
   }
+  
 ];
 
 const DestinationCard = ({ destination, index }: { destination: typeof destinations[0], index: number }) => {
