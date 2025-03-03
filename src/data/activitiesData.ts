@@ -30,6 +30,14 @@ import hike04 from '../images/hike04.jpg';
 import hike05 from '../images/hike05.jpg';
 import hike06 from '../images/hike06.jpg';
 
+import dive from '../images/div.jpg';
+import dive01 from '../images/div01.webp';
+import dive02 from '../images/div02.jpg';
+import dive03 from '../images/div03.jpg';
+import dive04 from '../images/div04.jpg';
+import dive05 from '../images/div05.jpg';
+import dive06 from '../images/div06.jpg';
+
 
 
 //import wild06 from '../images/wild006.jpg';
@@ -345,7 +353,7 @@ export const activitiesData: ActivityDetailsProps[] = [
     id: 'diving',
     title: 'Diving & Snorkeling',
     description: 'Explore vibrant coral reefs, shipwrecks, and underwater caves along Sri Lanka\'s coast, offering world-class diving experiences.',
-    image: 'https://images.unsplash.com/photo-1504893524553-b855bce32c67',
+    image:dive,
     category: 'Water Sports',
     location: 'Trincomalee & Batticaloa',
     longDescription: "Sri Lanka's surrounding waters are a paradise for underwater adventurers, with diverse marine ecosystems and excellent visibility throughout much of the year. From vibrant coral gardens teeming with colorful fish to fascinating shipwrecks preserving centuries of maritime history, the diving and snorkeling experiences are world-class. The island's eastern and southern coasts offer particularly rich underwater environments, with opportunities to encounter majestic sea turtles, reef sharks, and even whale sharks in certain seasons. For beginners, many PADI-certified diving centers provide introductory courses in calm, shallow waters.",
@@ -369,23 +377,27 @@ export const activitiesData: ActivityDetailsProps[] = [
     ],
     gallery: [
       {
-        url: 'https://images.unsplash.com/photo-1504893524553-b855bce32c67',
+        url: dive01,
         alt: 'Diver exploring colorful coral reef in Pigeon Island'
       },
       {
-        url: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5',
+        url: dive02,
         alt: 'School of tropical fish swimming near coral formations'
       },
       {
-        url: 'https://images.unsplash.com/photo-1530053969600-caed2596d242',
+        url: dive03,
         alt: 'Snorkeler swimming with sea turtle in shallow waters'
       },
       {
-        url: 'https://images.unsplash.com/photo-1516690561799-46d8f74f9abf',
+        url: dive04,
         alt: 'Diver exploring historic shipwreck with coral growth'
       },
       {
-        url: 'https://images.unsplash.com/photo-1551244072-5d12893278ab',
+        url: dive05,
+        alt: 'Underwater view of colorful tropical fish at Hikkaduwa coral sanctuary'
+      },
+      {
+        url: dive06,
         alt: 'Underwater view of colorful tropical fish at Hikkaduwa coral sanctuary'
       }
     ],
