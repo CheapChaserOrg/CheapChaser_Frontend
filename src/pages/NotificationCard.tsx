@@ -4,6 +4,7 @@ import { formatDistanceToNow } from 'date-fns';
 import { Bell, BellDot, Check, Trash2 } from 'lucide-react';
 import { useNotifications } from '@/contexts/NotificationContext';
 import { useState } from 'react';
+import Navbar from '../components/Navbar';
 
 interface NotificationCardProps {
   notification: Notification;
