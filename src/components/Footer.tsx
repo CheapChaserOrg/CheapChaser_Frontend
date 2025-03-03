@@ -33,6 +33,16 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* <div>
+            <h4 className="font-semibold text-gray-900 mb-4">Popular Destinations</h4>
+            <ul className="space-y-2">
+              <FooterLink href="#kandy">Kandy</FooterLink>
+              <FooterLink href="#galle">Galle</FooterLink>
+              <FooterLink href="#ella">Ella</FooterLink>
+              <FooterLink href="#sigiriya">Sigiriya</FooterLink>
+            </ul>
+          </div> */}
+
         <div className="mt-12 pt-8 border-t border-gray-200">
           <p className="text-center text-gray-600">
             © {new Date().getFullYear()} CheapChaser Budget Travel. All rights reserved.
