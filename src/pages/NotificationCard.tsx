@@ -10,6 +10,7 @@ interface NotificationCardProps {
 }
 
 export const NotificationCard = ({ notification }: NotificationCardProps) => {
+    <Navbar />
   const { dispatch } = useNotifications();
   const [isLoaded, setIsLoaded] = useState(false);
 
