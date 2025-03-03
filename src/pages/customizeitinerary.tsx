@@ -112,6 +112,14 @@ const accommodation: Accommodation[] = [
     image: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/149023700.jpg?k=2a2a5d1a9d50bd2cccd17fe2f87e8eac7ee9eec8093f907de14fdab3ee66205c&o=&hp=1,
     
   },
+  {
+    id: "12",
+    title: "Taru Villas - Rampart Street",
+    description: "A sophisticated boutique hotel inside Galle Fort, offering personalized service and a cozy atmosphere.",
+    price: 149.99,
+    image: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/427627188.jpg?k=202df645f6b07d173a3e83efdbbf79b546f20cc5bfd37ed038079f058fbd49cc&o=&hp=1,
+    
+  },
 ];
 
 const Index = () => {
