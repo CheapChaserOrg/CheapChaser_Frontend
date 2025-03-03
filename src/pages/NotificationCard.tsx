@@ -86,6 +86,7 @@ export const NotificationCard = ({ notification }: NotificationCardProps) => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
