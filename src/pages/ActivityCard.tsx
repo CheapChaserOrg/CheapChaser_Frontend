@@ -84,6 +84,7 @@ const ActivityCard = ({
           Book Now
         </button>
       </CardFooter>
+      <Footer />
     </Card>
   );
 };
