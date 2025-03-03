@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import ActivityCard, { ActivityProps } from './ActivityCard';
 import { cn } from '@/lib/utils';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 // Sample data for Southern Province activities
 const southernActivities: ActivityProps[] = [
