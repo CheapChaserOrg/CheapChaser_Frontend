@@ -1,5 +1,5 @@
 import { useNotifications } from '@/contexts/NotificationContext';
-
+import { NotificationCard } from './NotificationCard';
 
 export const NotificationList = () => {
   const { state } = useNotifications();
