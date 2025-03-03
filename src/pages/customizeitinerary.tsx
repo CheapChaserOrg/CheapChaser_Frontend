@@ -120,6 +120,14 @@ const accommodation: Accommodation[] = [
     image: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/427627188.jpg?k=202df645f6b07d173a3e83efdbbf79b546f20cc5bfd37ed038079f058fbd49cc&o=&hp=1,
     
   },
+  {
+    id: "13",
+    title: "Amanwella",
+    description: "A beachfront paradise in Tangalle with private plunge pools, fine dining, and a peaceful ambiance, perfect for a luxurious escape.",
+    price: 149.99,
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCQsQRCTnuF2kFmuk3il4idKGPtWLW42txkQ&s,
+    
+  },
 ];
 
 const Index = () => {
