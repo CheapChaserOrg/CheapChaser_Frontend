@@ -6,6 +6,15 @@ import wild05 from '../images/yala.jpg';
 import wild06 from '../images/wild004.jpg';
 import wild07 from '../images/wild.jpg';
 
+import beach from '../images/form.jpg';
+import beach01 from '../images/beach01.jpg';
+import beach02 from '../images/beach02.jpg';
+import beach03 from '../images/beach003.jpg';
+import beach04 from '../images/beach04.webp';
+import beach05 from '../images/beach05.jpg';
+import beach06 from '../images/beach06.jpg'
+
+
 //import wild06 from '../images/wild006.jpg';
 
 export interface ActivityProps {
@@ -109,7 +118,7 @@ export const activitiesData: ActivityDetailsProps[] = [
     id: 'beaches',
     title: 'Beach Exploration',
     description: 'Relax on pristine golden beaches along the southern and eastern coasts, with opportunities for surfing, snorkeling and whale watching.',
-    image: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21',
+    image: beach,
     category: 'Relaxation',
     location: 'Mirissa & Unawatuna',
     longDescription: "Sri Lanka is blessed with over 1,600 kilometers of palm-fringed coastline, offering some of the most picturesque beaches in the world. From secluded bays to vibrant beach towns, the island's beaches cater to every type of traveler. The clear blue waters provide perfect conditions for swimming, while more adventurous visitors can enjoy world-class surfing, snorkeling, and diving. Many beaches also offer opportunities for whale and dolphin watching, making beach exploration in Sri Lanka a multi-faceted experience that combines relaxation with adventure.",
@@ -133,23 +142,27 @@ export const activitiesData: ActivityDetailsProps[] = [
     ],
     gallery: [
       {
-        url: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21',
+        url: beach01,
         alt: 'Golden sunset over Mirissa Beach with palm trees silhouettes'
       },
       {
-        url: 'https://images.unsplash.com/photo-1540202404-d0c7fe46a087',
+        url: beach02,
         alt: 'Surfer riding waves at Arugam Bay'
       },
       {
-        url: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5',
+        url: beach03,
         alt: 'Aerial view of pristine beaches in southern Sri Lanka'
       },
       {
-        url: 'https://images.unsplash.com/photo-1530948990335-1eb93cbe6430',
+        url: beach04,
         alt: 'Beach chairs and umbrellas on Unawatuna Beach'
       },
       {
-        url: 'https://images.unsplash.com/photo-1564419434663-c49967363608',
+        url: beach05,
+        alt: 'Whale tail off the coast of Mirissa during whale watching tour'
+      },
+      {
+        url: beach06,
         alt: 'Whale tail off the coast of Mirissa during whale watching tour'
       }
     ],
