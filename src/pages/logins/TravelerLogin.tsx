@@ -4,6 +4,7 @@ import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { Eye, EyeOff } from 'lucide-react';
 import { useState } from 'react';
+import { GoogleLogin, GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
 
 const TravelerLogin = () => {
   const { toast } = useToast();
@@ -17,6 +18,25 @@ const TravelerLogin = () => {
     toast({
       title: "Login Attempted",
       description: "Attempted to login as Traveler",
+    });
+  };
+
+  const handleGoogleLoginSuccess = (response: GoogleLoginResponse | GoogleLoginResponseOffline) => {
+    if ('profileObj' in response) {
+      const { profileObj } = response;
+      toast({
+        title: "Google Login Successful",
+        description: `Welcome, ${profileObj.name}!`,
+      });
+      // Redirect or handle user data
+    }
+  };
+
+  const handleGoogleLoginFailure = (error: any) => {
+    toast({
+      title: "Google Login Failed",
+      description: error.error,
+      variant: "destructive",
     });
   };
 
@@ -69,11 +89,6 @@ const TravelerLogin = () => {
                 Login as Traveler
               </Button>
             </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  );
-};
 
-export default TravelerLogin;
+            <div className="text-center">
+              <span className="text-gray-600">Or</span>
