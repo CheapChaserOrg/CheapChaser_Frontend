@@ -4,6 +4,7 @@ import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { Eye, EyeOff } from 'lucide-react';
 import { useState } from 'react';
+import { GoogleLogin, GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
 
 const HotelLogin = () => {
   const { toast } = useToast();
@@ -17,6 +18,25 @@ const HotelLogin = () => {
     toast({
       title: "Login Attempted",
       description: "Attempted to login as Hotel",
+    });
+  };
+
+  const handleGoogleLoginSuccess = (response: GoogleLoginResponse | GoogleLoginResponseOffline) => {
+    if ('profileObj' in response) {
+      const { profileObj } = response;
+      toast({
+        title: "Google Login Successful",
+        description: `Welcome, ${profileObj.name}!`,
+      });
+      // Redirect or handle user data
+    }
+  };
+
+  const handleGoogleLoginFailure = (error: any) => {
+    toast({
+      title: "Google Login Failed",
+      description: error.error,
+      variant: "destructive",
     });
   };
 
@@ -68,6 +88,21 @@ const HotelLogin = () => {
               <Button type="submit" className="w-full">
                 Login as Hotel
               </Button>
+            </div>
+
+            <div className="text-center">
+              <span className="text-gray-600">Or</span>
+            </div>
+
+            <div>
+              <GoogleLogin
+                clientId="YOUR_GOOGLE_CLIENT_ID"
+                buttonText="Login with Google"
+                onSuccess={handleGoogleLoginSuccess}
+                onFailure={handleGoogleLoginFailure}
+                cookiePolicy={'single_host_origin'}
+                className="w-full"
+              />
             </div>
           </form>
         </div>
