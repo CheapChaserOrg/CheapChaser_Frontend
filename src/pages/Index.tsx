@@ -230,6 +230,10 @@ const DestinationCard = ({ image, title, description }: { image: string; title: 
         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
       />
     </div>
+    <div className="p-6 bg-white">
+      <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
+      <p className="text-gray-600">{description}</p>
+    </div>
   </div>
 );
 
