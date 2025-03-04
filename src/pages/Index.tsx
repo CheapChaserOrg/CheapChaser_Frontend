@@ -71,6 +71,11 @@ const Index = () => {
     age: string;
     comment: string;
   }) => {
+    const feedback: Feedback = {
+      id: feedbacks.length + 1,
+      ...newFeedback,
+      date: new Date().toISOString().split('T')[0],
+    };
     setFeedbacks([feedback, ...feedbacks]);
   };
 
