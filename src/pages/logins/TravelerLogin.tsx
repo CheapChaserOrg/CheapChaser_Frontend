@@ -92,3 +92,23 @@ const TravelerLogin = () => {
 
             <div className="text-center">
               <span className="text-gray-600">Or</span>
+            </div>
+
+            <div>
+              <GoogleLogin
+                clientId="YOUR_GOOGLE_CLIENT_ID"
+                buttonText="Login with Google"
+                onSuccess={handleGoogleLoginSuccess}
+                onFailure={handleGoogleLoginFailure}
+                cookiePolicy={'single_host_origin'}
+                className="w-full"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TravelerLogin;
