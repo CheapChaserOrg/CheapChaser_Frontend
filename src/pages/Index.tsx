@@ -65,7 +65,14 @@ const Index = () => {
     return () => observer.disconnect();
   }, []);
 
-
+  const handleSubmitFeedback = (newFeedback: {
+    rating: number;
+    country: string;
+    age: string;
+    comment: string;
+  }) => {
+    setFeedbacks([feedback, ...feedbacks]);
+  };
 
   return (
     <div className="min-h-screen">
