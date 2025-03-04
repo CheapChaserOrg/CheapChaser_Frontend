@@ -1,15 +1,23 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import TripPlanLoading from "./TripPlanLoading";
 
-const AdditionalServices = ({ onSubmit, onBack }: { onSubmit: () => void; onBack: () => void }) => {
+const AdditionalServices = ({ onBack, onComplete }: { onBack: () => void; onComplete: () => void }) => {
   const [needGuide, setNeedGuide] = useState(false);
   const [needSIM, setNeedSIM] = useState(false);
   const [needCurrencyExchange, setNeedCurrencyExchange] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  return (
+  const handleSubmit = () => {
+    setIsLoading(true);
+  };
+
+  return isLoading ? (
+    <TripPlanLoading onLoadingComplete={onComplete} />
+  ) : (
     <div className="space-y-6">
       <h2 className="text-2xl font-semibold">Additional Services</h2>
-      
+
       <div className="space-y-4">
         <div className="space-y-2">
           <label className="flex items-center space-x-2">
@@ -48,7 +56,7 @@ const AdditionalServices = ({ onSubmit, onBack }: { onSubmit: () => void; onBack
         <Button variant="outline" onClick={onBack} className="w-full">
           Back
         </Button>
-        <Button onClick={onSubmit} className="w-full">
+        <Button onClick={handleSubmit} className="w-full">
           Submit Trip Plan
         </Button>
       </div>
