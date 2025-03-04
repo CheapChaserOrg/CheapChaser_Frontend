@@ -5,6 +5,7 @@ import { Label } from '../components/ui/label';
 import { Eye, EyeOff } from 'lucide-react';
 import { useState } from 'react';
 import { GoogleLogin, GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
+import FacebookLogin from 'react-facebook-login';
 
 const TravelerLogin = () => {
   const { toast } = useToast();
@@ -35,6 +36,22 @@ const TravelerLogin = () => {
   const handleGoogleLoginFailure = (error: any) => {
     toast({
       title: "Google Login Failed",
+      description: error.error,
+      variant: "destructive",
+    });
+  };
+
+  const handleFacebookLoginSuccess = (response: any) => {
+    toast({
+      title: "Facebook Login Successful",
+      description: `Welcome, ${response.name}!`,
+    });
+    // Redirect or handle user data
+  };
+
+  const handleFacebookLoginFailure = (error: any) => {
+    toast({
+      title: "Facebook Login Failed",
       description: error.error,
       variant: "destructive",
     });
@@ -94,7 +111,7 @@ const TravelerLogin = () => {
               <span className="text-gray-600">Or</span>
             </div>
 
-            <div>
+            <div className="space-y-4">
               <GoogleLogin
                 clientId="YOUR_GOOGLE_CLIENT_ID"
                 buttonText="Login with Google"
@@ -102,6 +119,15 @@ const TravelerLogin = () => {
                 onFailure={handleGoogleLoginFailure}
                 cookiePolicy={'single_host_origin'}
                 className="w-full"
+              />
+              <FacebookLogin
+                appId="YOUR_FACEBOOK_APP_ID"
+                autoLoad={false}
+                fields="name,email,picture"
+                callback={handleFacebookLoginSuccess}
+                onFailure={handleFacebookLoginFailure}
+                cssClass="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                textButton="Login with Facebook"
               />
             </div>
           </form>
