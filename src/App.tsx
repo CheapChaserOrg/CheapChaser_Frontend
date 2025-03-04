@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import TripPlanner from "./pages/TripPlanner";
 import Destinations from "./pages/Destinations";
+import Destinationnext from "./pages/Destinationnext";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
@@ -31,6 +32,7 @@ function App() {
         <Route path="/activity/:id" element={<ActivityDetails />} />
         <Route path="/activity" element={<ActivityCom />} />
         <Route path="/gallery" element={<Gallery/>} />
+        <Route path="/nextDestinations" element={<Destinationnext />} />
       </Routes>
     </Router>
   );
