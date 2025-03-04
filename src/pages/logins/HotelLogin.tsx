@@ -6,6 +6,7 @@ import { Eye, EyeOff } from 'lucide-react';
 import { useState } from 'react';
 import { GoogleLogin, GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
+import LinkedInLogin from 'react-linkedin-login-oauth2';
 
 const HotelLogin = () => {
   const { toast } = useToast();
@@ -52,6 +53,22 @@ const HotelLogin = () => {
   const handleFacebookLoginFailure = (error: any) => {
     toast({
       title: "Facebook Login Failed",
+      description: error.error,
+      variant: "destructive",
+    });
+  };
+
+  const handleLinkedInLoginSuccess = (response: any) => {
+    toast({
+      title: "LinkedIn Login Successful",
+      description: `Welcome, ${response.name}!`,
+    });
+    // Redirect or handle user data
+  };
+
+  const handleLinkedInLoginFailure = (error: any) => {
+    toast({
+      title: "LinkedIn Login Failed",
       description: error.error,
       variant: "destructive",
     });
@@ -129,6 +146,15 @@ const HotelLogin = () => {
                 cssClass="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                 textButton="Login with Facebook"
               />
+              <LinkedInLogin
+                clientId="YOUR_LINKEDIN_CLIENT_ID"
+                redirectUri="http://localhost:3000"
+                onSuccess={handleLinkedInLoginSuccess}
+                onFailure={handleLinkedInLoginFailure}
+                className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+              >
+                Login with LinkedIn
+              </LinkedInLogin>
             </div>
           </form>
         </div>
