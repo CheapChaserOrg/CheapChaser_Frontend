@@ -146,3 +146,5 @@ const UpcomingActivities = () => {
 };
 
 export default UpcomingActivities;
+
+
