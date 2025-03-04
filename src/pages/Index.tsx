@@ -221,4 +221,16 @@ const FeatureCard = ({ icon, title, description }: { icon: React.ReactNode; titl
   </div>
 );
 
+const DestinationCard = ({ image, title, description }: { image: string; title: string; description: string }) => (
+  <div className="group rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow animate-on-scroll opacity-0">
+    <div className="relative h-64 overflow-hidden">
+      <img
+        src={image}
+        alt={title}
+        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+      />
+    </div>
+  </div>
+);
+
 export default Index;
