@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -8,9 +8,38 @@ import homeImage from '../images/home2.jpeg';
 import Sigiriya from '../images/sigiriya.jpg';
 import Ella from '../images/ella.jpg';
 import Galle from '../images/galle.jpg';
+import { FeedbackForm } from '@/components/FeedbackForm';
+import { FeedbackList } from '@/components/FeedbackList';
+
+interface Feedback {
+  id: number;
+  rating: number;
+  country: string;
+  age: string;
+  comment: string;
+  date: string;
+}
 
 const Index = () => {
   const navigate = useNavigate();
+  const [feedbacks, setFeedbacks] = useState<Feedback[]>([
+    {
+      id: 1,
+      rating: 5,
+      country: "United States",
+      age: "25-34",
+      comment: "Amazing experience! The tour guide was very knowledgeable and friendly.",
+      date: "2024-02-20",
+    },
+    {
+      id: 2,
+      rating: 4,
+      country: "UK",
+      age: "35-44",
+      comment: "Great service, but could improve the transportation arrangements.",
+      date: "2024-02-19",
+    },
+  ]);
 
   useEffect(() => {
     const observerOptions = {
@@ -35,6 +64,8 @@ const Index = () => {
 
     return () => observer.disconnect();
   }, []);
+
+
 
   return (
     <div className="min-h-screen">
@@ -134,6 +165,35 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Feedback Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Submit Your Feedback
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Your feedback helps us improve and helps other travelers make better decisions.
+            </p>
+          </div>
+
+          <div className="mb-16">
+            <FeedbackForm onSubmit={handleSubmitFeedback} />
+          </div>
+
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Recent Feedback
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              See what other travelers are saying about their experiences.
+            </p>
+          </div>
+
+          <FeedbackList feedbacks={feedbacks} />
+        </div>
+      </section>
+
       <Footer />
     </div>
   );
@@ -146,22 +206,6 @@ const FeatureCard = ({ icon, title, description }: { icon: React.ReactNode; titl
     </div>
     <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
     <p className="text-gray-600">{description}</p>
-  </div>
-);
-
-const DestinationCard = ({ image, title, description }: { image: string; title: string; description: string }) => (
-  <div className="group rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow animate-on-scroll opacity-0">
-    <div className="relative h-64 overflow-hidden">
-      <img
-        src={image}
-        alt={title}
-        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-      />
-    </div>
-    <div className="p-6 bg-white">
-      <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
-      <p className="text-gray-600">{description}</p>
-    </div>
   </div>
 );
 
