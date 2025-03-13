@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -13,6 +13,7 @@ import { format } from "date-fns";
 import { CalendarIcon, Loader2 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import PaymentForm from "../payment/PaymentForm";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const formSchema = z.object({
   activityName: z.string().min(2, "Activity name must be at least 2 characters"),
@@ -21,11 +22,23 @@ const formSchema = z.object({
   }),
   participants: z.string().min(1, "Number of participants is required"),
   specialRequirements: z.string().optional(),
+  provider: z.string().min(1, "Please select a provider"),
 });
+
+// Activity provider mapping
+const activityProviders = {
+  "Surfing Lesson": ["Wave Riders", "Beach Pros", "Surf Masters"],
+  "Scuba Diving": ["Deep Blue Divers", "Coral Explorers", "Ocean Adventure"],
+  "Hiking Tour": ["Mountain Trekkers", "Forest Guides", "Nature Explorers"],
+  "Kayaking": ["River Rapids", "Sea Kayakers", "Coastal Adventures"],
+  "Snorkeling": ["Reef Explorers", "Tropical Fish Tours", "Bay Snorkelers"]
+};
 
 const ActivityBookingForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
+  const [providers, setProviders] = useState<string[]>([]);
+  const [selectedActivity, setSelectedActivity] = useState("");
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -33,8 +46,23 @@ const ActivityBookingForm = () => {
     defaultValues: {
       activityName: "",
       specialRequirements: "",
+      provider: "",
     },
   });
+
+  // Update providers when activity changes
+  useEffect(() => {
+    const activity = form.watch("activityName");
+    if (activity && activity in activityProviders) {
+      setSelectedActivity(activity);
+      setProviders(activityProviders[activity as keyof typeof activityProviders]);
+      // Reset the provider value when activity changes
+      form.setValue("provider", "");
+    } else {
+      setProviders([]);
+      setSelectedActivity("");
+    }
+  }, [form.watch("activityName"), form]);
 
   const handleInitialSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log("Activity booking details:", values);
@@ -77,12 +105,47 @@ const ActivityBookingForm = () => {
             <FormItem>
               <FormLabel>Activity Name</FormLabel>
               <FormControl>
-                <Input placeholder="e.g., Surfing Lesson" {...field} />
+                <Input placeholder="e.g., Surfing Lesson" list="activity-suggestions" {...field} />
               </FormControl>
+              <datalist id="activity-suggestions">
+                {Object.keys(activityProviders).map((activity) => (
+                  <option key={activity} value={activity} />
+                ))}
+              </datalist>
               <FormMessage />
             </FormItem>
           )}
         />
+
+        {providers.length > 0 && (
+          <FormField
+            control={form.control}
+            name="provider"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Select Provider for {selectedActivity}</FormLabel>
+                <div className="space-y-3">
+                  {providers.map((provider) => (
+                    <div key={provider} className="flex items-center space-x-2">
+                      <Checkbox 
+                        id={provider} 
+                        checked={field.value === provider}
+                        onCheckedChange={() => field.onChange(provider)}
+                      />
+                      <label 
+                        htmlFor={provider} 
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        {provider}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        )}
 
         <FormField
           control={form.control}
