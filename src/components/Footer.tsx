@@ -1,4 +1,5 @@
-import { Facebook, Instagram, Twitter } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -15,29 +16,20 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-gray-900 mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <FooterLink href="#destinations">Destinations</FooterLink>
-              <FooterLink href="#about">About Us</FooterLink>
-              <FooterLink href="#contact">Contact</FooterLink>
-              <FooterLink href="#blog">Travel Blog</FooterLink>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-gray-900 mb-4">Popular Destinations</h4>
-            <ul className="space-y-2">
-              <FooterLink href="#kandy">Kandy</FooterLink>
-              <FooterLink href="#galle">Galle</FooterLink>
-              <FooterLink href="#ella">Ella</FooterLink>
-              <FooterLink href="#sigiriya">Sigiriya</FooterLink>
+              <FooterLink to="/destinations">Destinations</FooterLink>
+              <FooterLink to="/about">About Us</FooterLink>
+              <FooterLink to="/contact">Contact</FooterLink>
+              <FooterLink to="/blog">Travel Blog</FooterLink>
             </ul>
           </div>
 
           <div>
             <h4 className="font-semibold text-gray-900 mb-4">Connect With Us</h4>
             <div className="flex space-x-4">
-              <SocialLink href="#" icon={<Facebook size={20} />} />
-              <SocialLink href="#" icon={<Instagram size={20} />} />
-              <SocialLink href="#" icon={<Twitter size={20} />} />
+              <SocialLink href="https://www.facebook.com/share/1BKK2qgLi6/?mibextid=qi2Omg" icon={<Facebook size={20} />} />
+              <SocialLink href="https://www.instagram.com/cheapchaser.travel?igsh=bzZ3bWZpcW1oMHhi"  icon={<Instagram size={20} />} />
+              <SocialLink href="https://www.twitter.com" icon={<Twitter size={20} />} />
+              <SocialLink href="https://youtube.com/@cheapchaser?si=wpmDQTJW5Ogo4hxW" icon={<Youtube size={20} />} />
             </div>
           </div>
         </div>
@@ -52,20 +44,22 @@ const Footer = () => {
   );
 };
 
-const FooterLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
+const FooterLink = ({ to, children }) => (
   <li>
-    <a
-      href={href}
+    <Link
+      to={to}
       className="text-gray-600 hover:text-primary transition-colors"
     >
       {children}
-    </a>
+    </Link>
   </li>
 );
 
-const SocialLink = ({ href, icon }: { href: string; icon: React.ReactNode }) => (
+const SocialLink = ({ href, icon }) => (
   <a
     href={href}
+    target="_blank"
+    rel="noopener noreferrer"
     className="text-gray-600 hover:text-primary transition-colors"
   >
     {icon}

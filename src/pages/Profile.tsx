@@ -79,8 +79,6 @@ const mockGuideData = {
       status: "planned" as const,
     },
   ],
-  languages: ["English", "Sinhala"],
-  specialization: "Wildlife Tours",
   earnings: [
     {
       id: "1",

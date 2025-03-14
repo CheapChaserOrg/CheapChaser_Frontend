@@ -18,7 +18,7 @@ import { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react'; // Import icons for show/hide password
 
 const SignUp = () => {
-  const { userType } = useParams();
+  const { userType } = useParams<{ userType: string }>();
   const { toast } = useToast();
   const [hotelAmenities, setHotelAmenities] = useState<string[]>([]);
   const [roomFacilities, setRoomFacilities] = useState<string[]>([]);
@@ -31,7 +31,7 @@ const SignUp = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   // Password validation function
-  const validatePassword = (password: string) => {
+  const validatePassword = (password: string): boolean => {
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,14}$/;
     return regex.test(password);
   };
@@ -467,6 +467,7 @@ const SignUp = () => {
                         <SelectItem value="luxury">Luxury ($150+/day)</SelectItem>
                       </SelectContent>
                     </Select>
+                    
                   </div>
                 </div>
               </div>
