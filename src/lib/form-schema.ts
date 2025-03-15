@@ -24,6 +24,16 @@ const specialNeedsEnum = z.enum([
   "Cultural stay",
 ]);
 
+// Additional services schema
+const additionalServicesSchema = z.object({
+  selectedServices: z.array(z.string()).optional(),
+  needGuide: z.boolean().optional(),
+  guideLanguage: z.string().optional(),
+  guideNotes: z.string().optional(),
+  additionalRequests: z.string().optional(),
+});
+
+
 const accommodationPreferencesSchema = z.object({
   budgetRange: z.enum([
     "Backpack Traverler (Under LKR 6000/night)",
@@ -118,6 +128,9 @@ export const travelFormSchema = z.object({
     "Helicopter (Charter or Tour) (1-4 people)", // Added for luxury or scenic tours
   ]),
 
+    // Additional services
+    additionalServices: additionalServicesSchema.optional(),
+
   // Travel styles and activities
   travelStyles: z
     .array(travelStyleEnum)
@@ -190,5 +203,13 @@ export const defaultValues: Partial<TravelFormValues> = {
   activities: ["Trekking"],
   selectedDistricts: ["Galle"],
   selectedPlaces: {},
+  additionalServices: {
+    selectedServices: [],
+    needGuide: false,
+    guideLanguage: "English",
+    guideNotes: "",
+    additionalRequests: "",
+  },
   specialRequests: "",
+  
 };

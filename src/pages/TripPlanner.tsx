@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer"
+import Footer from "../components/Footer";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format, differenceInDays } from "date-fns";
 import { motion, AnimatePresence } from "framer-motion";
@@ -60,7 +60,12 @@ import {
   InfoIcon,
   Map,
   Plane,
-  Send
+  Send,
+  Languages,
+  Wifi,
+  CreditCard,
+  Phone,
+  HelpCircle
 } from "lucide-react";
 
 // Travel form step configuration
@@ -70,7 +75,8 @@ const steps = [
   { id: 3, name: "Accommodation" },
   { id: 4, name: "Preferences" },
   { id: 5, name: "Destinations" },
-  { id: 6, name: "Review" },
+  { id: 6, name: "Additional Services" },
+  { id: 7, name: "Review" },
 ];
 
 // Data configuration
@@ -91,6 +97,27 @@ const accommodationTypes = [
   "Eco Lodge",
   "Boutique Hotel",
 ];
+
+// Additional services
+const additionalServices = [
+  { id: "currency-exchange", label: "Currency Exchange", icon: CreditCard },
+  { id: "sim-card", label: "Local SIM Card", icon: Phone },
+  { id: "wifi-rental", label: "Portable WiFi Rental", icon: Wifi },
+  { id: "guide-service", label: "Tour Guide Service", icon: HelpCircle },
+  { id: "translation-service", label: "Translation Service", icon: Languages },
+];
+
+const guideLanguages = [
+  "English",
+  "French",
+  "German",
+  "Spanish",
+  "Chinese",
+  "Japanese",
+  "Russian",
+  "Arabic"
+];
+
 
 const accommodationOptions = [
   { type: "Hotel", min: 40000, max: 100000 }, // Hotel prices generally range from budget options to more premium.
@@ -315,7 +342,7 @@ const Index = () => {
   const needPickup = form.watch("airportPickup.needPickup");
   const selectedDistricts = form.watch("selectedDistricts") || [];
   const selectedPlaces = form.watch("selectedPlaces") || {};
-
+  const needGuide = form.watch("additionalServices.needGuide"); 
 
   useEffect(() => {
     if (arrivalDate && departureDate) {
@@ -410,9 +437,12 @@ const Index = () => {
         ];
       case 5:
         return ["selectedDistricts"];
-      case 6:
-        // Final review - all fields should be validated
-        return [];
+        case 6:
+          // Additional services are optional
+          return [];
+        case 7:
+          // Final review - all fields should be validated
+          return [];
       default:
         return [];
     }
@@ -1324,7 +1354,169 @@ const Index = () => {
         </motion.div>
       </motion.div>
     );
+
   };
+  const renderAdditionalServices = () => {
+    return (
+      <div className="space-y-6">
+        <div className="space-y-2">
+          <h3 className="text-xl font-medium">Additional Services</h3>
+          <p className="text-muted-foreground">
+            Select any extra services you might need during your trip
+          </p>
+        </div>
+
+        <div className="space-y-6 pt-2">
+          <FormLabel className="text-base">Travel Services</FormLabel>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {additionalServices.map((service) => (
+              <FormField
+                key={service.id}
+                control={form.control}
+                name="additionalServices.selectedServices"
+                render={({ field }) => {
+                  const Icon = service.icon;
+                  return (
+                    <FormItem
+                      className="flex flex-row items-start space-x-3 space-y-0 p-4 rounded-md border bg-white/50"
+                    >
+                      <FormControl>
+                        <Checkbox
+                          checked={(field.value || []).includes(service.id)}
+                          onCheckedChange={(checked) => {
+                            const currentValues = field.value || [];
+                            if (checked) {
+                              field.onChange([...currentValues, service.id]);
+                            } else {
+                              field.onChange(
+                                currentValues.filter((value) => value !== service.id)
+                              );
+                            }
+                          }}
+                        />
+                      </FormControl>
+                      <div className="flex items-center">
+                        <Icon className="h-5 w-5 mr-2 text-primary" />
+                        <FormLabel className="cursor-pointer font-normal">
+                          {service.label}
+                        </FormLabel>
+                      </div>
+                    </FormItem>
+                  );
+                }}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="space-y-4 pt-6 border-t">
+          <FormField
+            control={form.control}
+            name="additionalServices.needGuide"
+            render={({ field }) => (
+              <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4 bg-white/50 shadow-sm">
+                <div className="space-y-0.5">
+                  <div className="flex items-center">
+                    <HelpCircle className="h-5 w-5 mr-2 text-primary" />
+                    <FormLabel className="text-base">Need a Tour Guide?</FormLabel>
+                  </div>
+                  <FormDescription>
+                    Would you like a dedicated tour guide for your trip?
+                  </FormDescription>
+                </div>
+                <FormControl>
+                  <Switch
+                    checked={field.value || false}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
+          {needGuide && (
+            <div className="pl-4 pt-2 space-y-4">
+              <FormField
+                control={form.control}
+                name="additionalServices.guideLanguage"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Preferred Guide Language</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger className="h-12 bg-white">
+                          <SelectValue placeholder="Select language" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent className="bg-white shadow-lg">
+                        {guideLanguages.map((language) => (
+                          <SelectItem key={language} value={language}>
+                            {language}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormDescription>
+                      Choose your preferred language for the tour guide
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="additionalServices.guideNotes"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Special Instructions for Guide</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder="Any specific requirements for your guide?"
+                        className="resize-none bg-white h-24"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormDescription>
+                      Provide any specific requirements or areas of expertise needed
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+          )}
+        </div>
+
+        <div className="space-y-4 pt-6 border-t">
+          <FormField
+            control={form.control}
+            name="additionalServices.additionalRequests"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-base">Additional Requests</FormLabel>
+                <FormDescription className="mt-1">
+                  Any other services or special requirements for your trip?
+                </FormDescription>
+                <FormControl>
+                  <Textarea
+                    placeholder="E.g., specific dietary needs, health considerations, or any other special requirements"
+                    className="resize-none bg-white h-32 mt-2"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+      </div>
+    );
+  };
+
 
   const renderFormConfirmation = () => {
     const formData = form.getValues();
@@ -1570,8 +1762,10 @@ const Index = () => {
         return renderTravelPreferences({days});
       case 5:
         return renderDestinationSelector();
-      case 6:
-        return renderFormConfirmation();
+        case 6:
+          return renderAdditionalServices();
+        case 7:
+          return renderFormConfirmation();
       default:
         return null;
     }
