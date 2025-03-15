@@ -175,7 +175,7 @@ const travelStyles: TravelStyleType[] = [
   "Food & Cultural Experiences"
 ];
 
-const activities: ActivityType[] = [
+const activities: string[] = [
   "Trekking",
   "Surfing",
   "Safari",
@@ -330,12 +330,7 @@ const Index = () => {
   useEffect(() => {
     const updatedSelectedPlaces = { ...selectedPlaces };
 
-    // Remove places from deselected districts
-    Object.keys(updatedSelectedPlaces).forEach((district) => {
-      if (!selectedDistricts.includes(district as DistrictType)) {
-        delete updatedSelectedPlaces[district];
-      }
-    });
+  
 
     // Add empty arrays for newly selected districts
     selectedDistricts.forEach((district) => {
@@ -382,9 +377,6 @@ const Index = () => {
 
       toast.success("Your travel booking has been submitted successfully!");
 
-      // Reset form and go back to first step
-      form.reset(defaultValues);
-      setCurrentStep(1);
     } catch (error) {
       toast.error("There was an error submitting your form. Please try again.");
       console.error("Submission error:", error);
@@ -1024,36 +1016,24 @@ const Index = () => {
     );
   };
 
-  const renderTravelPreferences = () => {
+  const renderTravelPreferences = ({ days }: { days: number | null }) => {
     return (
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        animate="show"
-        exit="exit"
-        className="space-y-6"
-      >
+      <motion.div variants={staggerContainer} initial="hidden" animate="show" exit="exit" className="space-y-6">
+        {/* Travel Preferences Heading */}
         <motion.div variants={fadeInUp} className="space-y-2">
           <h3 className="text-xl font-medium">Travel Preferences</h3>
-          <p className="text-muted-foreground">
-            Tell us more about your travel style and preferences
-          </p>
+          <p className="text-muted-foreground">Tell us more about your travel style and preferences.</p>
         </motion.div>
-
-        <motion.div
-          variants={fadeInUp}
-          className="grid gap-6 md:grid-cols-2 pt-2"
-        >
+  
+        {/* Travel Type Selection */}
+        <motion.div variants={fadeInUp} className="grid gap-6 md:grid-cols-2 pt-2">
           <FormField
             control={form.control}
             name="travelType"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Travel Type</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
+                <Select onValueChange={field.onChange} defaultValue={field.value || ""}>
                   <FormControl>
                     <SelectTrigger className="h-12 bg-white">
                       <SelectValue placeholder="Select travel type" />
@@ -1065,14 +1045,13 @@ const Index = () => {
                     <SelectItem value="Group">Group</SelectItem>
                   </SelectContent>
                 </Select>
-                <FormDescription>
-                  Are you traveling alone, as a couple, or in a group?
-                </FormDescription>
+                <FormDescription>Are you traveling alone, as a couple, or in a group?</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
-
+  
+          {/* Group Travel Options */}
           {form.watch("travelType") === "Group" && (
             <>
               <FormField
@@ -1091,27 +1070,22 @@ const Index = () => {
                           const value = parseInt(e.target.value);
                           field.onChange(isNaN(value) ? null : value);
                         }}
-                        value={field.value === null ? "" : field.value}
+                        value={field.value ?? ""}
                       />
                     </FormControl>
-                    <FormDescription>
-                      How many people will be traveling in your group?
-                    </FormDescription>
+                    <FormDescription>How many people will be traveling in your group?</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-
+  
               <FormField
                 control={form.control}
                 name="groupType"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Group Type</FormLabel>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value || undefined}
-                    >
+                    <Select onValueChange={field.onChange} defaultValue={field.value || ""}>
                       <FormControl>
                         <SelectTrigger className="h-12 bg-white">
                           <SelectValue placeholder="Select group type" />
@@ -1124,14 +1098,12 @@ const Index = () => {
                         <SelectItem value="School/University Trip">School/University Trip</SelectItem>
                       </SelectContent>
                     </Select>
-                    <FormDescription>
-                      What kind of group are you traveling with?
-                    </FormDescription>
+                    <FormDescription>What kind of group are you traveling with?</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-
+  
               <FormField
                 control={form.control}
                 name="hasChildrenOrElderly"
@@ -1139,173 +1111,64 @@ const Index = () => {
                   <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4 bg-white/50 shadow-sm">
                     <div className="space-y-0.5">
                       <FormLabel className="text-base">Children or Elderly in Group?</FormLabel>
-                      <FormDescription>
-                        Does your group include children under 12 or adults over 65?
-                      </FormDescription>
+                      <FormDescription>Does your group include children under 12 or adults over 65?</FormDescription>
                     </div>
                     <FormControl>
-                      <Switch
-                        checked={field.value || false}
-                        onCheckedChange={field.onChange}
-                      />
+                      <Switch checked={field.value || false} onCheckedChange={field.onChange} />
                     </FormControl>
                   </FormItem>
                 )}
               />
             </>
           )}
-
-          <FormField
-            control={form.control}
-            name="transportMode"
-            render={({ field }) => (
-              <FormItem className="md:col-span-2">
-                <FormLabel>Preferred Transport Mode</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                  <FormControl>
-                    <SelectTrigger className="h-12 bg-white">
-                      <SelectValue placeholder="Select transport mode" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent className="bg-white shadow-lg">
-                    {/* Map through filtered transport modes */}
-                    {filteredTransportModes.length > 0 ? (
-                      filteredTransportModes.map((type) => (
-                        <SelectItem key={type} value={type}>
-                          {type}
-                        </SelectItem>
-                      ))
-                    ) : (
-                      <SelectItem value="no-options" disabled>
-                        No transport options available
-                      </SelectItem>
-                    )}
-                  </SelectContent>
-                </Select>
-                <FormDescription>
-                  How would you prefer to get around during your trip?
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-
         </motion.div>
-
-        <motion.div
-          variants={fadeInUp}
-          className="space-y-6 pt-6"
-        >
-          <div>
-            <FormLabel className="text-base">Travel Styles</FormLabel>
-            <FormDescription className="mt-1 mb-4">
-              What kind of travel experience are you looking for? (Select all that apply)
-            </FormDescription>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {travelStyles.map((style) => (
-                <FormField
-                  key={style}
-                  control={form.control}
-                  name="travelStyles"
-                  render={({ field }) => {
-                    return (
-                      <FormItem
-                        className={cn(
-                          "flex flex-row items-start space-x-3 space-y-0 p-4 rounded-md border",
-                          field.value?.includes(style)
-                            ? "bg-primary/5 border-primary/50"
-                            : "bg-white"
+  
+        {/* Daily Activities Selection */}
+        {days && days > 0 && (
+          <motion.div variants={fadeInUp} className="space-y-6 pt-6">
+            <div>
+              <FormLabel className="text-base">Daily Activities</FormLabel>
+              <FormDescription className="mt-1 mb-4">Select one activity per day.</FormDescription>
+  
+              {Array.from({ length: days }).map((_, dayIndex) => (
+                <div key={dayIndex} className="mb-6">
+                  <h3 className="font-semibold text-lg">Day {dayIndex + 1}</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                    {activities.map((activity) => (
+                      <FormField
+                        key={`${activity}-${dayIndex}`}
+                        control={form.control}
+                        name={`activities.${dayIndex}` as const} // Use type assertion to ensure TypeScript understands this is valid
+                        render={({ field }) => (
+                          <FormItem
+                            className={cn(
+                              "flex flex-row items-start space-x-3 space-y-0 p-3 rounded-md border",
+                              field.value === activity ? "bg-primary/5 border-primary/50" : "bg-white"
+                            )}
+                          >
+                            <FormControl>
+                              <Checkbox
+                                checked={field.value === activity}
+                                onCheckedChange={() => field.onChange(field.value === activity ? null : activity)}
+                              />
+                            </FormControl>
+                            <FormLabel className="cursor-pointer font-normal text-sm">{activity}</FormLabel>
+                          </FormItem>
                         )}
-                      >
-                        <FormControl>
-                          <Checkbox
-                            checked={field.value?.includes(style)}
-                            onCheckedChange={(checked) => {
-                              const currentValues = field.value || [];
-
-                              if (checked) {
-                                field.onChange([...currentValues, style]);
-                              } else {
-                                field.onChange(
-                                  currentValues.filter(
-                                    (value) => value !== style
-                                  )
-                                );
-                              }
-                            }}
-                          />
-                        </FormControl>
-                        <FormLabel className="cursor-pointer font-normal">
-                          {style}
-                        </FormLabel>
-                      </FormItem>
-                    );
-                  }}
-                />
+                      />
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
             <FormMessage />
-          </div>
-
-          <div>
-            <FormLabel className="text-base">Activities</FormLabel>
-            <FormDescription className="mt-1 mb-4">
-              Which activities would you like to experience? (Select all that apply)
-            </FormDescription>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-              {activities.map((activity) => (
-                <FormField
-                  key={activity}
-                  control={form.control}
-                  name="activities"
-                  render={({ field }) => {
-                    return (
-                      <FormItem
-                        className={cn(
-                          "flex flex-row items-start space-x-3 space-y-0 p-3 rounded-md border",
-                          field.value?.includes(activity)
-                            ? "bg-primary/5 border-primary/50"
-                            : "bg-white"
-                        )}
-                      >
-                        <FormControl>
-                          <Checkbox
-                            checked={field.value?.includes(activity)}
-                            onCheckedChange={(checked) => {
-                              const currentValues = field.value || [];
-
-                              if (checked) {
-                                field.onChange([...currentValues, activity]);
-                              } else {
-                                field.onChange(
-                                  currentValues.filter(
-                                    (value) => value !== activity
-                                  )
-                                );
-                              }
-                            }}
-                          />
-                        </FormControl>
-                        <FormLabel className="cursor-pointer font-normal text-sm">
-                          {activity}
-                        </FormLabel>
-                      </FormItem>
-                    );
-                  }}
-                />
-              ))}
-            </div>
-            <FormMessage />
-          </div>
-        </motion.div>
+          </motion.div>
+        )}
       </motion.div>
     );
   };
-
-  const renderDestinationSelector = () => {
+  
+    const renderDestinationSelector = () => {
     return (
       <motion.div
         variants={staggerContainer}
@@ -1468,16 +1331,10 @@ const Index = () => {
     const days = formData.arrivalDate && formData.departureDate
       ? differenceInDays(formData.departureDate, formData.arrivalDate)
       : 0;
-
+  
     return (
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        animate="show"
-        exit="exit"
-        className="space-y-8"
-      >
-        <motion.div variants={fadeInUp} className="text-center space-y-3">
+      <div className="space-y-8">
+        <div className="text-center space-y-3">
           <div className="flex justify-center mb-4">
             <div className="rounded-full bg-primary/10 p-3">
               <CheckCircle2 className="h-12 w-12 text-primary" />
@@ -1487,9 +1344,9 @@ const Index = () => {
           <p className="text-muted-foreground max-w-lg mx-auto">
             Please review your travel plan details below. If everything looks correct, you're ready to submit your booking!
           </p>
-        </motion.div>
-
-        <motion.div variants={fadeInUp} className="space-y-6">
+        </div>
+  
+        <div className="space-y-6">
           <div className="bg-background rounded-lg border p-6 space-y-6">
             <div>
               <h3 className="text-lg font-medium">Trip Overview</h3>
@@ -1498,7 +1355,7 @@ const Index = () => {
                   <p className="text-sm text-muted-foreground">Travel Type</p>
                   <p className="font-medium">{formData.travelType}</p>
                 </div>
-
+  
                 {formData.travelType === "Group" && (
                   <>
                     <div className="space-y-1">
@@ -1511,14 +1368,14 @@ const Index = () => {
                     </div>
                   </>
                 )}
-
+  
                 <div className="space-y-1">
                   <p className="text-sm text-muted-foreground">Transport Mode</p>
                   <p className="font-medium">{formData.transportMode}</p>
                 </div>
               </div>
             </div>
-
+  
             <div className="pt-4 border-t">
               <h3 className="text-lg font-medium">Travel Dates</h3>
               <div className="grid gap-4 mt-4 md:grid-cols-3">
@@ -1536,7 +1393,7 @@ const Index = () => {
                 </div>
               </div>
             </div>
-
+  
             {formData.flightDetails && (
               <div className="pt-4 border-t">
                 <h3 className="text-lg font-medium">Flight Information</h3>
@@ -1591,7 +1448,7 @@ const Index = () => {
                 )}
               </div>
             )}
-
+  
             <div className="pt-4 border-t">
               <h3 className="text-lg font-medium">Accommodation Preferences</h3>
               <div className="grid gap-4 mt-4 md:grid-cols-2">
@@ -1624,7 +1481,7 @@ const Index = () => {
                   )}
               </div>
             </div>
-
+  
             <div className="pt-4 border-t">
               <h3 className="text-lg font-medium">Travel Preferences</h3>
               <div className="space-y-4 mt-4">
@@ -1650,7 +1507,7 @@ const Index = () => {
                 </div>
               </div>
             </div>
-
+  
             <div className="pt-4 border-t">
               <h3 className="text-lg font-medium">Destinations</h3>
               <div className="space-y-4 mt-4">
@@ -1685,7 +1542,7 @@ const Index = () => {
                 )}
               </div>
             </div>
-
+  
             {formData.specialRequests && (
               <div className="pt-4 border-t">
                 <h3 className="text-lg font-medium">Special Requests</h3>
@@ -1695,8 +1552,8 @@ const Index = () => {
               </div>
             )}
           </div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     );
   };
 
@@ -1710,7 +1567,7 @@ const Index = () => {
       case 3:
         return renderAccommodationPreferences();
       case 4:
-        return renderTravelPreferences();
+        return renderTravelPreferences({days});
       case 5:
         return renderDestinationSelector();
       case 6:
@@ -1785,7 +1642,7 @@ const Index = () => {
                       key={currentStep}
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -20 }}
+                      //exit={{ opacity: 0, x: -20 }}
                       transition={formTransition}
                     >
                       {renderStepContent()}

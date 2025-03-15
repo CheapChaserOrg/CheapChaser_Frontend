@@ -13,40 +13,16 @@ export const staggerContainer = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.1
-    }
+      staggerChildren: 0.1,
+    },
   },
-  exit: {
-    opacity: 0,
-    transition: {
-      staggerChildren: 0.05,
-      staggerDirection: -1
-    }
-  }
 };
 
+// src/lib/animations.ts
 export const fadeInUp = {
-  hidden: { 
-    opacity: 0,
-    y: 10
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      damping: 25,
-      stiffness: 300
-    }
-  },
-  exit: {
-    opacity: 0,
-    y: -10,
-    transition: {
-      duration: 0.2
-    }
-  }
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -20 },
 };
 
 export const slideIn = {
