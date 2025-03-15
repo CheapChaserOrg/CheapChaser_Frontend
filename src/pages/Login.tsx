@@ -11,7 +11,7 @@ import { Lock, Mail, Eye, EyeOff } from 'lucide-react';
 import { Separator } from '../components/ui/separator';
 
 const Login = () => {
-  const { userType } = useParams();
+  const { userType } = useParams<{ userType: string }>();
   const { toast } = useToast();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -19,6 +19,11 @@ const Login = () => {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [agreeToTerms, setAgreeToTerms] = useState(false);
+
+  const validateEmail = (email: string): boolean => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,13 +35,31 @@ const Login = () => {
       });
       return;
     }
+
+    if (!validateEmail(email)) {
+      toast({
+        title: "Invalid Email",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     try {
       await signInWithEmailAndPassword(auth, email, password);
       toast({ title: "Login Successful", description: `Welcome back, ${userType}!` });
       navigate("/");
     } catch (err: any) {
-      setError(err.message);
-      toast({ title: "Login Failed", description: err.message, variant: "destructive" });
+      let errorMessage = "Login failed. Please try again.";
+      if (err.code === "auth/invalid-email") {
+        errorMessage = "Invalid email address.";
+      } else if (err.code === "auth/wrong-password") {
+        errorMessage = "Incorrect password.";
+      } else if (err.code === "auth/user-not-found") {
+        errorMessage = "No user found with this email.";
+      }
+      setError(errorMessage);
+      toast({ title: "Login Failed", description: errorMessage, variant: "destructive" });
     }
   };
 
@@ -51,21 +74,27 @@ const Login = () => {
     }
   };
 
+  const formattedUserType = userType ? userType.charAt(0).toUpperCase() + userType.slice(1) : "User";
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="flex-1 flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full space-y-8">
-          <div>
-            <h2 className="text-center text-3xl font-bold text-gray-900">Welcome back</h2>
-            <p className="mt-2 text-center text-sm text-gray-600">
+      {/* Adjusted padding-top to move the form further down */}
+      <div className="flex-1 flex items-center justify-center bg-gray-50 py-24 px-4 sm:px-6 lg:px-8">
+        {/* Login Form Box */}
+        <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-lg">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold text-gray-900">
+              Welcome back, {formattedUserType}!
+            </h2>
+            <p className="mt-2 text-sm text-gray-600">
               Please enter your details to sign in.
             </p>
           </div>
 
           {/* Email/Password Login Form */}
-          <form onSubmit={handleLogin} className="space-y-6">
-            <div className="space-y-2">
+          <form onSubmit={handleLogin} className="mt-8 space-y-6">
+            <div className="space-y-4">
               <div className="relative">
                 <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
                 <Input
@@ -77,8 +106,6 @@ const Login = () => {
                   required
                 />
               </div>
-            </div>
-            <div className="space-y-2">
               <div className="relative">
                 <Lock className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
                 <Input
@@ -118,24 +145,25 @@ const Login = () => {
                 Forgot password?
               </a>
             </div>
-            <Button type="submit" className="w-full bg-[#000000e6] hover:bg-black" disabled={!agreeToTerms}>
+            <Button type="submit" className="w-full hover:white" disabled={!agreeToTerms}>
               Sign in
             </Button>
           </form>
 
-          <div className="relative">
+          {/* Separator */}
+          <div className="relative mt-6">
             <div className="absolute inset-0 flex items-center">
               <Separator className="w-full" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-gray-50 px-2 text-gray-500">
+              <span className="bg-white px-2 text-gray-500">
                 Or continue with
               </span>
             </div>
           </div>
 
           {/* Google Login Button */}
-          <div className="space-y-2">
+          <div className="mt-6">
             <Button variant="outline" className="w-full" onClick={handleGoogleLogin}>
               <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
                 <path
@@ -159,7 +187,8 @@ const Login = () => {
             </Button>
           </div>
 
-          <div className="text-center text-sm">
+          {/* Sign Up Link */}
+          <div className="mt-6 text-center text-sm">
             <span className="text-gray-600">Don't have an account? </span>
             <a href={`/signup/${userType}`} className="text-primary hover:underline">
               Sign up
