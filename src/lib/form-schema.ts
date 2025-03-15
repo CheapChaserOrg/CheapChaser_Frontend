@@ -1,4 +1,3 @@
-
 import { z } from "zod";
 
 // Sub-schemas
@@ -22,17 +21,17 @@ const specialNeedsEnum = z.enum([
   "Jungle stay",
   "Camping",
   "Villa",
-  "Cultural stay"
+  "Cultural stay",
 ]);
 
 const accommodationPreferencesSchema = z.object({
   budgetRange: z.enum([
-    "Budget (Under $50/night)",
-    "Mid-range ($50-150/night)",
-    "Luxury ($150-300/night)",
-    "Ultra Luxury ($300+/night)"
+    "Backpack Traverler (Under LKR 6000/night)",
+    "Budget Traveler (LKR 19500-37500/night)",
+    "Mid Range Traveler (LKR 38500-69000/night)",
+    "Luxury Traveler (LKR 70000+/night)",
   ]),
-  budgetAmount: z.number().positive().optional(),
+  budgetAmount: z.number().positive().nullable().optional(), // Added budgetAmount
   accommodationType: z.enum([
     "Hotel",
     "Resort",
@@ -41,8 +40,9 @@ const accommodationPreferencesSchema = z.object({
     "Villa",
     "Apartment",
     "Eco Lodge",
-    "Boutique Hotel"
+    "Boutique Hotel",
   ]),
+
   specialNeeds: z.array(specialNeedsEnum).optional(),
 });
 
@@ -51,7 +51,7 @@ const travelStyleEnum = z.enum([
   "Adventure & Nature",
   "Cultural & Historical",
   "Relaxation & Leisure",
-  "Food & Cultural Experiences"
+  "Food & Cultural Experiences",
 ]);
 
 // Define exact string literals for activities
@@ -65,33 +65,32 @@ const activityEnum = z.enum([
   "Village Experiences",
   "Beach Stays",
   "Ayurveda & Spa",
-  "Waterfall Visits", 
+  "Waterfall Visits",
   "Food Tours",
   "Tea Plantation Visits",
-  "Cooking Classes"
+  "Cooking Classes",
 ]);
 
 // Define exact string literals for districts
-const districtEnum = z.enum([
-  "Galle",
-  "Matara",
-  "Hambantota"
-]);
+const districtEnum = z.enum(["Galle", "Matara", "Hambantota"]);
 
 // Main travel form schema
 export const travelFormSchema = z.object({
   // Basic travel details
   travelType: z.enum(["Solo", "Couple", "Group"]),
   groupSize: z.number().positive().optional().nullable(),
-  groupType: z.enum([
-    "Family Trip",
-    "Friends' Trip",
-    "Corporate Retreat",
-    "School/University Trip"
-  ]).optional().nullable(),
+  groupType: z
+    .enum([
+      "Family Trip",
+      "Friends' Trip",
+      "Corporate Retreat",
+      "School/University Trip",
+    ])
+    .optional()
+    .nullable(),
   hasChildrenOrElderly: z.boolean().optional().nullable(),
   purchaseForGroup: z.boolean().optional().nullable(),
-  
+
   // Dates and duration
   arrivalDate: z.date({
     required_error: "Arrival date is required",
@@ -99,12 +98,11 @@ export const travelFormSchema = z.object({
   departureDate: z.date({
     required_error: "Departure date is required",
   }),
-  
+
   // Flight info
   flightDetails: flightDetailsSchema.optional(),
   airportPickup: airportPickupSchema,
-  
-  // Preferences
+
   accommodationPreferences: accommodationPreferencesSchema,
   transportMode: z.enum([
     "Private Car with Driver (1-4 people)",
@@ -115,31 +113,43 @@ export const travelFormSchema = z.object({
     "Bicycle or E-Bike (1 person)",
     "Motorbike Rental (1-2 people)",
     "Campervan or RV (2-6 people)",
-    "Boat or Ferry (Varies)"
+    "Boat or Ferry (Varies)",
+    "Domestic Flights (Varies)", // Added for longer distance and quicker travel within Sri Lanka
+    "Helicopter (Charter or Tour) (1-4 people)", // Added for luxury or scenic tours
   ]),
-  
+
   // Travel styles and activities
-  travelStyles: z.array(travelStyleEnum).nonempty({ message: "Select at least one travel style" }),
-  
-  activities: z.array(activityEnum).nonempty({ message: "Select at least one activity" }),
-  
+  travelStyles: z
+    .array(travelStyleEnum)
+    .nonempty({ message: "Select at least one travel style" }),
+
+  activities: z
+    .array(activityEnum)
+    .nonempty({ message: "Select at least one activity" }),
+
   // Destination info
-  selectedDistricts: z.array(districtEnum).nonempty({ message: "Select at least one district" }),
-  
+  selectedDistricts: z
+    .array(districtEnum)
+    .nonempty({ message: "Select at least one district" }),
+
   selectedPlaces: z.record(z.string(), z.array(z.string())).optional(),
-  
+
   // Additional requests
   specialRequests: z.string().optional(),
-}).refine((data) => {
-  // Check that departure date is after arrival date
-  if (data.arrivalDate && data.departureDate) {
-    return data.departureDate > data.arrivalDate;
-  }
-  return true;
-}, {
-  message: "Departure date must be after arrival date",
-  path: ["departureDate"],
-});
+})
+  .refine(
+    (data) => {
+      // Check that departure date is after arrival date
+      if (data.arrivalDate && data.departureDate) {
+        return data.departureDate > data.arrivalDate;
+      }
+      return true;
+    },
+    {
+      message: "Departure date must be after arrival date",
+      path: ["departureDate"],
+    }
+  );
 
 // Export type helpers
 export type TravelFormValues = z.infer<typeof travelFormSchema>;
@@ -148,6 +158,7 @@ export type TravelStyleType = z.infer<typeof travelStyleEnum>;
 export type ActivityType = z.infer<typeof activityEnum>;
 export type DistrictType = z.infer<typeof districtEnum>;
 
+// Default values for the form
 export const defaultValues: Partial<TravelFormValues> = {
   travelType: "Solo",
   groupSize: null,
@@ -169,8 +180,8 @@ export const defaultValues: Partial<TravelFormValues> = {
     additionalNotes: "",
   },
   accommodationPreferences: {
-    budgetRange: "Mid-range ($50-150/night)",
-    budgetAmount: 100,
+    budgetRange: "Mid Range Traveler (LKR 38500-69000/night)",
+    budgetAmount: null, // Added budgetAmount
     accommodationType: "Hotel",
     specialNeeds: [],
   },

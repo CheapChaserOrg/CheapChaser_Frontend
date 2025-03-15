@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer"
@@ -7,9 +7,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { format, differenceInDays } from "date-fns";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { 
-  travelFormSchema, 
-  TravelFormValues, 
+import {
+  travelFormSchema,
+  TravelFormValues,
   defaultValues,
   SpecialNeedsType,
   TravelStyleType,
@@ -50,17 +50,17 @@ import {
 } from "@/components/ui/form";
 
 // Icons
-import { 
-  ArrowLeft, 
-  ArrowRight, 
-  CalendarIcon, 
-  Check, 
+import {
+  ArrowLeft,
+  ArrowRight,
+  CalendarIcon,
+  Check,
   CheckCircle2,
   Clock,
-  InfoIcon, 
-  Map, 
-  Plane, 
-  Send 
+  InfoIcon,
+  Map,
+  Plane,
+  Send
 } from "lucide-react";
 
 // Travel form step configuration
@@ -75,10 +75,10 @@ const steps = [
 
 // Data configuration
 const budgetRanges = [
-  "Budget (Under $50/night)",
-  "Mid-range ($50-150/night)",
-  "Luxury ($150-300/night)",
-  "Ultra Luxury ($300+/night)",
+  "Backpack Traverler (Under LKR 6000/night)",
+  "Budget Traveler (LKR 19500-37500/night)",
+  "Mid Range Traveler (LKR 38500-69000/night)",
+  "Luxury Traveler (LKR 70000+/night)",
 ];
 
 const accommodationTypes = [
@@ -91,6 +91,47 @@ const accommodationTypes = [
   "Eco Lodge",
   "Boutique Hotel",
 ];
+
+const accommodationOptions = [
+  { type: "Hotel", min: 40000, max: 100000 }, // Hotel prices generally range from budget options to more premium.
+  { type: "Resort", min: 8000, max: 500000 }, // Resorts tend to be on the pricier side, especially for premium ones.
+  { type: "Guesthouse", min: 1500, max: 8000 }, // Guesthouses are typically affordable, so I adjusted the range.
+  { type: "Homestay", min: 2000, max: 10000 }, // Homestays vary from affordable to slightly higher end.
+  { type: "Villa", min: 900000, max: 60000 }, // Villas are often luxury properties, so I expanded the max range.
+  { type: "Apartment", min: 8000, max: 30000 }, // Apartments can range from affordable to moderately expensive.
+  { type: "Eco Lodge", min: 4000, max: 15000 }, // Eco lodges tend to have a mid-range price point.
+  { type: "Boutique Hotel", min: 5000, max: 25000 }, // Boutique hotels often fit within this range, more premium than guesthouses but not quite as expensive as luxury resorts.
+];
+
+const transportTypes = [
+  "Public Transport (Bus, Train, Tuk-tuk)",
+  "Shared Taxi or Ride-Sharing",
+  "Bicycle or E-Bike",
+  "Motorbike Rental",
+  "Self-Drive (Rental Car, Scooter)",
+  "Private Car with Driver",
+  "Luxury Tour Bus or Chauffeur Service",
+  "Campervan or RV",
+  "Boat or Ferry",
+  "Helicopter (Charter or Tour)",
+];
+
+
+const transportModes = [
+  { type: "Public Transport (Bus, Train, Tuk-tuk)", min: 50, max: 500 }, // Public transport is typically affordable and ranges from very cheap to slightly higher, depending on the distance.
+  { type: "Shared Taxi or Ride-Sharing (1-4 people)", min: 500, max: 3000 }, // Shared taxis are affordable but cost more than public transport.
+  { type: "Bicycle or E-Bike (1 person)", min: 100, max: 1000 }, // Renting a bike or e-bike is usually low-cost.
+  { type: "Motorbike Rental (1-2 people)", min: 500, max: 3000 }, // Renting a motorbike is an affordable, flexible mode of transport.
+  { type: "Self-Drive (Rental Car, Scooter) (1-2 people)", min: 2000, max: 15000 }, // Rental vehicles offer more comfort but at a higher price.
+  { type: "Private 123 Car with Driver (1-4 people)", min: 4000, max: 30000 }, // Private car rentals include a driver, with higher costs based on trip distance or comfort.
+  { type: "Luxury Tour Bus or Chauffeur Service (10-50 people)", min: 20000, max: 100000 }, // High-end tour buses or chauffeur services for larger groups.
+  { type: "Campervan or RV (2-6 people)", min: 10000, max: 50000 }, // Renting a campervan or RV for a more comfortable and longer travel experience.
+  { type: "Boat or Ferry (Varies)", min: 50000, max: 70000 }, // Boat rentals or ferry rides, with varying prices based on the type and duration.
+  { type: "Helicopter (Charter or Tour) (1-4 people)", min: 50, max: 500 }, // Helicopter services are a luxury offering and tend to have high pricing.
+];
+
+
+
 
 const specialNeeds: { id: string; label: SpecialNeedsType }[] = [
   { id: "sea-view", label: "Sea view" },
@@ -154,14 +195,14 @@ const Index = () => {
   // State management
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   // Form initialization
   const form = useForm<TravelFormValues>({
     resolver: zodResolver(travelFormSchema),
     defaultValues,
     mode: "onChange",
   });
-  
+
   // Parallax effect
   useEffect(() => {
     const handleScroll = () => {
@@ -176,17 +217,106 @@ const Index = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  
+
+  const [filteredAccommodations, setFilteredAccommodations] = useState(accommodationTypes);
+  //Accomodation filtering
+  useEffect(() => {
+    const budgetRange = form.watch("accommodationPreferences.budgetRange");
+    const parsedRange = parseBudgetRange(budgetRange);
+
+    if (parsedRange) {
+      const { min, max } = parsedRange;
+
+      // Filter accommodations based on the budget range
+      const updatedTypes = accommodationOptions
+        .filter(({ min: accMin, max: accMax }) => {
+          // Check if the accommodation's price range overlaps with the selected budget range
+          return (
+            (accMin >= min && accMin <= max) || // Accommodation min is within the budget range
+            (accMax >= min && accMax <= max) || // Accommodation max is within the budget range
+            (accMin <= min && accMax >= max)    // Accommodation range fully contains the budget range
+          );
+        })
+        .map(({ type }) => type);
+
+      setFilteredAccommodations(updatedTypes);
+    } else {
+      // If no budget range is selected, show all accommodation types
+      setFilteredAccommodations(accommodationTypes);
+    }
+  }, [form.watch("accommodationPreferences.budgetRange")]);
+  // Helper function to parse budget range string into min and max values
+  const parseBudgetRange = (budgetRange: string): { min: number; max: number } | null => {
+    // Match patterns like "LKR 19500-37500/night" or "LKR 70000+/night"
+    const match = budgetRange.match(/(\d+)\+?\/?.*?-?\/?.*?(\d*)\+?\/?.*/);
+    if (!match) return null;
+
+    const min = parseInt(match[1], 10);
+    const max = match[2] ? parseInt(match[2], 10) : Infinity; // Use Infinity for ranges with "+"
+
+    return { min, max };
+  };
+
+  const [filteredTransportModes, setFilteredTransportModes] = useState(transportTypes);
+
+  // Transport mode filtering
+  useEffect(() => {
+    const budgetRange = form.watch("accommodationPreferences.budgetRange");
+    const parsedRange = parseBudgetRange(budgetRange);
+
+    if (parsedRange) {
+      const { min, max } = parsedRange;
+
+      // Filter transport modes based on the budget range
+      const updatedTransportModes = transportModes
+        .filter(({ min: transportMin, max: transportMax }) => {
+          // Check if the transport mode's price range overlaps with the selected budget range
+          return (
+            (transportMin >= min && transportMin <= max) || // Transport min is within the budget range
+            (transportMax >= min && transportMax <= max) || // Transport max is within the budget range
+            (transportMin <= min && transportMax >= max)    // Transport range fully contains the budget range
+          );
+        })
+        .map(({ type }) => type);
+
+      setFilteredTransportModes(updatedTransportModes);
+    } else {
+      // If no budget range is selected, show all transport modes
+      setFilteredTransportModes(transportTypes);
+    }
+  }, [form.watch("accommodationPreferences.budgetRange")]);
+
+  // Helper function to parse budget range string into min and max values
+
+
+  // Duration calculation
+  const [days, setDays] = useState<number | null>(null);
+  const [budgetAmount, setBudgetAmount] = useState<number | null>(null);
+  useEffect(() => {
+    const budgetRange = form.watch("accommodationPreferences.budgetRange");
+    const parsedRange = parseBudgetRange(budgetRange); // Corrected variable name
+
+
+    if (parsedRange && days) {
+      const { min, max } = parsedRange;
+      const averageBudget = (min + max) / 2; // Use average for calculation
+      const totalBudget = days * averageBudget;
+      setBudgetAmount(totalBudget);
+      form.setValue("accommodationPreferences.budgetAmount", totalBudget); // Update form value
+    } else {
+      setBudgetAmount(null);
+      form.setValue("accommodationPreferences.budgetAmount", null); // Reset form value
+    }
+  }, [form.watch("accommodationPreferences.budgetRange"), days]);
+
   // Watched form values
   const arrivalDate = form.watch("arrivalDate");
   const departureDate = form.watch("departureDate");
   const needPickup = form.watch("airportPickup.needPickup");
   const selectedDistricts = form.watch("selectedDistricts") || [];
   const selectedPlaces = form.watch("selectedPlaces") || {};
-  
-  // Duration calculation
-  const [days, setDays] = useState<number | null>(null);
-  
+
+
   useEffect(() => {
     if (arrivalDate && departureDate) {
       const dayCount = differenceInDays(departureDate, arrivalDate);
@@ -195,30 +325,30 @@ const Index = () => {
       setDays(null);
     }
   }, [arrivalDate, departureDate]);
-  
+
   // Update places when districts change
   useEffect(() => {
     const updatedSelectedPlaces = { ...selectedPlaces };
-    
+
     // Remove places from deselected districts
     Object.keys(updatedSelectedPlaces).forEach((district) => {
       if (!selectedDistricts.includes(district as DistrictType)) {
         delete updatedSelectedPlaces[district];
       }
     });
-    
+
     // Add empty arrays for newly selected districts
     selectedDistricts.forEach((district) => {
       if (!updatedSelectedPlaces[district]) {
         updatedSelectedPlaces[district] = [];
       }
     });
-    
+
     if (JSON.stringify(updatedSelectedPlaces) !== JSON.stringify(selectedPlaces)) {
       form.setValue("selectedPlaces", updatedSelectedPlaces);
     }
   }, [selectedDistricts, form, selectedPlaces]);
-  
+
   // Step navigation
   const prevStep = () => {
     if (currentStep > 1) {
@@ -228,9 +358,9 @@ const Index = () => {
 
   const nextStep = async () => {
     const fieldsToValidate = getFieldsToValidateForStep(currentStep);
-    
+
     const isValid = await form.trigger(fieldsToValidate as any);
-    
+
     if (isValid) {
       if (currentStep < steps.length) {
         setCurrentStep(currentStep + 1);
@@ -240,18 +370,18 @@ const Index = () => {
       toast.error("Please fix the errors before proceeding");
     }
   };
-  
+
   // Form submission
   const onSubmit = async (data: TravelFormValues) => {
     setIsSubmitting(true);
-    
+
     try {
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1500));
       console.log("Form submitted:", data);
-      
+
       toast.success("Your travel booking has been submitted successfully!");
-      
+
       // Reset form and go back to first step
       form.reset(defaultValues);
       setCurrentStep(1);
@@ -262,7 +392,7 @@ const Index = () => {
       setIsSubmitting(false);
     }
   };
-  
+
   // Determine which fields to validate based on current step
   const getFieldsToValidateForStep = (step: number): string[] => {
     switch (step) {
@@ -295,7 +425,7 @@ const Index = () => {
         return [];
     }
   };
-  
+
   // Helper functions
   const formatDate = (date: Date | undefined) => {
     return date ? format(date, "MMMM d, yyyy") : "Not specified";
@@ -304,11 +434,13 @@ const Index = () => {
   const formatTime = (time: string | undefined) => {
     return time || "Not specified";
   };
-  
+
   // Conditional rendering
   const isLastStep = currentStep === steps.length;
   const isFirstStep = currentStep === 1;
-  
+
+
+
   // Step content rendering
   const renderFormStepper = () => {
     return (
@@ -338,8 +470,8 @@ const Index = () => {
                       step.id < currentStep
                         ? "bg-primary text-primary-foreground"
                         : step.id === currentStep
-                        ? "border-2 border-primary"
-                        : "border-2 border-muted"
+                          ? "border-2 border-primary"
+                          : "border-2 border-muted"
                     )}
                   >
                     {step.id < currentStep ? (
@@ -515,7 +647,7 @@ const Index = () => {
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           variants={fadeInUp}
           className="grid gap-6 md:grid-cols-2 pt-2"
         >
@@ -662,7 +794,7 @@ const Index = () => {
           />
         </motion.div>
 
-        <motion.div 
+        <motion.div
           variants={fadeInUp}
           className="space-y-6 border-t pt-6 mt-8"
         >
@@ -744,18 +876,21 @@ const Index = () => {
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           variants={fadeInUp}
           className="grid gap-6 md:grid-cols-2 pt-2"
         >
+          {/* Budget Range Selection */}
           <FormField
             control={form.control}
             name="accommodationPreferences.budgetRange"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Suggested Budget Range</FormLabel>
+                <FormLabel>Suggested Budget Range (per day)</FormLabel>
                 <Select
-                  onValueChange={field.onChange}
+                  onValueChange={(value) => {
+                    field.onChange(value); // Update the form value directly
+                  }}
                   defaultValue={field.value}
                 >
                   <FormControl>
@@ -772,36 +907,34 @@ const Index = () => {
                   </SelectContent>
                 </Select>
                 <FormDescription>
-                  Select your preferred budget range for accommodations
+                  Select your preferred budget range per day.
                 </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
 
+          {/* Budget Amount Calculation */}
           <FormField
             control={form.control}
             name="accommodationPreferences.budgetAmount"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Budget Amount ($)</FormLabel>
+                <FormLabel>Total Budget (LKR)</FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <span className="absolute left-3 top-3 text-base">$</span>
+                    <span className="absolute left-3 top-3 text-base"></span>
                     <Input
-                      type="number"
-                      placeholder="Enter amount"
+                      type="text"
+                      placeholder="Calculated budget"
                       className="pl-8 h-12 bg-white"
-                      {...field}
-                      onChange={(e) => {
-                        const value = parseFloat(e.target.value);
-                        field.onChange(isNaN(value) ? undefined : value);
-                      }}
+                      value={budgetAmount ? `LKR ${budgetAmount.toFixed(2)}` : ""}
+                      readOnly
                     />
                   </div>
                 </FormControl>
                 <FormDescription>
-                  Specify your approximate budget per night
+                  Total budget = Number of days × Selected budget range.
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -814,17 +947,14 @@ const Index = () => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Preferred Accommodation Type</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
+                <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger className="h-12 bg-white">
                       <SelectValue placeholder="Select accommodation type" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent className="bg-white shadow-lg">
-                    {accommodationTypes.map((type) => (
+                    {filteredAccommodations.map((type) => (
                       <SelectItem key={type} value={type}>
                         {type}
                       </SelectItem>
@@ -837,7 +967,7 @@ const Index = () => {
                 <FormMessage />
               </FormItem>
             )}
-          />
+          />;
         </motion.div>
 
         <motion.div variants={fadeInUp} className="space-y-3 pt-4">
@@ -853,56 +983,50 @@ const Index = () => {
                   </FormDescription>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {specialNeeds.map((item) => (
-                    <FormField
-                      key={item.id}
-                      control={form.control}
-                      name="accommodationPreferences.specialNeeds"
-                      render={({ field }) => {
-                        return (
-                          <FormItem
-                            key={item.id}
-                            className="flex flex-row items-start space-x-3 space-y-0 p-4 rounded-md border bg-white/50"
-                          >
-                            <FormControl>
-                              <Checkbox
-                                checked={field.value?.includes(item.label)}
-                                onCheckedChange={(checked) => {
-                                  const currentValues = field.value || [];
-                                  
-                                  if (checked) {
-                                    field.onChange([...currentValues, item.label]);
-                                  } else {
-                                    field.onChange(
-                                      currentValues.filter(
-                                        (value) => value !== item.label
-                                      )
-                                    );
-                                  }
-                                }}
-                              />
-                            </FormControl>
-                            <FormLabel className="cursor-pointer font-normal">
-                              {item.label}
-                            </FormLabel>
-                          </FormItem>
-                        );
-                      }}
-                    />
-                  ))}
+                  <FormField
+                    control={form.control}
+                    name="accommodationPreferences.specialNeeds"
+                    render={({ field }) => {
+                      return (
+                        <FormItem
+                          className="flex flex-col items-start space-y-3 p-4 rounded-md border bg-white/50"
+                        >
+                          <FormControl>
+                            <select
+                              value={field.value || ""}
+                              onChange={(e) => field.onChange(e.target.value)}
+                              className="p-2 border rounded-md"
+                            >
+                              <option value="" disabled>
+                                Select a special accommodation
+                              </option>
+                              {specialNeeds.map((item) => (
+                                <option key={item.id} value={item.label}>
+                                  {item.label}
+                                </option>
+                              ))}
+                            </select>
+                          </FormControl>
+
+                        </FormItem>
+                      );
+                    }}
+                  />
                 </div>
                 <FormMessage />
               </FormItem>
             )}
           />
         </motion.div>
+
+
       </motion.div>
     );
   };
 
   const renderTravelPreferences = () => {
     return (
-      <motion.div 
+      <motion.div
         variants={staggerContainer}
         initial="hidden"
         animate="show"
@@ -916,8 +1040,8 @@ const Index = () => {
           </p>
         </motion.div>
 
-        <motion.div 
-          variants={fadeInUp} 
+        <motion.div
+          variants={fadeInUp}
           className="grid gap-6 md:grid-cols-2 pt-2"
         >
           <FormField
@@ -1037,43 +1161,25 @@ const Index = () => {
             render={({ field }) => (
               <FormItem className="md:col-span-2">
                 <FormLabel>Preferred Transport Mode</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
+                <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger className="h-12 bg-white">
                       <SelectValue placeholder="Select transport mode" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent className="bg-white shadow-lg">
-                    <SelectItem value="Private Car with Driver (1-4 people)">
-                      Private Car with Driver (1-4 people)
-                    </SelectItem>
-                    <SelectItem value="Self-Drive (Rental Car, Scooter) (1-2 people)">
-                      Self-Drive (Rental Car, Scooter) (1-2 people)
-                    </SelectItem>
-                    <SelectItem value="Public Transport (Bus, Train, Tuk-tuk) (Varies)">
-                      Public Transport (Bus, Train, Tuk-tuk) (Varies)
-                    </SelectItem>
-                    <SelectItem value="Luxury Tour Bus or Chauffeur Service (10-50 people)">
-                      Luxury Tour Bus or Chauffeur Service (10-50 people)
-                    </SelectItem>
-                    <SelectItem value="Shared Taxi or Ride-Sharing (1-4 people)">
-                      Shared Taxi or Ride-Sharing (1-4 people)
-                    </SelectItem>
-                    <SelectItem value="Bicycle or E-Bike (1 person)">
-                      Bicycle or E-Bike (1 person)
-                    </SelectItem>
-                    <SelectItem value="Motorbike Rental (1-2 people)">
-                      Motorbike Rental (1-2 people)
-                    </SelectItem>
-                    <SelectItem value="Campervan or RV (2-6 people)">
-                      Campervan or RV (2-6 people)
-                    </SelectItem>
-                    <SelectItem value="Boat or Ferry (Varies)">
-                      Boat or Ferry (Varies)
-                    </SelectItem>
+                    {/* Map through filtered transport modes */}
+                    {filteredTransportModes.length > 0 ? (
+                      filteredTransportModes.map((type) => (
+                        <SelectItem key={type} value={type}>
+                          {type}
+                        </SelectItem>
+                      ))
+                    ) : (
+                      <SelectItem value="no-options" disabled>
+                        No transport options available
+                      </SelectItem>
+                    )}
                   </SelectContent>
                 </Select>
                 <FormDescription>
@@ -1083,10 +1189,12 @@ const Index = () => {
               </FormItem>
             )}
           />
+
+
         </motion.div>
 
-        <motion.div 
-          variants={fadeInUp} 
+        <motion.div
+          variants={fadeInUp}
           className="space-y-6 pt-6"
         >
           <div>
@@ -1094,7 +1202,7 @@ const Index = () => {
             <FormDescription className="mt-1 mb-4">
               What kind of travel experience are you looking for? (Select all that apply)
             </FormDescription>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {travelStyles.map((style) => (
                 <FormField
@@ -1116,7 +1224,7 @@ const Index = () => {
                             checked={field.value?.includes(style)}
                             onCheckedChange={(checked) => {
                               const currentValues = field.value || [];
-                              
+
                               if (checked) {
                                 field.onChange([...currentValues, style]);
                               } else {
@@ -1146,7 +1254,7 @@ const Index = () => {
             <FormDescription className="mt-1 mb-4">
               Which activities would you like to experience? (Select all that apply)
             </FormDescription>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
               {activities.map((activity) => (
                 <FormField
@@ -1168,7 +1276,7 @@ const Index = () => {
                             checked={field.value?.includes(activity)}
                             onCheckedChange={(checked) => {
                               const currentValues = field.value || [];
-                              
+
                               if (checked) {
                                 field.onChange([...currentValues, activity]);
                               } else {
@@ -1219,7 +1327,7 @@ const Index = () => {
             <FormDescription className="mt-1 mb-4">
               Choose the districts you want to explore
             </FormDescription>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {districts.map((district) => (
                 <FormField
@@ -1241,7 +1349,7 @@ const Index = () => {
                             checked={field.value?.includes(district)}
                             onCheckedChange={(checked) => {
                               const currentValues = field.value || [];
-                              
+
                               if (checked) {
                                 field.onChange([...currentValues, district]);
                               } else {
@@ -1278,7 +1386,7 @@ const Index = () => {
               <FormDescription className="mt-1 mb-4">
                 Choose specific places within your selected districts
               </FormDescription>
-              
+
               {selectedDistricts.map((district) => (
                 <div key={district} className="mb-6">
                   <h4 className="text-md font-medium mb-3 bg-secondary/50 p-2 rounded">
@@ -1390,7 +1498,7 @@ const Index = () => {
                   <p className="text-sm text-muted-foreground">Travel Type</p>
                   <p className="font-medium">{formData.travelType}</p>
                 </div>
-                
+
                 {formData.travelType === "Group" && (
                   <>
                     <div className="space-y-1">
@@ -1403,7 +1511,7 @@ const Index = () => {
                     </div>
                   </>
                 )}
-                
+
                 <div className="space-y-1">
                   <p className="text-sm text-muted-foreground">Transport Mode</p>
                   <p className="font-medium">{formData.transportMode}</p>
@@ -1501,19 +1609,19 @@ const Index = () => {
                   <p className="text-sm text-muted-foreground">Accommodation Type</p>
                   <p className="font-medium">{formData.accommodationPreferences.accommodationType}</p>
                 </div>
-                {formData.accommodationPreferences.specialNeeds && 
-                formData.accommodationPreferences.specialNeeds.length > 0 && (
-                  <div className="space-y-1 md:col-span-2">
-                    <p className="text-sm text-muted-foreground">Special Accommodation Needs</p>
-                    <div className="flex flex-wrap gap-2 mt-1">
-                      {formData.accommodationPreferences.specialNeeds.map((need) => (
-                        <Badge key={need} variant="outline" className="bg-secondary/50">
-                          {need}
-                        </Badge>
-                      ))}
+                {formData.accommodationPreferences.specialNeeds &&
+                  formData.accommodationPreferences.specialNeeds.length > 0 && (
+                    <div className="space-y-1 md:col-span-2">
+                      <p className="text-sm text-muted-foreground">Special Accommodation Needs</p>
+                      <div className="flex flex-wrap gap-2 mt-1">
+                        {formData.accommodationPreferences.specialNeeds.map((need) => (
+                          <Badge key={need} variant="outline" className="bg-secondary/50">
+                            {need}
+                          </Badge>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
               </div>
             </div>
 
@@ -1591,7 +1699,7 @@ const Index = () => {
       </motion.div>
     );
   };
-  
+
   // Render step content
   const renderStepContent = () => {
     switch (currentStep) {
@@ -1616,22 +1724,22 @@ const Index = () => {
 
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* Hero Header */}
-      <Navbar/>
+      <Navbar />
       <div className="relative h-[50vh] md:h-[60vh] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-blue-600/30" />
-        
-        <div 
+
+        <div
           className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=2366')] 
           bg-cover bg-center parallax-header"
-          style={{ 
+          style={{
             transformOrigin: 'center',
             willChange: 'transform, opacity',
             zIndex: -1
           }}
         />
-        
+
         <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
-        
+
         <div className="container relative h-full flex flex-col justify-center items-center text-center z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -1665,10 +1773,10 @@ const Index = () => {
               Complete the form below to create your customized travel itinerary. We'll help you plan the perfect trip based on your preferences.
             </p>
           </div>
-          
+
           <div className="w-full max-w-4xl mx-auto">
             {renderFormStepper()}
-            
+
             <div className="bg-white rounded-xl shadow-sm border p-6 mb-6">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -1683,8 +1791,8 @@ const Index = () => {
                       {renderStepContent()}
                     </motion.div>
                   </AnimatePresence>
-                  
-                  <motion.div 
+
+                  <motion.div
                     className="flex justify-between pt-6 border-t"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -1733,8 +1841,8 @@ const Index = () => {
           </div>
         </div>
       </motion.div>
-      <Footer/>
-      
+      <Footer />
+
     </div>
   );
 };
