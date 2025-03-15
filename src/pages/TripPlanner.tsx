@@ -1540,6 +1540,7 @@ const Index = () => {
   
         <div className="space-y-6">
           <div className="bg-background rounded-lg border p-6 space-y-6">
+            {/* Trip Overview */}
             <div>
               <h3 className="text-lg font-medium">Trip Overview</h3>
               <div className="grid gap-4 mt-4 md:grid-cols-2">
@@ -1568,6 +1569,7 @@ const Index = () => {
               </div>
             </div>
   
+            {/* Travel Dates */}
             <div className="pt-4 border-t">
               <h3 className="text-lg font-medium">Travel Dates</h3>
               <div className="grid gap-4 mt-4 md:grid-cols-3">
@@ -1586,6 +1588,7 @@ const Index = () => {
               </div>
             </div>
   
+            {/* Flight Information */}
             {formData.flightDetails && (
               <div className="pt-4 border-t">
                 <h3 className="text-lg font-medium">Flight Information</h3>
@@ -1641,6 +1644,7 @@ const Index = () => {
               </div>
             )}
   
+            {/* Accommodation Preferences */}
             <div className="pt-4 border-t">
               <h3 className="text-lg font-medium">Accommodation Preferences</h3>
               <div className="grid gap-4 mt-4 md:grid-cols-2">
@@ -1674,6 +1678,7 @@ const Index = () => {
               </div>
             </div>
   
+            {/* Travel Preferences */}
             <div className="pt-4 border-t">
               <h3 className="text-lg font-medium">Travel Preferences</h3>
               <div className="space-y-4 mt-4">
@@ -1700,6 +1705,7 @@ const Index = () => {
               </div>
             </div>
   
+            {/* Destinations */}
             <div className="pt-4 border-t">
               <h3 className="text-lg font-medium">Destinations</h3>
               <div className="space-y-4 mt-4">
@@ -1735,6 +1741,53 @@ const Index = () => {
               </div>
             </div>
   
+            {/* Additional Services */}
+            <div className="pt-4 border-t">
+              <h3 className="text-lg font-medium">Additional Services</h3>
+              <div className="space-y-4 mt-4">
+                {/* Selected Additional Services */}
+                {formData.additionalServices.selectedServices && formData.additionalServices.selectedServices.length > 0 && (
+                  <div className="space-y-2">
+                    <p className="text-sm text-muted-foreground">Selected Services</p>
+                    <div className="flex flex-wrap gap-2">
+                      {formData.additionalServices.selectedServices.map((serviceId) => {
+                        const service = additionalServices.find((s) => s.id === serviceId);
+                        return (
+                          <Badge key={serviceId} variant="outline" className="bg-muted/50">
+                            {service?.label}
+                          </Badge>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+  
+                {/* Tour Guide Details */}
+                {formData.additionalServices.needGuide && (
+                  <div className="space-y-2">
+                    <p className="text-sm text-muted-foreground">Tour Guide Details</p>
+                    <div className="space-y-1">
+                      <p className="font-medium">Preferred Language: {formData.additionalServices.guideLanguage}</p>
+                      {formData.additionalServices.guideNotes && (
+                        <p className="text-sm text-muted-foreground">Notes: {formData.additionalServices.guideNotes}</p>
+                      )}
+                    </div>
+                  </div>
+                )}
+  
+                {/* Additional Requests */}
+                {formData.additionalServices.additionalRequests && (
+                  <div className="space-y-2">
+                    <p className="text-sm text-muted-foreground">Additional Requests</p>
+                    <div className="p-3 bg-muted/30 rounded-md">
+                      <p>{formData.additionalServices.additionalRequests}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+  
+            {/* Special Requests */}
             {formData.specialRequests && (
               <div className="pt-4 border-t">
                 <h3 className="text-lg font-medium">Special Requests</h3>
