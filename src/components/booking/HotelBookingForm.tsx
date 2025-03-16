@@ -75,7 +75,11 @@ const HotelBookingForm = () => {
         description: "There was an error saving your booking. Please try again.",
         variant: "destructive",
       });
-    } 
+    } finally {
+      setIsLoading(false);
+      setShowPayment(false);
+      form.reset();
+    }
   };
 
 
@@ -214,34 +218,11 @@ const HotelBookingForm = () => {
             )}
           />
 
-          <FormField
-            control={form.control}
-            name="guests"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Number of Guests</FormLabel>
-                <FormControl>
-                  <Input type="number" min="1" placeholder="Enter number of guests" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          
+          
         </div>
 
-        <FormField
-          control={form.control}
-          name="specialRequests"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Special Requests (Optional)</FormLabel>
-              <FormControl>
-                <Textarea placeholder="Any special requests or notes..." {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+       
 
         <Button type="submit" className="w-full bg-[#2a9d8f] hover:bg-[#2a9d8f]/80 text-white" disabled={isLoading}>
           {isLoading ? (
