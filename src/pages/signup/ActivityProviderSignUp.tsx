@@ -22,6 +22,12 @@ const ActivityProviderSignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [email, setEmail] = useState("");
+
+  const validateEmail = (email: string): boolean => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
 
   const validatePassword = (password: string): boolean => {
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,14}$/;
@@ -30,6 +36,15 @@ const ActivityProviderSignUp = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validateEmail(email)) {
+      toast({
+        title: "Invalid Email",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     if (!validatePassword(password)) {
       toast({
@@ -94,10 +109,6 @@ const ActivityProviderSignUp = () => {
                   <Label htmlFor="certificate">Business Registration Certificate</Label>
                   <Input id="certificate" type="file" accept=".pdf,.jpg,.jpeg,.png" required />
                 </div>
-                <div>
-                  <Label htmlFor="tin">Tax Identification Number (Optional)</Label>
-                  <Input id="tin" placeholder="Enter TIN" />
-                </div>
               </div>
             </div>
 
@@ -111,7 +122,7 @@ const ActivityProviderSignUp = () => {
                 </div>
                 <div>
                   <Label htmlFor="email">Email Address</Label>
-                  <Input id="email" type="email" placeholder="Enter email" required />
+                  <Input id="email" type="email" placeholder="Enter email" required value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div>
                   <Label htmlFor="phone">Phone Number (WhatsApp optional)</Label>
@@ -263,73 +274,14 @@ const ActivityProviderSignUp = () => {
               </div>
             </div>
 
-            {/* Pricing & Availability */}
-            <div className="space-y-4">
-              <h2 className="text-xl font-semibold text-gray-800">Pricing & Availability</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="pricing">Base Price</Label>
-                  <Input id="pricing" type="number" min="0" placeholder="Per person/group" required />
-                </div>
-                <div>
-                  <Label htmlFor="groupDiscounts">Group Discounts Available?</Label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="yes">Yes</SelectItem>
-                      <SelectItem value="no">No</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="md:col-span-2">
-                  <Label htmlFor="cancellationPolicy">Cancellation Policy</Label>
-                  <Textarea id="cancellationPolicy" placeholder="Enter cancellation policy" required />
-                </div>
-              </div>
-            </div>
 
             {/* Payment & Legal Compliance */}
             <div className="space-y-4">
               <h2 className="text-xl font-semibold text-gray-800">Payment & Legal Compliance</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="md:col-span-2">
-                  <Label>Accepted Payment Methods</Label>
-                  <div className="grid grid-cols-2 gap-2 mt-2">
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="bankTransfer" />
-                      <Label htmlFor="bankTransfer">Bank Transfer</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="onlinePayment" />
-                      <Label htmlFor="onlinePayment">Online Payment</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="cash" />
-                      <Label htmlFor="cash">Cash</Label>
-                    </div>
-                  </div>
-                </div>
-                <div className="md:col-span-2">
                   <Label htmlFor="bankDetails">Bank Account Details</Label>
                   <Textarea id="bankDetails" placeholder="Enter bank account details" required />
-                </div>
-                <div>
-                  <Label htmlFor="insurance">Liability Insurance</Label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="yes">Yes</SelectItem>
-                      <SelectItem value="no">No</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div>
-                  <Label htmlFor="insuranceProof">Upload Insurance Proof</Label>
-                  <Input id="insuranceProof" type="file" accept=".pdf,.jpg,.jpeg,.png" />
                 </div>
               </div>
             </div>
