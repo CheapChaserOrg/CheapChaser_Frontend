@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Star } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { saveFeedback } from "@/lib/feedbackService";
 
 interface FeedbackFormProps {
   onSubmit: (feedback: {
@@ -24,7 +25,7 @@ export const FeedbackForm = ({ onSubmit }: FeedbackFormProps) => {
   const [comment, setComment] = useState("");
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!rating || !country || !age || !comment) {
@@ -36,16 +37,45 @@ export const FeedbackForm = ({ onSubmit }: FeedbackFormProps) => {
       return;
     }
 
-    onSubmit({ rating, country, age, comment });
-    setRating(0);
-    setCountry("");
-    setAge("");
-    setComment("");
-    
-    toast({
-      title: "Success",
-      description: "Thank you for your feedback!",
-    });
+    const feedbackData = {
+      rating,
+      country,
+      age,
+      comment,
+      date: new Date().toISOString(), // Add the current date
+    };
+
+    try {
+      // Save feedback to Firestore
+      const docId = await saveFeedback(feedbackData);
+      console.log("Feedback saved with ID:", docId);
+
+      // Call the onSubmit prop if it exists
+      if (onSubmit) {
+        onSubmit(feedbackData);
+      }
+
+      // Clear the form after submission
+      setRating(0);
+      setCountry("");
+      setAge("");
+      setComment("");
+
+      // Show success toast
+      toast({
+        title: "Success",
+        description: "Thank you for your feedback!",
+      });
+    } catch (error) {
+      console.error("Error saving feedback:", error);
+
+      // Show error toast
+      toast({
+        title: "Error",
+        description: "Failed to submit feedback. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
