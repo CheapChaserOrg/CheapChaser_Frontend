@@ -24,6 +24,12 @@ const GuideSignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [email, setEmail] = useState("");
+
+  const validateEmail = (email: string): boolean => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
 
   const validatePassword = (password: string): boolean => {
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,14}$/;
@@ -32,6 +38,15 @@ const GuideSignUp = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validateEmail(email)) {
+      toast({
+        title: "Invalid Email",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     if (!validatePassword(password)) {
       toast({
@@ -134,7 +149,7 @@ const GuideSignUp = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="email">Email Address</Label>
-                  <Input id="email" type="email" placeholder="Enter your email" required />
+                  <Input id="email" type="email" placeholder="Enter your email" required value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div>
                   <Label htmlFor="phone">Phone Number</Label>
@@ -268,14 +283,7 @@ const GuideSignUp = () => {
             <div className="space-y-4">
               <h2 className="text-xl font-semibold text-gray-800">Pricing & Payments</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="hourlyRate">Hourly Rate (USD)</Label>
-                  <Input id="hourlyRate" type="number" min="0" placeholder="Enter hourly rate" required />
-                </div>
-                <div>
-                  <Label htmlFor="dailyRate">Full-Day Rate (USD)</Label>
-                  <Input id="dailyRate" type="number" min="0" placeholder="Enter daily rate" required />
-                </div>
+                
                 <div className="md:col-span-2">
                   <Label htmlFor="bankDetails">Bank Account Details</Label>
                   <Textarea id="bankDetails" placeholder="Enter bank account details" required />
