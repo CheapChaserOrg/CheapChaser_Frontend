@@ -23,3 +23,19 @@ export const saveFeedback = async (feedback: Omit<Feedback, "id">): Promise<stri
     throw error;
   }
 };
+
+// Get all feedbacks from Firestore
+export const getFeedbacks = async (): Promise<Feedback[]> => {
+  try {
+    const q = query(feedbacksRef, orderBy("date", "desc"));
+    const querySnapshot = await getDocs(q);
+    
+    return querySnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    } as Feedback));
+  } catch (error) {
+    console.error("Error getting feedbacks: ", error);
+    throw error;
+  }
+};
