@@ -15,7 +15,7 @@ const Bookings = () => {
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{
-          backgroundImage: 'url("https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?ixlib=rb-1.2.1&auto=format&fit=crop&w=2560&q=80")',
+          backgroundImage: 'url("https://images.unsplash.com/photo-1518495973542-4542c06a5843?ixlib=rb-1.2.1&auto=format&fit=crop&w=2560&q=80")',
         }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-50" />
