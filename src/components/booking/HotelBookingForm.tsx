@@ -46,6 +46,14 @@ const HotelBookingForm = () => {
 
   const handleInitialSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log("Hotel booking details:", values);
+    setBookingData({
+      hotelName: values.hotelName,
+      checkIn: values.checkIn,
+      checkOut: values.checkOut,
+      rooms: parseInt(values.rooms),
+      guests: parseInt(values.guests),
+      specialRequests: values.specialRequests || "",
+    });
     setShowPayment(true);
   };
 
