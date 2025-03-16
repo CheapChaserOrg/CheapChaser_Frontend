@@ -14,6 +14,8 @@ import { CalendarIcon, Loader2 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import PaymentForm from "../payment/PaymentForm";
 import { Checkbox } from "@/components/ui/checkbox";
+import { saveActivityBooking } from "@/services/bookingService";
+import { useNavigate } from "react-router-dom";
 
 const formSchema = z.object({
   activityName: z.string().min(2, "Activity name must be at least 2 characters"),
@@ -39,7 +41,9 @@ const ActivityBookingForm = () => {
   const [showPayment, setShowPayment] = useState(false);
   const [providers, setProviders] = useState<string[]>([]);
   const [selectedActivity, setSelectedActivity] = useState("");
+  const [bookingData, setBookingData] = useState<any>(null);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -66,16 +70,43 @@ const ActivityBookingForm = () => {
 
   const handleInitialSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log("Activity booking details:", values);
+    setBookingData({
+      activityName: values.activityName,
+      date: values.date,
+      participants: parseInt(values.participants),
+      provider: values.provider,
+      specialRequirements: values.specialRequirements || "",
+    });
     setShowPayment(true);
   };
 
-  const handlePaymentSuccess = () => {
-    toast({
-      title: "Booking Successful!",
-      description: "Your activity has been booked successfully.",
-    });
-    setShowPayment(false);
-    form.reset();
+  const handlePaymentSuccess = async () => {
+    if (!bookingData) return;
+    
+    try {
+      setIsLoading(true);
+      // Save booking to Firebase
+      await saveActivityBooking(bookingData);
+      
+      toast({
+        title: "Booking Successful!",
+        description: "Your activity has been booked successfully.",
+      });
+      
+      // Redirect to booking history page
+      navigate("/booking-history");
+    } catch (error) {
+      console.error("Error saving booking:", error);
+      toast({
+        title: "Error",
+        description: "There was an error saving your booking. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+      setShowPayment(false);
+      form.reset();
+    }
   };
 
   const handlePaymentCancel = () => {
