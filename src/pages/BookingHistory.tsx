@@ -6,36 +6,6 @@ import { format } from "date-fns";
 import { getActivityBookings, getHotelBookings, ActivityBooking, HotelBooking } from "@/services/bookingService";
 import { Loader2 } from "lucide-react";
 
-// Mock data - replace with actual API calls
-const mockActivityBookings = [
-  {
-    id: 1,
-    activityName: "Surfing Lesson",
-    date: new Date("2024-04-15"),
-    participants: 2,
-    status: "confirmed",
-  },
-  {
-    id: 2,
-    activityName: "Whale Watching",
-    date: new Date("2024-04-20"),
-    participants: 4,
-    status: "pending",
-  },
-];
-
-const mockHotelBookings = [
-  {
-    id: 1,
-    hotelName: "Seaside Resort",
-    checkIn: new Date("2024-04-15"),
-    checkOut: new Date("2024-04-18"),
-    rooms: 1,
-    guests: 2,
-    status: "confirmed",
-  },
-];
-
 const BookingHistory = () => {
   const [activityBookings, setActivityBookings] = useState<ActivityBooking[]>([]);
   const [hotelBookings, setHotelBookings] = useState<HotelBooking[]>([]);
