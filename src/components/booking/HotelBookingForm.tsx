@@ -57,14 +57,27 @@ const HotelBookingForm = () => {
     setShowPayment(true);
   };
 
-  const handlePaymentSuccess = () => {
-    toast({
-      title: "Booking Successful!",
-      description: "Your hotel has been booked successfully.",
-    });
-    setShowPayment(false);
-    form.reset();
+  const handlePaymentSuccess = async () => {
+    if (!bookingData) return;
+
+    try {
+      setIsLoading(true);
+      await saveHotelBooking(bookingData);
+      toast({
+        title: "Booking Successful!",
+        description: "Your hotel has been booked successfully.",
+      });
+      navigate("/booking-history");
+    } catch (error) {
+      console.error("Error saving booking:", error);
+      toast({
+        title: "Error",
+        description: "There was an error saving your booking. Please try again.",
+        variant: "destructive",
+      });
+    } 
   };
+
 
   const handlePaymentCancel = () => {
     setShowPayment(false);
