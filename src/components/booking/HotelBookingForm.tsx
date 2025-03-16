@@ -13,6 +13,8 @@ import { format } from "date-fns";
 import { CalendarIcon, Loader2 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import PaymentForm from "../payment/PaymentForm";
+import { saveHotelBooking } from "@/services/bookingService";
+import { useNavigate } from "react-router-dom";
 
 const formSchema = z.object({
   hotelName: z.string().min(2, "Hotel name must be at least 2 characters"),
@@ -30,7 +32,9 @@ const formSchema = z.object({
 const HotelBookingForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
+  const [bookingData, setBookingData] = useState<any>(null);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
