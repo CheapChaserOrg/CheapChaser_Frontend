@@ -57,3 +57,51 @@ export const saveHotelBooking = async (booking: Omit<HotelBooking, "id" | "times
   }
 };
 
+// Get all activity bookings
+export const getActivityBookings = async (): Promise<ActivityBooking[]> => {
+  try {
+    const q = query(collection(db, "activityBookings"), orderBy("timestamp", "desc"));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs.map((doc) => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        activityName: data.activityName,
+        date: data.date.toDate(),
+        participants: data.participants,
+        provider: data.provider,
+        specialRequirements: data.specialRequirements,
+        status: data.status,
+        timestamp: data.timestamp.toDate(),
+      } as ActivityBooking;
+    });
+  } catch (error) {
+    console.error("Error getting activity bookings: ", error);
+    return [];
+  }
+};
+
+// Get all hotel bookings
+export const getHotelBookings = async (): Promise<HotelBooking[]> => {
+  try {
+    const q = query(collection(db, "hotelBookings"), orderBy("timestamp", "desc"));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs.map((doc) => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        hotelName: data.hotelName,
+        checkIn: data.checkIn.toDate(),
+        checkOut: data.checkOut.toDate(),
+        rooms: data.rooms,
+        guests: data.guests,
+        specialRequests: data.specialRequests,
+        status: data.status,
+        timestamp: data.timestamp.toDate(),
+      } as HotelBooking;
+    });
+  } catch (error) {
+    console.error("Error getting hotel bookings: ", error);
+    return [];
+  }
+};
