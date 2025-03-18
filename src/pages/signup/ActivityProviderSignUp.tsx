@@ -1,20 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useToast } from "../../components/ui/use-toast";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
-import { Textarea } from "../../components/ui/textarea";
 import { Label } from "../../components/ui/label";
 import { Checkbox } from "../../components/ui/checkbox";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../../components/ui/select";
 import { Eye, EyeOff } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import { db } from "../../firebase";
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+import { Textarea } from "@/components/ui/textarea";
 
 const ActivityProviderSignUp = () => {
   const { toast } = useToast();
@@ -23,6 +19,14 @@ const ActivityProviderSignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [usernameError, setUsernameError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [businessName, setBusinessName] = useState("");
+  const [businessAddress, setBusinessAddress] = useState("");
+  const [registrationNumber, setRegistrationNumber] = useState("");
+  const [agreeToTerms, setAgreeToTerms] = useState(false);
+  const navigate = useNavigate();
 
   const validateEmail = (email: string): boolean => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -34,8 +38,23 @@ const ActivityProviderSignUp = () => {
     return regex.test(password);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const checkUsernameExists = async (username: string) => {
+    const q = query(collection(db, "activityProviders"), where("username", "==", username));
+    const querySnapshot = await getDocs(q);
+    return !querySnapshot.empty;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!agreeToTerms) {
+      toast({
+        title: "Terms Not Accepted",
+        description: "You must agree to the Terms and Conditions to proceed.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     if (!validateEmail(email)) {
       toast({
@@ -64,77 +83,97 @@ const ActivityProviderSignUp = () => {
       return;
     }
 
-    toast({
-      title: "Registration Attempted",
-      description: "Attempted to register as Activity Provider",
-    });
+    if (await checkUsernameExists(username)) {
+      setUsernameError("Username already exists. Please choose a different one.");
+      return;
+    }
+
+    try {
+      const docRef = await addDoc(collection(db, "activityProviders"), {
+        username,
+        email,
+        password, // Note: Never store plain passwords in production. Use Firebase Authentication instead.
+        businessName,
+        businessAddress,
+        registrationNumber,
+      });
+      console.log("Activity Provider document written with ID: ", docRef.id);
+
+      toast({
+        title: "Registration Successful",
+        description: "You have successfully registered as an activity provider!",
+      });
+
+      // Clear the form
+      setUsername("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+      setBusinessName("");
+      setBusinessAddress("");
+      setRegistrationNumber("");
+      setAgreeToTerms(false);
+
+      // Redirect to the activity provider's profile page
+      navigate("/activity-provider/profile/TravellerProfile");
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      toast({
+        title: "Registration Failed",
+        description: "There was an error during registration.",
+        variant: "destructive",
+      });
+    }
   };
+
+  useEffect(() => {
+    if (password.length > 0 && !validatePassword(password)) {
+      setPasswordError("Password must be 8-14 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.");
+    } else {
+      setPasswordError("");
+    }
+  }, [password]);
 
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
       <div className="pt-20 pb-10">
         <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-sm mt-8">
-          <h1 className="text-2xl font-bold text-center text-gray-900 mb-8">
-            Activity Provider Registration
-          </h1>
+          <h1 className="text-2xl font-bold text-center text-gray-900 mb-8">Activity Provider Registration</h1>
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Business Information */}
             <div className="space-y-4">
               <h2 className="text-xl font-semibold text-gray-800">Business Information</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="businessName">Business Name</Label>
-                  <Input id="businessName" placeholder="Enter business name" required />
-                </div>
-                <div>
-                  <Label htmlFor="businessType">Business Type</Label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select business type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="adventure">Adventure Sports</SelectItem>
-                      <SelectItem value="cultural">Cultural Tours</SelectItem>
-                      <SelectItem value="nature">Nature & Wildlife</SelectItem>
-                      <SelectItem value="water">Water Activities</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div>
-                  <Label htmlFor="registrationNumber">Business Registration Number</Label>
-                  <Input id="registrationNumber" placeholder="Enter registration number" required />
-                </div>
-                <div>
-                  <Label htmlFor="certificate">Business Registration Certificate</Label>
-                  <Input id="certificate" type="file" accept=".pdf,.jpg,.jpeg,.png" required />
-                </div>
-              </div>
-            </div>
-
-            {/* Contact Information */}
-            <div className="space-y-4">
-              <h2 className="text-xl font-semibold text-gray-800">Contact Information</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="contactName">Full Name of Contact Person</Label>
-                  <Input id="contactName" placeholder="Enter contact person's name" required />
+                  <Label htmlFor="username">Username</Label>
+                  <Input
+                    id="username"
+                    placeholder="Enter your username"
+                    required
+                    value={username}
+                    onChange={(e) => {
+                      setUsername(e.target.value);
+                      setUsernameError("");
+                    }}
+                  />
+                  {usernameError && <p className="text-sm text-red-500">{usernameError}</p>}
                 </div>
                 <div>
                   <Label htmlFor="email">Email Address</Label>
                   <Input id="email" type="email" placeholder="Enter email" required value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div>
-                  <Label htmlFor="phone">Phone Number (WhatsApp optional)</Label>
-                  <Input id="phone" type="tel" placeholder="Enter phone number" required />
-                </div>
-                <div className="md:col-span-2">
-                  <Label htmlFor="address">Business Address</Label>
-                  <Textarea id="address" placeholder="Enter business address" required />
+                  <Label htmlFor="businessName">Business Name</Label>
+                  <Input id="businessName" placeholder="Enter your business name" required value={businessName} onChange={(e) => setBusinessName(e.target.value)} />
                 </div>
                 <div>
-                  <Label htmlFor="website">Website or Social Media Links</Label>
-                  <Input id="website" type="url" placeholder="Enter website or social media links" />
+                  <Label htmlFor="businessAddress">Business Address</Label>
+                  <Input id="businessAddress" placeholder="Enter your business address" required value={businessAddress} onChange={(e) => setBusinessAddress(e.target.value)} />
+                </div>
+                <div>
+                  <Label htmlFor="registrationNumber">Registration Number</Label>
+                  <Input id="registrationNumber" placeholder="Enter your registration number" required value={registrationNumber} onChange={(e) => setRegistrationNumber(e.target.value)} />
                 </div>
               </div>
             </div>
@@ -143,10 +182,6 @@ const ActivityProviderSignUp = () => {
             <div className="space-y-4">
               <h2 className="text-xl font-semibold text-gray-800">Account Security</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="username">Username</Label>
-                  <Input id="username" placeholder="Enter your username" required />
-                </div>
                 <div>
                   <Label htmlFor="password">Password</Label>
                   <div className="relative">
@@ -166,9 +201,7 @@ const ActivityProviderSignUp = () => {
                       {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                     </button>
                   </div>
-                  <p className="text-sm text-gray-500 mt-1">
-                    Password must be 8-14 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.
-                  </p>
+                  {passwordError && <p className="text-sm text-red-500">{passwordError}</p>}
                 </div>
                 <div>
                   <Label htmlFor="confirmPassword">Confirm Password</Label>
@@ -189,9 +222,6 @@ const ActivityProviderSignUp = () => {
                       {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                     </button>
                   </div>
-                  <p className="text-sm text-gray-500 mt-1">
-                    Password must be 8-14 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.
-                  </p>
                 </div>
               </div>
             </div>
@@ -204,40 +234,13 @@ const ActivityProviderSignUp = () => {
                   <Label htmlFor="activityName">Activity Name</Label>
                   <Input id="activityName" placeholder="e.g., Surfing Lessons" required />
                 </div>
-                <div>
-                  <Label htmlFor="category">Category</Label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select category" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="water-sports">Water & Adventure Sports</SelectItem>
-                      <SelectItem value="nature">Nature & Wildlife Experiences</SelectItem>
-                      <SelectItem value="hiking">Hiking & Trekking</SelectItem>
-                      <SelectItem value="cultural">Cultural & Historical Activities</SelectItem>
-                      <SelectItem value="extreme">Extreme Adventure & Airborne Activities</SelectItem>
-                      <SelectItem value="cycling">Cycling & Eco-Tours</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
                 <div className="md:col-span-2">
                   <Label htmlFor="description">Activity Description</Label>
                   <Textarea id="description" placeholder="Enter activity description" required />
                 </div>
                 <div>
                   <Label htmlFor="location">Location</Label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select location" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="arugam-bay">Arugam Bay</SelectItem>
-                      <SelectItem value="ella">Ella</SelectItem>
-                      <SelectItem value="kandy">Kandy</SelectItem>
-                      <SelectItem value="sigiriya">Sigiriya</SelectItem>
-                      <SelectItem value="galle">Galle</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <Input id="location" placeholder="Enter activity location" required />
                 </div>
                 <div>
                   <Label htmlFor="operatingHours">Operating Hours</Label>
@@ -257,15 +260,7 @@ const ActivityProviderSignUp = () => {
                 </div>
                 <div>
                   <Label htmlFor="safetyEquipment">Safety Equipment Provided?</Label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="yes">Yes</SelectItem>
-                      <SelectItem value="no">No</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <Input id="safetyEquipment" placeholder="e.g., Yes or No" />
                 </div>
                 <div className="md:col-span-2">
                   <Label htmlFor="photos">Upload Photos of Activity</Label>
@@ -273,7 +268,6 @@ const ActivityProviderSignUp = () => {
                 </div>
               </div>
             </div>
-
 
             {/* Payment & Legal Compliance */}
             <div className="space-y-4">
@@ -289,16 +283,22 @@ const ActivityProviderSignUp = () => {
             {/* Terms & Conditions */}
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
-                <Checkbox id="terms" required />
+                <Checkbox
+                  id="terms"
+                  checked={agreeToTerms}
+                  onCheckedChange={(checked) => setAgreeToTerms(!!checked)}
+                />
                 <Label htmlFor="terms">
                   I agree to the Terms & Conditions
                 </Label>
               </div>
             </div>
 
-            <Button type="submit" className="w-full">
-              Register as Activity Provider
-            </Button>
+            {agreeToTerms && (
+              <Button type="submit" className="w-full">
+                Register as Activity Provider
+              </Button>
+            )}
           </form>
         </div>
       </div>
