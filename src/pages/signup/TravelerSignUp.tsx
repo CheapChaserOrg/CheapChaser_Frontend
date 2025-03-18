@@ -1,20 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useToast } from "../../components/ui/use-toast";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
-import { Textarea } from "../../components/ui/textarea";
 import { Label } from "../../components/ui/label";
 import { Checkbox } from "../../components/ui/checkbox";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../../components/ui/select";
 import { Eye, EyeOff } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import { db } from "../../firebase";
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const TravelerSignUp = () => {
   const { toast } = useToast();
@@ -24,6 +19,15 @@ const TravelerSignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [usernameError, setUsernameError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [address, setAddress] = useState("");
+  const [country, setCountry] = useState("");
+  const [contactNumber, setContactNumber] = useState("");
+  const [agreeToTerms, setAgreeToTerms] = useState(false); // State for terms agreement
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const validateEmail = (email: string): boolean => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -35,8 +39,23 @@ const TravelerSignUp = () => {
     return regex.test(password);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const checkUsernameExists = async (username: string) => {
+    const q = query(collection(db, "travelers"), where("username", "==", username));
+    const querySnapshot = await getDocs(q);
+    return !querySnapshot.empty;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!agreeToTerms) {
+      toast({
+        title: "Terms Not Accepted",
+        description: "You must agree to the Terms and Conditions to proceed.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     if (!validateEmail(email)) {
       toast({
@@ -65,59 +84,105 @@ const TravelerSignUp = () => {
       return;
     }
 
-    toast({
-      title: "Registration Attempted",
-      description: "Attempted to register as Traveler",
-    });
+    if (await checkUsernameExists(username)) {
+      setUsernameError("Username already exists. Please choose a different one.");
+      return;
+    }
+
+    try {
+      const docRef = await addDoc(collection(db, "travelers"), {
+        username,
+        email,
+        password, // Note: Never store plain passwords in production. Use Firebase Authentication instead.
+        preferences,
+        fullName,
+        address,
+        country,
+        contactNumber,
+      });
+      console.log("Traveler document written with ID: ", docRef.id);
+
+      toast({
+        title: "Registration Successful",
+        description: "You have successfully registered as a traveler!",
+      });
+
+      // Clear the form
+      setUsername("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+      setFullName("");
+      setAddress("");
+      setCountry("");
+      setContactNumber("");
+      setPreferences([]);
+      setAgreeToTerms(false);
+
+      // Redirect to the traveler's profile page
+      navigate("/traveler/profile");
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      toast({
+        title: "Registration Failed",
+        description: "There was an error during registration.",
+        variant: "destructive",
+      });
+    }
   };
+
+  useEffect(() => {
+    if (password.length > 0 && !validatePassword(password)) {
+      setPasswordError("Password must be 8-14 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.");
+    } else {
+      setPasswordError("");
+    }
+  }, [password]);
 
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
       <div className="pt-20 pb-10">
         <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-sm mt-8">
-          <h1 className="text-2xl font-bold text-center text-gray-900 mb-8">
-            Traveler Registration
-          </h1>
+          <h1 className="text-2xl font-bold text-center text-gray-900 mb-8">Traveler Registration</h1>
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Personal Information */}
             <div className="space-y-4">
               <h2 className="text-xl font-semibold text-gray-800">Personal Information</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="fullName">Full Name</Label>
-                  <Input id="fullName" placeholder="Enter your full name" required />
+                  <Label htmlFor="username">Username</Label>
+                  <Input
+                    id="username"
+                    placeholder="Enter your username"
+                    required
+                    value={username}
+                    onChange={(e) => {
+                      setUsername(e.target.value);
+                      setUsernameError("");
+                    }}
+                  />
+                  {usernameError && <p className="text-sm text-red-500">{usernameError}</p>}
                 </div>
-                <div>
-                  <Label htmlFor="profilePicture">Profile Picture</Label>
-                  <Input id="profilePicture" type="file" accept="image/*" />
-                </div>
-                <div>
-                  <Label htmlFor="dob">Date of Birth</Label>
-                  <Input id="dob" type="date" required />
-                </div>
-                <div>
-                  <Label htmlFor="nationality">Nationality</Label>
-                  <Input id="nationality" placeholder="Enter your nationality" required />
-                </div>
-              </div>
-            </div>
-
-            {/* Contact Information */}
-            <div className="space-y-4">
-              <h2 className="text-xl font-semibold text-gray-800">Contact Information</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="email">Email Address</Label>
                   <Input id="email" type="email" placeholder="Enter your email" required value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div>
-                  <Label htmlFor="phone">Phone Number</Label>
-                  <Input id="phone" type="tel" placeholder="Enter your phone number" />
+                  <Label htmlFor="fullName">Full Name</Label>
+                  <Input id="fullName" placeholder="Enter your full name" required value={fullName} onChange={(e) => setFullName(e.target.value)} />
                 </div>
-                <div className="md:col-span-2">
-                  <Label htmlFor="address">Address (Optional)</Label>
-                  <Textarea id="address" placeholder="Enter your address" />
+                <div>
+                  <Label htmlFor="address">Address</Label>
+                  <Input id="address" placeholder="Enter your address" required value={address} onChange={(e) => setAddress(e.target.value)} />
+                </div>
+                <div>
+                  <Label htmlFor="country">Country</Label>
+                  <Input id="country" placeholder="Enter your country" required value={country} onChange={(e) => setCountry(e.target.value)} />
+                </div>
+                <div>
+                  <Label htmlFor="contactNumber">Contact Number (WhatsApp)</Label>
+                  <Input id="contactNumber" placeholder="Enter your contact number" required value={contactNumber} onChange={(e) => setContactNumber(e.target.value)} />
                 </div>
               </div>
             </div>
@@ -126,10 +191,6 @@ const TravelerSignUp = () => {
             <div className="space-y-4">
               <h2 className="text-xl font-semibold text-gray-800">Account Security</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="username">Username</Label>
-                  <Input id="username" placeholder="Enter your username" required />
-                </div>
                 <div>
                   <Label htmlFor="password">Password</Label>
                   <div className="relative">
@@ -149,9 +210,7 @@ const TravelerSignUp = () => {
                       {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                     </button>
                   </div>
-                  <p className="text-sm text-gray-500 mt-1">
-                    Password must be 8-14 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.
-                  </p>
+                  {passwordError && <p className="text-sm text-red-500">{passwordError}</p>}
                 </div>
                 <div>
                   <Label htmlFor="confirmPassword">Confirm Password</Label>
@@ -172,9 +231,6 @@ const TravelerSignUp = () => {
                       {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                     </button>
                   </div>
-                  <p className="text-sm text-gray-500 mt-1">
-                    Password must be 8-14 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.
-                  </p>
                 </div>
               </div>
             </div>
@@ -210,37 +266,28 @@ const TravelerSignUp = () => {
                     ))}
                   </div>
                 </div>
-                <div>
-                  <Label htmlFor="budgetRange">Budget Range</Label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select budget range" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="budget">Budget ($0-$50/day)</SelectItem>
-                      <SelectItem value="moderate">Moderate ($50-$150/day)</SelectItem>
-                      <SelectItem value="luxury">Luxury ($150+/day)</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
               </div>
             </div>
-
-            
 
             {/* Legal Compliance */}
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
-                <Checkbox id="terms" required />
+                <Checkbox
+                  id="terms"
+                  checked={agreeToTerms}
+                  onCheckedChange={(checked) => setAgreeToTerms(!!checked)}
+                />
                 <Label htmlFor="terms">
                   I agree to the Terms & Conditions and Privacy Policy
                 </Label>
               </div>
             </div>
 
-            <Button type="submit" className="w-full">
-              Register as Traveler
-            </Button>
+            {agreeToTerms && (
+              <Button type="submit" className="w-full">
+                Register as Traveler
+              </Button>
+            )}
           </form>
         </div>
       </div>
