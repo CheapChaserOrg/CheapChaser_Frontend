@@ -1,20 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useToast } from "../../components/ui/use-toast";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
-import { Textarea } from "../../components/ui/textarea";
 import { Label } from "../../components/ui/label";
 import { Checkbox } from "../../components/ui/checkbox";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../../components/ui/select";
 import { Eye, EyeOff } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import { db } from "../../firebase";
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+import { Textarea } from "@/components/ui/textarea";
 
 const HotelSignUp = () => {
   const { toast } = useToast();
@@ -25,6 +21,14 @@ const HotelSignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [usernameError, setUsernameError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [hotelName, setHotelName] = useState("");
+  const [hotelAddress, setHotelAddress] = useState("");
+  const [registrationNumber, setRegistrationNumber] = useState("");
+  const [agreeToTerms, setAgreeToTerms] = useState(false);
+  const navigate = useNavigate();
 
   const validateEmail = (email: string): boolean => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -36,8 +40,23 @@ const HotelSignUp = () => {
     return regex.test(password);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const checkUsernameExists = async (username: string) => {
+    const q = query(collection(db, "hotels"), where("username", "==", username));
+    const querySnapshot = await getDocs(q);
+    return !querySnapshot.empty;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!agreeToTerms) {
+      toast({
+        title: "Terms Not Accepted",
+        description: "You must agree to the Terms and Conditions to proceed.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     if (!validateEmail(email)) {
       toast({
@@ -66,104 +85,101 @@ const HotelSignUp = () => {
       return;
     }
 
-    toast({
-      title: "Registration Attempted",
-      description: "Attempted to register as Hotel",
-    });
+    if (await checkUsernameExists(username)) {
+      setUsernameError("Username already exists. Please choose a different one.");
+      return;
+    }
+
+    try {
+      const docRef = await addDoc(collection(db, "hotels"), {
+        username,
+        email,
+        password, // Note: Never store plain passwords in production. Use Firebase Authentication instead.
+        hotelAmenities,
+        roomFacilities,
+        hotelName,
+        hotelAddress,
+        registrationNumber,
+      });
+      console.log("Hotel document written with ID: ", docRef.id);
+
+      toast({
+        title: "Registration Successful",
+        description: "You have successfully registered your hotel!",
+      });
+
+      // Clear the form
+      setUsername("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+      setHotelName("");
+      setHotelAddress("");
+      setRegistrationNumber("");
+      setHotelAmenities([]);
+      setRoomFacilities([]);
+      setAgreeToTerms(false);
+
+      // Redirect to the hotel's profile page
+      navigate("/hotel/profile");
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      toast({
+        title: "Registration Failed",
+        description: "There was an error during registration.",
+        variant: "destructive",
+      });
+    }
   };
+
+  useEffect(() => {
+    if (password.length > 0 && !validatePassword(password)) {
+      setPasswordError("Password must be 8-14 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.");
+    } else {
+      setPasswordError("");
+    }
+  }, [password]);
 
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
       <div className="pt-20 pb-10">
         <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-sm mt-8">
-          <h1 className="text-2xl font-bold text-center text-gray-900 mb-8">
-            Hotel Registration
-          </h1>
+          <h1 className="text-2xl font-bold text-center text-gray-900 mb-8">Hotel Registration</h1>
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Hotel Information */}
             <div className="space-y-4">
               <h2 className="text-xl font-semibold text-gray-800">Hotel Information</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="hotelName">Hotel Name</Label>
-                  <Input id="hotelName" placeholder="Enter hotel name" required />
-                </div>
-                <div>
-                  <Label htmlFor="hotelType">Hotel Type</Label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select hotel type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="hotel">Hotel</SelectItem>
-                      <SelectItem value="resort">Resort</SelectItem>
-                      <SelectItem value="guesthouse">Guesthouse</SelectItem>
-                      <SelectItem value="hostel">Hostel</SelectItem>
-                      <SelectItem value="boutique">Boutique Hotel</SelectItem>
-                      <SelectItem value="homestay">Homestay</SelectItem>
-                      <SelectItem value="bungalow">Bungalow</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div>
-                  <Label htmlFor="starRating">Star Rating</Label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select star rating" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="1">1★</SelectItem>
-                      <SelectItem value="2">2★</SelectItem>
-                      <SelectItem value="3">3★</SelectItem>
-                      <SelectItem value="4">4★</SelectItem>
-                      <SelectItem value="5">5★</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div>
-                  <Label htmlFor="regNumber">Business Registration Number</Label>
-                  <Input id="regNumber" placeholder="Enter registration number" required />
-                </div>
-              </div>
-            </div>
-
-            {/* Contact Information */}
-            <div className="space-y-4">
-              <h2 className="text-xl font-semibold text-gray-800">Contact Information</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="contactName">Full Name of Contact Person</Label>
-                  <Input id="contactName" placeholder="Enter contact person's name" required />
-                </div>
-                <div>
-                  <Label htmlFor="designation">Designation</Label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select designation" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="owner">Owner</SelectItem>
-                      <SelectItem value="manager">Manager</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <Label htmlFor="username">Username</Label>
+                  <Input
+                    id="username"
+                    placeholder="Enter your username"
+                    required
+                    value={username}
+                    onChange={(e) => {
+                      setUsername(e.target.value);
+                      setUsernameError("");
+                    }}
+                  />
+                  {usernameError && <p className="text-sm text-red-500">{usernameError}</p>}
                 </div>
                 <div>
                   <Label htmlFor="email">Email Address</Label>
                   <Input id="email" type="email" placeholder="Enter email" required value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div>
-                  <Label htmlFor="phone">Phone Number</Label>
-                  <Input id="phone" type="tel" placeholder="Enter phone number" required />
+                  <Label htmlFor="hotelName">Hotel Name</Label>
+                  <Input id="hotelName" placeholder="Enter your hotel name" required value={hotelName} onChange={(e) => setHotelName(e.target.value)} />
                 </div>
-                <div className="md:col-span-2">
-                  <Label htmlFor="address">Hotel Address</Label>
-                  <Textarea id="address" placeholder="Enter hotel address" required />
+                <div>
+                  <Label htmlFor="hotelAddress">Hotel Address</Label>
+                  <Input id="hotelAddress" placeholder="Enter your hotel address" required value={hotelAddress} onChange={(e) => setHotelAddress(e.target.value)} />
                 </div>
-                <div className="md:col-span-2">
-                  <Label htmlFor="website">Hotel Website & Social Media Links</Label>
-                  <Input id="website" placeholder="Enter website or social media links" />
+                <div>
+                  <Label htmlFor="registrationNumber">Registration Number</Label>
+                  <Input id="registrationNumber" placeholder="Enter your registration number" required value={registrationNumber} onChange={(e) => setRegistrationNumber(e.target.value)} />
                 </div>
               </div>
             </div>
@@ -172,10 +188,6 @@ const HotelSignUp = () => {
             <div className="space-y-4">
               <h2 className="text-xl font-semibold text-gray-800">Account Security</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="username">Username</Label>
-                  <Input id="username" placeholder="Enter your username" required />
-                </div>
                 <div>
                   <Label htmlFor="password">Password</Label>
                   <div className="relative">
@@ -195,9 +207,7 @@ const HotelSignUp = () => {
                       {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                     </button>
                   </div>
-                  <p className="text-sm text-gray-500 mt-1">
-                    Password must be 8-14 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.
-                  </p>
+                  {passwordError && <p className="text-sm text-red-500">{passwordError}</p>}
                 </div>
                 <div>
                   <Label htmlFor="confirmPassword">Confirm Password</Label>
@@ -218,81 +228,44 @@ const HotelSignUp = () => {
                       {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                     </button>
                   </div>
-                  <p className="text-sm text-gray-500 mt-1">
-                    Password must be 8-14 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.
-                  </p>
                 </div>
               </div>
             </div>
 
-
             {/* Accommodation Details */}
-              <div className="space-y-4">
-                <h2 className="text-xl font-semibold text-gray-800">Accommodation Details</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="roomCount">Number of Rooms</Label>
-                    <Input id="roomCount" type="number" min="1" placeholder="Enter number of rooms" required />
-                  </div>
-                  <div>
-                    <Label>Room Types Available</Label>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-2">
-                      {[
-                        'Single', 'Double', 'Twin', 'Triple', 'Suite', 'Family Room', 'Dormitory'
-                      ].map((roomType) => (
-                        <div key={roomType} className="flex items-center space-x-2">
-                          <Checkbox
-                            id={roomType}
-                            checked={roomFacilities.includes(roomType)}
-                            onCheckedChange={(checked) => {
-                              if (checked) {
-                                setRoomFacilities([...roomFacilities, roomType]);
-                              } else {
-                                setRoomFacilities(roomFacilities.filter(f => f !== roomType));
-                              }
-                            }}
-                          />
-                          <label
-                            htmlFor={roomType}
-                            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                          >
-                            {roomType}
-                          </label>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="md:col-span-2">
-                    <Label>Room Facilities</Label>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-2">
-                      {[
-                        'AC', 'WiFi', 'TV', 'Mini Bar', 'Balcony', 'Private Bathroom',
-                        'Hot Water', 'Safe', 'Kitchenette'
-                      ].map((facility) => (
-                        <div key={facility} className="flex items-center space-x-2">
-                          <Checkbox
-                            id={facility}
-                            checked={roomFacilities.includes(facility)}
-                            onCheckedChange={(checked) => {
-                              if (checked) {
-                                setRoomFacilities([...roomFacilities, facility]);
-                              } else {
-                                setRoomFacilities(roomFacilities.filter(f => f !== facility));
-                              }
-                            }}
-                          />
-                          <label
-                            htmlFor={facility}
-                            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                          >
-                            {facility}
-                          </label>
-                        </div>
-                      ))}
-                    </div>
+            <div className="space-y-4">
+              <h2 className="text-xl font-semibold text-gray-800">Accommodation Details</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Label>Room Types Available</Label>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-2">
+                    {[
+                      'Single', 'Double', 'Twin', 'Triple', 'Suite', 'Family Room', 'Dormitory'
+                    ].map((roomType) => (
+                      <div key={roomType} className="flex items-center space-x-2">
+                        <Checkbox
+                          id={roomType}
+                          checked={roomFacilities.includes(roomType)}
+                          onCheckedChange={(checked) => {
+                            if (checked) {
+                              setRoomFacilities([...roomFacilities, roomType]);
+                            } else {
+                              setRoomFacilities(roomFacilities.filter(f => f !== roomType));
+                            }
+                          }}
+                        />
+                        <label
+                          htmlFor={roomType}
+                          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        >
+                          {roomType}
+                        </label>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
+            </div>
 
             {/* Hotel Amenities & Services */}
             <div className="space-y-4">
@@ -346,7 +319,11 @@ const HotelSignUp = () => {
               <h2 className="text-xl font-semibold text-gray-800">Legal Compliance</h2>
               <div className="space-y-4">
                 <div className="flex items-center space-x-2">
-                  <Checkbox id="terms" required />
+                  <Checkbox
+                    id="terms"
+                    checked={agreeToTerms}
+                    onCheckedChange={(checked) => setAgreeToTerms(!!checked)}
+                  />
                   <Label htmlFor="terms">
                     I agree to the Terms & Conditions and Privacy Policy
                   </Label>
@@ -354,9 +331,11 @@ const HotelSignUp = () => {
               </div>
             </div>
 
-            <Button type="submit" className="w-full">
-              Register Hotel
-            </Button>
+            {agreeToTerms && (
+              <Button type="submit" className="w-full">
+                Register Hotel
+              </Button>
+            )}
           </form>
         </div>
       </div>
