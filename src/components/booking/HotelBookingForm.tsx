@@ -59,14 +59,18 @@ const HotelBookingForm = () => {
 
   const handlePaymentSuccess = async () => {
     if (!bookingData) return;
-
+    
     try {
       setIsLoading(true);
+      // Save booking to Firebase
       await saveHotelBooking(bookingData);
+      
       toast({
         title: "Booking Successful!",
         description: "Your hotel has been booked successfully.",
       });
+      
+      // Redirect to booking history page
       navigate("/booking-history");
     } catch (error) {
       console.error("Error saving booking:", error);
