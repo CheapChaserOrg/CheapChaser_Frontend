@@ -236,6 +236,19 @@ const HotelBookingForm = () => {
           />
         </div>
 
+        <FormField
+          control={form.control}
+          name="specialRequests"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Special Requests (Optional)</FormLabel>
+              <FormControl>
+                <Textarea placeholder="Any special requests or notes..." {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
       </form>
     </Form>
   );
