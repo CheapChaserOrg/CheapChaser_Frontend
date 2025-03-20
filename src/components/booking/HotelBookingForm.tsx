@@ -106,7 +106,19 @@ const HotelBookingForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleInitialSubmit)} className="space-y-6 bg-white p-6 rounded-lg shadow-md">
-        {/* Form fields for hotel booking */}
+      <FormField
+          control={form.control}
+          name="hotelName"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Hotel Name</FormLabel>
+              <FormControl>
+                <Input placeholder="e.g., Seaside Resort" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         {/* ... (same as your original form fields) ... */}
       </form>
     </Form>
