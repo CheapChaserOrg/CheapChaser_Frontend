@@ -51,9 +51,20 @@ const ActivityBookingForm = () => {
   const [providers, setProviders] = useState<string[]>([]);
   const [selectedActivity, setSelectedActivity] = useState("");
   const [bookingData, setBookingData] = useState<any>(null);
+  const [calculatedPrice, setCalculatedPrice] = useState<number>(0);
   const { toast } = useToast();
   const navigate = useNavigate();
 
+
+  const extractPrice = (providerString: string): number => {
+    const priceMatch = providerString.match(/\((\d+(?:-\d+)?)\s*LKR\)/);
+    if (priceMatch) {
+      const priceRange = priceMatch[1].split('-');
+      // If there's a range, take the lower price
+      return parseInt(priceRange[0]);
+    }
+    return 0;
+  };
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
