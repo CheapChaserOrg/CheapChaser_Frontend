@@ -65,6 +65,12 @@ const ActivityBookingForm = () => {
     }
     return 0;
   };
+
+
+  const calculateTotalPrice = (provider: string, participants: number): number => {
+    const basePrice = extractPrice(provider);
+    return basePrice * participants;
+  };
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
