@@ -7,14 +7,13 @@ import { Checkbox } from "../../components/ui/checkbox";
 import { Eye, EyeOff } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import { db } from "../../firebase";
+import { db, auth } from "../../firebase";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const GuideSignUp = () => {
   const { toast } = useToast();
-  const [languages, setLanguages] = useState<string[]>([]);
-  const [services, setServices] = useState<string[]>([]);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -25,28 +24,32 @@ const GuideSignUp = () => {
   const [passwordError, setPasswordError] = useState("");
   const [fullName, setFullName] = useState("");
   const [address, setAddress] = useState("");
-  const [idNumber, setIdNumber] = useState("");
   const [contactNumber, setContactNumber] = useState("");
-  const [registrationNumber, setRegistrationNumber] = useState("");
+  const [languages, setLanguages] = useState<string[]>([]);
+  const [experience, setExperience] = useState("");
   const [agreeToTerms, setAgreeToTerms] = useState(false);
   const navigate = useNavigate();
 
+  // Validate email format
   const validateEmail = (email: string): boolean => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
   };
 
+  // Validate password format
   const validatePassword = (password: string): boolean => {
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,14}$/;
     return regex.test(password);
   };
 
+  // Check if username already exists in Firestore
   const checkUsernameExists = async (username: string) => {
     const q = query(collection(db, "guides"), where("username", "==", username));
     const querySnapshot = await getDocs(q);
     return !querySnapshot.empty;
   };
 
+  // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -80,7 +83,7 @@ const GuideSignUp = () => {
     if (password !== confirmPassword) {
       toast({
         title: "Error",
-        description: "Passwords do not match",
+        description: "Passwords do not match.",
         variant: "destructive",
       });
       return;
@@ -92,20 +95,23 @@ const GuideSignUp = () => {
     }
 
     try {
-      const docRef = await addDoc(collection(db, "guides"), {
+      // Step 1: Register user in Firebase Authentication
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Step 2: Save additional user data in Firestore
+      await addDoc(collection(db, "guides"), {
+        uid: user.uid, // Link Firestore document with Firebase Authentication user
         username,
         email,
-        password, // Note: Never store plain passwords in production. Use Firebase Authentication instead.
-        languages,
-        services,
         fullName,
         address,
-        idNumber,
         contactNumber,
-        registrationNumber,
+        languages,
+        experience,
       });
-      console.log("Guide document written with ID: ", docRef.id);
 
+      // Success message
       toast({
         title: "Registration Successful",
         description: "You have successfully registered as a guide!",
@@ -118,25 +124,24 @@ const GuideSignUp = () => {
       setConfirmPassword("");
       setFullName("");
       setAddress("");
-      setIdNumber("");
       setContactNumber("");
-      setRegistrationNumber("");
       setLanguages([]);
-      setServices([]);
+      setExperience("");
       setAgreeToTerms(false);
 
       // Redirect to the guide's profile page
       navigate("/guide/profile");
-    } catch (error) {
-      console.error("Error adding document: ", error);
+    } catch (error: any) {
+      console.error("Error during registration:", error);
       toast({
         title: "Registration Failed",
-        description: "There was an error during registration.",
+        description: error.message || "There was an error during registration.",
         variant: "destructive",
       });
     }
   };
 
+  // Validate password in real-time
   useEffect(() => {
     if (password.length > 0 && !validatePassword(password)) {
       setPasswordError("Password must be 8-14 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.");
@@ -183,16 +188,34 @@ const GuideSignUp = () => {
                   <Input id="address" placeholder="Enter your address" required value={address} onChange={(e) => setAddress(e.target.value)} />
                 </div>
                 <div>
-                  <Label htmlFor="idNumber">ID Number</Label>
-                  <Input id="idNumber" placeholder="Enter your ID number" required value={idNumber} onChange={(e) => setIdNumber(e.target.value)} />
-                </div>
-                <div>
-                  <Label htmlFor="contactNumber">Contact Number (WhatsApp)</Label>
+                  <Label htmlFor="contactNumber">Contact Number</Label>
                   <Input id="contactNumber" placeholder="Enter your contact number" required value={contactNumber} onChange={(e) => setContactNumber(e.target.value)} />
                 </div>
+              </div>
+            </div>
+
+            {/* Guide Information */}
+            <div className="space-y-4">
+              <h2 className="text-xl font-semibold text-gray-800">Guide Information</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="registrationNumber">Registration Number</Label>
-                  <Input id="registrationNumber" placeholder="Enter your registration number" required value={registrationNumber} onChange={(e) => setRegistrationNumber(e.target.value)} />
+                  <Label htmlFor="languages">Languages Spoken</Label>
+                  <Input
+                    id="languages"
+                    placeholder="Enter languages (comma-separated)"
+                    value={languages.join(", ")}
+                    onChange={(e) => setLanguages(e.target.value.split(", "))}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="experience">Years of Experience</Label>
+                  <Input
+                    id="experience"
+                    type="number"
+                    placeholder="Enter years of experience"
+                    value={experience}
+                    onChange={(e) => setExperience(e.target.value)}
+                  />
                 </div>
               </div>
             </div>
@@ -240,65 +263,6 @@ const GuideSignUp = () => {
                     >
                       {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                     </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Professional Details */}
-            <div className="space-y-4">
-              <h2 className="text-xl font-semibold text-gray-800">Professional Details</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <Label>Languages Spoken</Label>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-2">
-                    {[
-                      'English', 'Sinhala', 'Tamil', 'German', 'French', 'Chinese',
-                      'Japanese', 'Korean', 'Russian'
-                    ].map((language) => (
-                      <div key={language} className="flex items-center space-x-2">
-                        <Checkbox
-                          id={language}
-                          checked={languages.includes(language)}
-                          onCheckedChange={(checked) => {
-                            if (checked) {
-                              setLanguages([...languages, language]);
-                            } else {
-                              setLanguages(languages.filter(l => l !== language));
-                            }
-                          }}
-                        />
-                        <label htmlFor={language} className="text-sm">
-                          {language}
-                        </label>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <Label>Services Offered</Label>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-2">
-                    {[
-                      'Private Tours', 'Group Tours', 'Airport Pickup', 'Hiking',
-                      'Safari', 'City Tours', 'Cultural Tours', 'Photography Tours'
-                    ].map((service) => (
-                      <div key={service} className="flex items-center space-x-2">
-                        <Checkbox
-                          id={service}
-                          checked={services.includes(service)}
-                          onCheckedChange={(checked) => {
-                            if (checked) {
-                              setServices([...services, service]);
-                            } else {
-                              setServices(services.filter(s => s !== service));
-                            }
-                          }}
-                        />
-                        <label htmlFor={service} className="text-sm">
-                          {service}
-                        </label>
-                      </div>
-                    ))}
                   </div>
                 </div>
               </div>
