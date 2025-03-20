@@ -71,6 +71,7 @@ const ActivityBookingForm = () => {
     const basePrice = extractPrice(provider);
     return basePrice * participants;
   };
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -79,7 +80,20 @@ const ActivityBookingForm = () => {
       provider: "",
     },
   });
+  
 
+  useEffect(() => {
+    const provider = form.watch("provider");
+    const participants = form.watch("participants");
+    
+    if (provider && participants) {
+      const total = calculateTotalPrice(provider, parseInt(participants));
+      setCalculatedPrice(total);
+    } else {
+      setCalculatedPrice(0);
+    }
+  }, [form.watch("provider"), form.watch("participants")]);
+  
   // Update providers when activity changes
   useEffect(() => {
     const activity = form.watch("activityName");
