@@ -55,7 +55,7 @@ const ActivityBookingForm = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
 
-
+  // Function to extract price from provider string
   const extractPrice = (providerString: string): number => {
     const priceMatch = providerString.match(/\((\d+(?:-\d+)?)\s*LKR\)/);
     if (priceMatch) {
@@ -66,7 +66,7 @@ const ActivityBookingForm = () => {
     return 0;
   };
 
-
+  // Function to calculate total price
   const calculateTotalPrice = (provider: string, participants: number): number => {
     const basePrice = extractPrice(provider);
     return basePrice * participants;
@@ -80,8 +80,8 @@ const ActivityBookingForm = () => {
       provider: "",
     },
   });
-  
 
+  // Update price when provider or participants change
   useEffect(() => {
     const provider = form.watch("provider");
     const participants = form.watch("participants");
@@ -93,7 +93,7 @@ const ActivityBookingForm = () => {
       setCalculatedPrice(0);
     }
   }, [form.watch("provider"), form.watch("participants")]);
-  
+
   // Update providers when activity changes
   useEffect(() => {
     const activity = form.watch("activityName");
@@ -116,6 +116,7 @@ const ActivityBookingForm = () => {
       participants: parseInt(values.participants),
       provider: values.provider,
       specialRequirements: values.specialRequirements || "",
+      totalPrice: calculatedPrice
     });
     setShowPayment(true);
   };
@@ -157,7 +158,7 @@ const ActivityBookingForm = () => {
     return (
       <div className="space-y-6 bg-white p-6 rounded-lg shadow-md">
         <PaymentForm
-          amount={99.99} // Replace with actual amount calculation
+          amount={calculatedPrice} // Now using the calculated price
           onSuccess={handlePaymentSuccess}
           onCancel={handlePaymentCancel}
           bookingType="activity"
@@ -288,14 +289,25 @@ const ActivityBookingForm = () => {
           )}
         />
 
-        <Button type="submit" className="w-full bg-[#2a9d8f] hover:bg-[#2a9d8f]/80 text-white" disabled={isLoading}>
+        {calculatedPrice > 0 && (
+          <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+            <h3 className="text-lg font-semibold text-gray-900">Price Summary</h3>
+            <div className="mt-2">
+              <p className="text-sm text-gray-600">Base Price per Person: LKR {extractPrice(form.watch("provider"))}</p>
+              <p className="text-sm text-gray-600">Number of Participants: {form.watch("participants") || 0}</p>
+              <p className="text-lg font-bold text-[#2a9d8f] mt-2">Total Price: LKR {calculatedPrice}</p>
+            </div>
+          </div>
+        )}
+
+        <Button type="submit" className="w-full bg-[#2a9d8f] hover:bg-[#2a9d8f]/80 text-white" disabled={isLoading || calculatedPrice === 0}>
           {isLoading ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               Processing
             </>
           ) : (
-            "Proceed to Payment"
+            `Proceed to Payment (LKR ${calculatedPrice})`
           )}
         </Button>
       </form>
