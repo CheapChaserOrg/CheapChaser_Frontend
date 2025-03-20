@@ -205,6 +205,21 @@ const HotelBookingForm = () => {
             )}
           />
         </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          <FormField
+            control={form.control}
+            name="rooms"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Number of Rooms</FormLabel>
+                <FormControl>
+                  <Input type="number" min="1" placeholder="Enter number of rooms" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
       </form>
     </Form>
   );
