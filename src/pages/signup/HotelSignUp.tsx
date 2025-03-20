@@ -7,9 +7,10 @@ import { Checkbox } from "../../components/ui/checkbox";
 import { Eye, EyeOff } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import { db } from "../../firebase";
+import { db, auth } from "../../firebase";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Textarea } from "@/components/ui/textarea";
 
 const HotelSignUp = () => {
@@ -30,22 +31,26 @@ const HotelSignUp = () => {
   const [agreeToTerms, setAgreeToTerms] = useState(false);
   const navigate = useNavigate();
 
+  // Validate email format
   const validateEmail = (email: string): boolean => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
   };
 
+  // Validate password format
   const validatePassword = (password: string): boolean => {
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,14}$/;
     return regex.test(password);
   };
 
+  // Check if username already exists in Firestore
   const checkUsernameExists = async (username: string) => {
     const q = query(collection(db, "hotels"), where("username", "==", username));
     const querySnapshot = await getDocs(q);
     return !querySnapshot.empty;
   };
 
+  // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -79,7 +84,7 @@ const HotelSignUp = () => {
     if (password !== confirmPassword) {
       toast({
         title: "Error",
-        description: "Passwords do not match",
+        description: "Passwords do not match.",
         variant: "destructive",
       });
       return;
@@ -91,18 +96,23 @@ const HotelSignUp = () => {
     }
 
     try {
-      const docRef = await addDoc(collection(db, "hotels"), {
+      // Step 1: Register user in Firebase Authentication
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Step 2: Save additional user data in Firestore
+      await addDoc(collection(db, "hotels"), {
+        uid: user.uid, // Link Firestore document with Firebase Authentication user
         username,
         email,
-        password, // Note: Never store plain passwords in production. Use Firebase Authentication instead.
         hotelAmenities,
         roomFacilities,
         hotelName,
         hotelAddress,
         registrationNumber,
       });
-      console.log("Hotel document written with ID: ", docRef.id);
 
+      // Success message
       toast({
         title: "Registration Successful",
         description: "You have successfully registered your hotel!",
@@ -122,16 +132,17 @@ const HotelSignUp = () => {
 
       // Redirect to the hotel's profile page
       navigate("/hotel/profile");
-    } catch (error) {
-      console.error("Error adding document: ", error);
+    } catch (error: any) {
+      console.error("Error during registration:", error);
       toast({
         title: "Registration Failed",
-        description: "There was an error during registration.",
+        description: error.message || "There was an error during registration.",
         variant: "destructive",
       });
     }
   };
 
+  // Validate password in real-time
   useEffect(() => {
     if (password.length > 0 && !validatePassword(password)) {
       setPasswordError("Password must be 8-14 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.");
