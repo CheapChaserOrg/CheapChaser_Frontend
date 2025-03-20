@@ -94,7 +94,7 @@ const HotelBookingForm = () => {
     return (
       <div className="space-y-6 bg-white p-6 rounded-lg shadow-md">
         <PaymentForm
-          amount={199.99}
+          amount={199.99} // Replace with actual amount calculation
           onSuccess={handlePaymentSuccess}
           onCancel={handlePaymentCancel}
           bookingType="hotel"
@@ -106,7 +106,7 @@ const HotelBookingForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleInitialSubmit)} className="space-y-6 bg-white p-6 rounded-lg shadow-md">
-      <FormField
+        <FormField
           control={form.control}
           name="hotelName"
           render={({ field }) => (
@@ -220,6 +220,22 @@ const HotelBookingForm = () => {
               </FormItem>
             )}
           />
+
+          <FormField
+            control={form.control}
+            name="guests"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Number of Guests</FormLabel>
+                <FormControl>
+                  <Input type="number" min="1" placeholder="Enter number of guests" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+
       </form>
     </Form>
   );
