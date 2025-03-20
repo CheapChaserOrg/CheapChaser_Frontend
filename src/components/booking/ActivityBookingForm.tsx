@@ -29,11 +29,20 @@ const formSchema = z.object({
 
 // Activity provider mapping
 const activityProviders = {
-  "Surfing Lesson": ["Wave Riders", "Beach Pros", "Surf Masters"],
-  "Scuba Diving": ["Deep Blue Divers", "Coral Explorers", "Ocean Adventure"],
-  "Hiking Tour": ["Mountain Trekkers", "Forest Guides", "Nature Explorers"],
-  "Kayaking": ["River Rapids", "Sea Kayakers", "Coastal Adventures"],
-  "Snorkeling": ["Reef Explorers", "Tropical Fish Tours", "Bay Snorkelers"]
+  "Trekking": ["Act001-Low(4500-5000 LKR)", "Act002-Medium(8000-15000 LKR)", "Act003-High(20000 LKR)", "Act004-Luxury(32500 LKR)"],
+  "Scuba Diving": ["Act005-Low(5000 LKR)", "Act006-Medium(8500 LKR)", "Act007-High(20000 LKR)", "Act008-Luxury(33000 LKR)"],
+  "Village Experiences": ["Act009-Low(4000 LKR)", "Act010-Medium(9000 LKR)", "Act011-High(20000 LKR)", "Act012-Luxury(34000 LKR)"],
+  "Whale Watching": ["Act013-Low(3500 LKR)", "Act014-Medium(8500 LKR)", "Act015-High(18500 LKR)", "Act016-Luxury(35000 LKR)"],
+  "Cookery Classes": ["Act017-Low(5000 LKR)", "Act018-Medium(11600 LKR)", "Act019-High(20000 LKR)", "Act020-Luxury(33000 LKR)"],
+  "Surfing": ["Act021-Low(5000 LKR)", "Act022-Medium(10500 LKR)", "Act023-High(25000 LKR)", "Act024-Luxury(35000 LKR)"],
+  "Ayurveda & Spa": ["Act025-Low(4500 LKR)", "Act026-Medium(9000 LKR)", "Act027-High(27000 LKR)",],
+  "Cycling": ["Act029-Low(5500 LKR)", "Act030-Medium(10500 LKR)", "Act031-High(17000 LKR)", "Act032-Luxury(31500 LKR)"],
+  "Jetski": ["Act033-Low(4700 LKR)", "Act034-Medium(7500 LKR)", "Act035-High(20000 LKR)", "Act036-Luxury(32000 LKR)"],
+  "Snorkeling": ["Act037-Low(5500 LKR)", "Act038-Medium(9000 LKR)", "Act039-High(10500 LKR)", "Act040-Luxury(31000 LKR)"],
+  "Stilt Fishing": ["Act041-Low(5000 LKR)", "Act042-Medium(7000-15000 LKR)", "Act043-High(16000-30000 LKR)", "Act044-Luxury(32000 LKR)"],
+  "Boat Riding (Madu River)": ["Act045-Low(8000 LKR)", "Act046-Medium(9500 LKR)", "Act047-High(14500 LKR)", "Act048-Luxury(31000 LKR)"],
+  "Boat Riding (Koggala Lake)": ["Act049-Low(2500-5500 LKR)", "Act050-Medium(7000-15000 LKR)", "Act051-High(16000-30000 LKR)", "Act052-Luxury(31000 LKR)"],
+  "Turtle Watching": ["Act053-Low(2000 LKR)", "Act054-Medium(7000-15000 LKR)", "Act055-High(16000-30000 LKR)", "Act056-Luxury(31000 LKR)"]
 };
 
 const ActivityBookingForm = () => {
