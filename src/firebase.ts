@@ -1,23 +1,25 @@
-// src/firebase.ts
-import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
-import { getFirestore } from "firebase/firestore"; // Import Firestore
+import { initializeApp, FirebaseApp } from 'firebase/app';
+import { getAuth, Auth } from 'firebase/auth';
+import { getFirestore, Firestore } from 'firebase/firestore';
+import { getStorage, FirebaseStorage } from 'firebase/storage';
 
-// Replace with your Firebase config
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBWTJYBHHRlSZ2colOfGKfhanyP1hw1gTE",
-  authDomain: "cheap-chaser-218a7.firebaseapp.com",
-  projectId: "cheap-chaser-218a7",
-  storageBucket: "cheap-chaser-218a7.appspot.com",
-  messagingSenderId: "783602686185",
-  appId: "1:783602686185:web:02deb76c8beb711c55f878",
-  measurementId: "G-EQFM4066QJ",
+  apiKey: "AIzaSyC6nSg9PW0yqKuRpa2b2PiUx6EDTTppjhg",
+  authDomain: "cheapchaser-fc687.firebaseapp.com",
+  projectId: "cheapchaser-fc687",
+  storageBucket: "cheapchaser-fc687.firebasestorage.app",
+  messagingSenderId: "355602095885",
+  appId: "1:355602095885:web:d6423c2f681906874dda44",
+  measurementId: "G-L1N6BD5FK4"
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app: FirebaseApp = initializeApp(firebaseConfig);
 
 // Initialize Firebase services
-export const auth = getAuth(app); // Authentication
-export const googleProvider = new GoogleAuthProvider(); // Google Auth Provider
-export const db = getFirestore(app); // Firestore
+export const auth: Auth = getAuth(app);
+export const db: Firestore = getFirestore(app);
+export const storage: FirebaseStorage = getStorage(app);
+
+export default app; 
