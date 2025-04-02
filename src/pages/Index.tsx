@@ -142,7 +142,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-on-scroll opacity-0">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Seasonal Festival
+              Seasonal Festivals
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
             Galle hosts several vibrant festivals throughout the year, celebrating its rich history, culture, and arts. Here are some of the most popular festivals in Galle.
@@ -152,17 +152,17 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <FestivalCard
               image={Galle}
-              title="Galle Fort"
+              title="Galle Literary Festival"
               description="A UNESCO World Heritage Site built by the Portuguese and later expanded by the Dutch. It features colonial architecture, cobbled streets, and stunning sea views."
             />
             <FestivalCard
               image={unawatuna}
-              title="Unawatuna Beach"
+              title="Sinhala & Tamil New Year (Avurudu Festival)"
               description="A famous crescent-shaped beach with golden sand, turquoise waters, and great snorkeling and diving spots.                                                         "
             />
             <FestivalCard
               image={kanneliya}
-              title="Kanneliya Forest Reserve"
+              title="Unawatuna Perahera"
               description="A biodiversity hotspot with waterfalls, hiking trails, and endemic species."
             />
           </div>
