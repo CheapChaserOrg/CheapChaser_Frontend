@@ -6,9 +6,9 @@ import { MapPin, Calendar, DollarSign } from 'lucide-react';
 import DirectBooking from '../components/DirectBooking';
 import Feedback from '../components/Feedback';
 import homeImage from '../images/home2.jpeg';
-import Ella from '../images/ella.jpg';
 import unawatuna from '../images/Unawatuna.jpg';
 import Galle from '../images/galle.jpg';
+import kanneliya from '../images/kanneliya.jpg';
 
 const Index = () => {
   const navigate = useNavigate();
@@ -130,9 +130,9 @@ const Index = () => {
               description="A famous crescent-shaped beach with golden sand, turquoise waters, and great snorkeling and diving spots.                                                         "
             />
             <DestinationCard
-              image={Galle}
-              title="Galle"
-              description="Historic coastal fort and colonial architecture"
+              image={kanneliya}
+              title="Kanneliya Forest Reserve"
+              description="A biodiversity hotspot with waterfalls, hiking trails, and endemic species."
             />
           </div>
         </div>
