@@ -142,25 +142,25 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-on-scroll opacity-0">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Popular Destinations
+              Seasonal Festival
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Explore some of our most loved locations across Sri Lanka.
+            Galle hosts several vibrant festivals throughout the year, celebrating its rich history, culture, and arts. Here are some of the most popular festivals in Galle.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <DestinationCard
+            <FestivalCard
               image={Galle}
               title="Galle Fort"
               description="A UNESCO World Heritage Site built by the Portuguese and later expanded by the Dutch. It features colonial architecture, cobbled streets, and stunning sea views."
             />
-            <DestinationCard
+            <FestivalCard
               image={unawatuna}
               title="Unawatuna Beach"
               description="A famous crescent-shaped beach with golden sand, turquoise waters, and great snorkeling and diving spots.                                                         "
             />
-            <DestinationCard
+            <FestivalCard
               image={kanneliya}
               title="Kanneliya Forest Reserve"
               description="A biodiversity hotspot with waterfalls, hiking trails, and endemic species."
@@ -187,6 +187,22 @@ const FeatureCard = ({ icon, title, description }: { icon: React.ReactNode; titl
 );
 
 const DestinationCard = ({ image, title, description }: { image: string; title: string; description: string }) => (
+  <div className="group rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow animate-on-scroll opacity-0">
+    <div className="relative h-64 overflow-hidden">
+      <img
+        src={image}
+        alt={title}
+        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+      />
+    </div>
+    <div className="p-6 bg-white">
+      <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
+      <p className="text-gray-600">{description}</p>
+    </div>
+  </div>
+);
+
+const FestivalCard = ({ image, title, description }: { image: string; title: string; description: string }) => (
   <div className="group rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow animate-on-scroll opacity-0">
     <div className="relative h-64 overflow-hidden">
       <img
