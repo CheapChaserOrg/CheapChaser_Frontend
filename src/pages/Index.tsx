@@ -154,9 +154,10 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <FestivalCard
+              image={litfes}
               title="Galle Literary Festival"
-              time=''
-              description="A UNESCO World Heritage Site built by the Portuguese and later expanded by the Dutch. It features colonial architecture, cobbled streets, and stunning sea views."
+              time='January/February'
+              description="One of the most prestigious literary events in South Asia, the Galle Literary Festival attracts writers, poets, and intellectuals from around the world. The event features book readings, discussions, workshops, and cultural performances set within the historic Galle Fort."
             />
             <FestivalCard
               image={unawatuna}
