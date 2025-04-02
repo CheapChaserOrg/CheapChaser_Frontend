@@ -6,7 +6,6 @@ import { MapPin, Calendar, DollarSign } from 'lucide-react';
 import DirectBooking from '../components/DirectBooking';
 import Feedback from '../components/Feedback';
 import homeImage from '../images/home2.jpeg';
-import Sigiriya from '../images/sigiriya.jpg';
 import Ella from '../images/ella.jpg';
 import Galle from '../images/galle.jpg';
 
@@ -119,10 +118,10 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <DestinationCard
+            <DestinationCard
               image={Galle}
-              title="Galle"
-              description="Historic coastal fort and colonial architecture"
+              title="Galle Fort"
+              description="A UNESCO World Heritage Site built by the Portuguese and later expanded by the Dutch. It features colonial architecture, cobbled streets, and stunning sea views."
             />
             <DestinationCard
               image={Ella}
