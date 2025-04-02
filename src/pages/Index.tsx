@@ -160,10 +160,9 @@ const Index = () => {
               description="One of the most prestigious literary events in South Asia, the Galle Literary Festival attracts writers, poets, and intellectuals from around the world. The event features book readings, discussions, workshops, and cultural performances set within the historic Galle Fort."
             />
             <FestivalCard
-              image={unawatuna}
               title="Sinhala & Tamil New Year (Avurudu Festival)"
-              time=''
-              description="A famous crescent-shaped beach with golden sand, turquoise waters, and great snorkeling and diving spots.                                                         "
+              time='April 13–14'
+              description="A major Sri Lankan festival marking the traditional New Year, featuring traditional games, feasting, and cultural rituals. Families in Galle celebrate with oil lamp lighting, sweetmeats, and fireworks. "
             />
             <FestivalCard
               image={perhara}
