@@ -10,6 +10,8 @@ import unawatuna from '../images/Unawatuna.jpg';
 import Galle from '../images/galle.jpg';
 import kanneliya from '../images/kanneliya.jpg';
 import perhara from '../images/perahara.jpg';
+import avurudu from '../images/avurudu.jpg';
+import litfes from '../images/litfes.jpg';
 
 const Index = () => {
   const navigate = useNavigate();
