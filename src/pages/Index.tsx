@@ -7,6 +7,7 @@ import DirectBooking from '../components/DirectBooking';
 import Feedback from '../components/Feedback';
 import homeImage from '../images/home2.jpeg';
 import Ella from '../images/ella.jpg';
+import unawatuna from '../images/Unawatuna.jpg';
 import Galle from '../images/galle.jpg';
 
 const Index = () => {
@@ -124,9 +125,9 @@ const Index = () => {
               description="A UNESCO World Heritage Site built by the Portuguese and later expanded by the Dutch. It features colonial architecture, cobbled streets, and stunning sea views."
             />
             <DestinationCard
-              image={Ella}
-              title="Ella"
-              description="Scenic mountain village and hiking trails"
+              image={unawatuna}
+              title="Unawatuna Beach"
+              description="A famous crescent-shaped beach with golden sand, turquoise waters, and great snorkeling and diving spots.                                                         "
             />
             <DestinationCard
               image={Galle}
