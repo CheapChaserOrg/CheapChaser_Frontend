@@ -9,6 +9,7 @@ import homeImage from '../images/home2.jpeg';
 import unawatuna from '../images/Unawatuna.jpg';
 import Galle from '../images/galle.jpg';
 import kanneliya from '../images/kanneliya.jpg';
+import perhara from '../images/perahara.jpg';
 
 const Index = () => {
   const navigate = useNavigate();
@@ -153,17 +154,20 @@ const Index = () => {
             <FestivalCard
               image={Galle}
               title="Galle Literary Festival"
+              time=''
               description="A UNESCO World Heritage Site built by the Portuguese and later expanded by the Dutch. It features colonial architecture, cobbled streets, and stunning sea views."
             />
             <FestivalCard
               image={unawatuna}
               title="Sinhala & Tamil New Year (Avurudu Festival)"
+              time=''
               description="A famous crescent-shaped beach with golden sand, turquoise waters, and great snorkeling and diving spots.                                                         "
             />
             <FestivalCard
-              image={kanneliya}
+              image={perhara}
               title="Unawatuna Perahera"
-              description="A biodiversity hotspot with waterfalls, hiking trails, and endemic species."
+              time='June/July (Poson Poya period)'
+              description="A religious festival held at various Buddhist temples in and around Galle, celebrating the sacred Esala Poya. The festival includes vibrant processions, traditional dances, and rituals honoring the Buddha’s teachings."
             />
           </div>
         </div>
@@ -202,7 +206,7 @@ const DestinationCard = ({ image, title, description }: { image: string; title: 
   </div>
 );
 
-const FestivalCard = ({ image, title, description }: { image: string; title: string; description: string }) => (
+const FestivalCard = ({ image, title, time, description }: { image: string; title: string; time:string; description: string }) => (
   <div className="group rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow animate-on-scroll opacity-0">
     <div className="relative h-64 overflow-hidden">
       <img
@@ -213,6 +217,7 @@ const FestivalCard = ({ image, title, description }: { image: string; title: str
     </div>
     <div className="p-6 bg-white">
       <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
+      <h3 className="text-base font-semibold text-gray-500 mb-2">{time}</h3>
       <p className="text-gray-600">{description}</p>
     </div>
   </div>
