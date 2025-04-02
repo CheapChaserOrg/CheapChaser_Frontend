@@ -39,7 +39,7 @@ const Contact = () => {
                 <ContactItem 
                   icon={<Mail className="text-primary" />}
                   title="Email"
-                  detail="info@CheapChaser.com"
+                  detail="cheapchaser001@gmail.com"
                 />
                 <ContactItem 
                   icon={<Phone className="text-primary" />}
