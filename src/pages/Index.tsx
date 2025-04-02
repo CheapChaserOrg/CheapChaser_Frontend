@@ -138,6 +138,39 @@ const Index = () => {
         </div>
       </section>
 
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 animate-on-scroll opacity-0">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Popular Destinations
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Explore some of our most loved locations across Sri Lanka.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <DestinationCard
+              image={Galle}
+              title="Galle Fort"
+              description="A UNESCO World Heritage Site built by the Portuguese and later expanded by the Dutch. It features colonial architecture, cobbled streets, and stunning sea views."
+            />
+            <DestinationCard
+              image={unawatuna}
+              title="Unawatuna Beach"
+              description="A famous crescent-shaped beach with golden sand, turquoise waters, and great snorkeling and diving spots.                                                         "
+            />
+            <DestinationCard
+              image={kanneliya}
+              title="Kanneliya Forest Reserve"
+              description="A biodiversity hotspot with waterfalls, hiking trails, and endemic species."
+            />
+          </div>
+        </div>
+      </section>
+
+
+
       <Footer />
     </div>
   );
