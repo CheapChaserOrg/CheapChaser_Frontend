@@ -1,0 +1,592 @@
+[
+    {
+        "Hotel_ID": "H001",
+        "Hotel_name": "Antic Guesthouse-Galle Fort",
+        "Location": "Galle Fort, Galle",
+        "Price_per_Night_(LKR)": "5000",
+        "Budget_category": "Low",
+        "Contact_number": "777610890",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi in public areas, 24-hour reception, Express check-in/-out"
+    },
+    {
+        "Hotel_ID": "H002",
+        "Hotel_name": "Beach Hevan - Guest House",
+        "Location": "Galle Fort, Galle",
+        "Price_per_Night_(LKR)": "5500",
+        "Budget_category": "Low",
+        "Contact_number": "0912 234 663",
+        "City": "Galle",
+        "Property_amenities": "Wi-Fi, Darts, Non-smorking rooms, Air Conditioning"
+    },
+    {
+        "Hotel_ID": "H003",
+        "Hotel_name": "Mango House - Galle Fort",
+        "Location": "Leyn Baan Cross Street, Galle Fort, Galle",
+        "Price_per_Night_(LKR)": "14000",
+        "Budget_category": "Medium",
+        "Contact_number": "077 730 3883",
+        "City": "Galle",
+        "Property_amenities": "Wi-Fi, Spa, Guided galle fort walk, Mini bar Drinks"
+    },
+    {
+        "Hotel_ID": "H004",
+        "Hotel_name": "The Heritage Hotel Galle Fort",
+        "Location": "Galle Fort, Galle",
+        "Price_per_Night_(LKR)": "13500",
+        "Budget_category": "Medium",
+        "Contact_number": "94 91 222 8494",
+        "City": "Galle",
+        "Property_amenities": "Open air-resturant, Tours, Airport pickup and drop, Rent bicycles"
+    },
+    {
+        "Hotel_ID": "H005",
+        "Hotel_name": "Le Grand Galle by Asia Leisure",
+        "Location": "No. 30, Park Road, Kaluwella, Galle",
+        "Price_per_Night_(LKR)": "30000",
+        "Budget_category": "High ",
+        "Contact_number": "0912 228 555",
+        "City": "Galle",
+        "Property_amenities": "Wi-Fi, Free parking, 24-hour reception, Express check-in/-out"
+    },
+    {
+        "Hotel_ID": "H006",
+        "Hotel_name": "Fort Bazaar",
+        "Location": "26 Church Street, Galle Fort, Galle",
+        "Price_per_Night_(LKR)": "28000",
+        "Budget_category": "High ",
+        "Contact_number": "077 363 8381",
+        "City": "Galle",
+        "Property_amenities": "Wi-Fi, Spa, Guided galle fort walk, Mini bar Drinks"
+    },
+    {
+        "Hotel_ID": "H007",
+        "Hotel_name": "KK Beach",
+        "Location": "Habaraduwa Dharmarama Mawatha, Galle",
+        "Price_per_Night_(LKR)": "62000",
+        "Budget_category": "Luxury",
+        "Contact_number": "077 203 5555",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Free Breakfast, Free Parking, Outdoor Pool, Air-conditioned, Laudry service"
+    },
+    {
+        "Hotel_ID": "H008",
+        "Hotel_name": "Amangalle",
+        "Location": "10 Church Street, Galle Fort, Galle",
+        "Price_per_Night_(LKR)": "85000",
+        "Budget_category": "Luxury",
+        "Contact_number": "091 2233388",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Free Breakfast, Free Parking, Outdoor Pool, Air-conditioned, Laudry service"
+    },
+    {
+        "Hotel_ID": "H009",
+        "Hotel_name": "Blue Beach Galle",
+        "Location": "10 Church Street, Galle Fort, Galle",
+        "Price_per_Night_(LKR)": "15721",
+        "Budget_category": "Medium",
+        "Contact_number": "912220220",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Free Breakfast, Free Parking, Accessible, Air-conditioned, Beach access"
+    },
+    {
+        "Hotel_ID": "H010",
+        "Hotel_name": "The Bartizan Galle Fort",
+        "Location": "77 Pedlar Street, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "39672",
+        "Budget_category": "Luxury",
+        "Contact_number": "912234020",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Free Breakfast, Free Parking, Accessible, Air-conditioned, Kid-Friendly"
+    },
+    {
+        "Hotel_ID": "H011",
+        "Hotel_name": "Secret Garden Galle Fort",
+        "Location": "Pedlar Street 66A, 8000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "13189",
+        "Budget_category": "Medium",
+        "Contact_number": "766825359",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Free Breakfast, Air-conditioned, Kid-Friendly, Room Service, Resturant"
+    },
+    {
+        "Hotel_ID": "H012",
+        "Hotel_name": "Ocean  Villa Den",
+        "Location": "No.23 Pitiwella, Boosa, 80270 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "14495",
+        "Budget_category": "Medium",
+        "Contact_number": "768694925",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Free Breakfast, Air-conditioned, Free Parking, Pool, Beach Access"
+    },
+    {
+        "Hotel_ID": "H013",
+        "Hotel_name": "The Lady Hill Hotel",
+        "Location": "No 29, Upper Dickson Road, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "39329",
+        "Budget_category": "Luxury",
+        "Contact_number": "766900058",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Paid Breakfast, Air-conditioned, Free Parking,  Outdoor Pool, Laudry Service"
+    },
+    {
+        "Hotel_ID": "H014",
+        "Hotel_name": "Ceylon Olive Galle",
+        "Location": "Ceylon olive, Udugama Road, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "44764",
+        "Budget_category": "Luxury",
+        "Contact_number": "766692186",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Paid Breakfast, Air-conditioned, Free Parking,  Pool, Kid-friendly "
+    },
+    {
+        "Hotel_ID": "H015",
+        "Hotel_name": "Wirdana Resort & Spa",
+        "Location": "Gingahawila Waththa, Kadurupe, Boossa | Wirdana Spa & Villas, Galle 80000, Sri Lanka , 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "49072",
+        "Budget_category": "Luxury",
+        "Contact_number": "+39 347 386 8459",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Paid Breakfast, Air-conditioned, Free Parking,  Pool, Accessible"
+    },
+    {
+        "Hotel_ID": "H016",
+        "Hotel_name": "de MODA Boutique Hotel Galle",
+        "Location": "9 Bope Cross Road, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "17053",
+        "Budget_category": "High ",
+        "Contact_number": "777701511",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Paid Breakfast, Air-conditioned, Free Parking,  Pool, Accessible"
+    },
+    {
+        "Hotel_ID": "H017",
+        "Hotel_name": "No 05 Middle Street",
+        "Location": "no.5 middle street, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "29310",
+        "Budget_category": "High ",
+        "Contact_number": "077 777 4450",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Paid Breakfast, Air-conditioned"
+    },
+    {
+        "Hotel_ID": "H018",
+        "Hotel_name": "City Stay",
+        "Location": "Approach to Galle Highway entrance road, Nugaduwa Galle, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "8586",
+        "Budget_category": "Medium",
+        "Contact_number": "0914 947 100",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Paid Breakfast, Air-conditioned, Free Parking,  Pool"
+    },
+    {
+        "Hotel_ID": "H019",
+        "Hotel_name": "Radisson Collection Resort Galle",
+        "Location": "724 MATARA ROAD, TALPE, 80615 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "59572",
+        "Budget_category": "Luxury",
+        "Contact_number": " 0912 088 880",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Paid breakfast, Free parking, Accessible, Indoor and outdoor pool, Air-conditioned"
+    },
+    {
+        "Hotel_ID": "H020",
+        "Hotel_name": "Olinda Galle",
+        "Location": "no 12a Bope Cross Road, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "28659",
+        "Budget_category": "High ",
+        "Contact_number": " 077 715 9999",
+        "City": "Galle",
+        "Property_amenities": "Wi-Fi, Paid breakfast, Indoor and outdoor pool, Air-conditioned"
+    },
+    {
+        "Hotel_ID": "H021",
+        "Hotel_name": "Heritage Samanthanna",
+        "Location": "10 Samantanne Estate Balagoda, Poddala, Galle ",
+        "Price_per_Night_(LKR)": "21494",
+        "Budget_category": "High ",
+        "Contact_number": "757505400",
+        "City": "Galle",
+        "Property_amenities": "Sauna, Outdoor Pool, Spa, Massage, Garden, Tennis court"
+    },
+    {
+        "Hotel_ID": "H022",
+        "Hotel_name": "Zichron Rest",
+        "Location": "Dangedara Road, Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "23285",
+        "Budget_category": "High ",
+        "Contact_number": " 077 297 7810",
+        "City": "Galle",
+        "Property_amenities": "Air-conditioned, Outdoor Swimming pool, Free private parking"
+    },
+    {
+        "Hotel_ID": "H023",
+        "Hotel_name": "The Quale Villa",
+        "Location": "The Quale,Madugoda Waththa,Kalahe,Wanchawala,Galle,Sri Lanka",
+        "Price_per_Night_(LKR)": "22501",
+        "Budget_category": "High ",
+        "Contact_number": "760423840",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Free breakfast, Free Parking, Room Service, Air-conditioned, Pool"
+    },
+    {
+        "Hotel_ID": "H024",
+        "Hotel_name": "Sol Y Mar - Unawatuna",
+        "Location": "119A Yaddehimulla Rd, Unawatuna",
+        "Price_per_Night_(LKR)": "12538",
+        "Budget_category": "Medium",
+        "Contact_number": "077 725 0074",
+        "City": "Galle",
+        "Property_amenities": "Free private parking, Garden, Wi-Fi"
+    },
+    {
+        "Hotel_ID": "H025",
+        "Hotel_name": "Ivy Lane Galle Fort",
+        "Location": "58A Lighthouse St, Galle ",
+        "Price_per_Night_(LKR)": "27669",
+        "Budget_category": "High ",
+        "Contact_number": "0912 251 324",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Air - conditioned, Airport shuttle"
+    },
+    {
+        "Hotel_ID": "H026",
+        "Hotel_name": "Yara Galle Fort",
+        "Location": "No.40,Middle Street Galle Fort, Galle, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "44409",
+        "Budget_category": "Luxury",
+        "Contact_number": "0912 228 830",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Paid breakfast, Free Parking, Air-conditioned, Laundry Service, Room Service"
+    },
+    {
+        "Hotel_ID": "H027",
+        "Hotel_name": "Bilin Tree House",
+        "Location": "No 4, Subadrarama Road, (Former Thekallagoda Road) Makuluwa,, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "64482",
+        "Budget_category": "Luxury",
+        "Contact_number": "071 592 7909",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Free breakfast, Free Parking, Outdoor pool, Air-conditioned, Kid-friendly"
+    },
+    {
+        "Hotel_ID": "H028",
+        "Hotel_name": "Villa Gady",
+        "Location": "Ambalanduwa watta, Aththaragoda,kaduruduwa,wanchawala,Galle, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "8956",
+        "Budget_category": "Medium",
+        "Contact_number": "075 814 5115",
+        "City": "Galle",
+        "Property_amenities": "Outdoor pool, Free Private parking, Garden"
+    },
+    {
+        "Hotel_ID": "H029",
+        "Hotel_name": "Green Residencies",
+        "Location": "Godakanda Road Karapitiya, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "33218",
+        "Budget_category": "Luxury",
+        "Contact_number": "723456785",
+        "City": "Galle",
+        "Property_amenities": "Wi-Fi, Free breakfast, Pool, Air-conditioned, Restaurant, Airport shuttle"
+    },
+    {
+        "Hotel_ID": "H030",
+        "Hotel_name": "Galle Penthouse 92",
+        "Location": "47, Siyatha, Ginganga Mawatha, Gintota, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "9059",
+        "Budget_category": "Medium",
+        "Contact_number": "789345456",
+        "City": "Galle",
+        "Property_amenities": "Free Parking, Beach access, Children's menu, In-room breakfast"
+    },
+    {
+        "Hotel_ID": "H031",
+        "Hotel_name": "Nasareth Villa Unawatuna",
+        "Location": "unawatuna, 80600 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "7402",
+        "Budget_category": "Medium",
+        "Contact_number": "077 693 7700",
+        "City": "Galle",
+        "Property_amenities": "Free private parking, Garden, Wi-Fi"
+    },
+    {
+        "Hotel_ID": "H032",
+        "Hotel_name": "Caliza Unawatuna",
+        "Location": "5/57,Godaudawatta,Samadhi Mawatha,Dalawella,Unawatuna 5/57, 80600 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "22819",
+        "Budget_category": "High ",
+        "Contact_number": "912030800",
+        "City": "Galle",
+        "Property_amenities": "Free bikes, Free Private parking, Outdoor Swimming Pool"
+    },
+    {
+        "Hotel_ID": "H034",
+        "Hotel_name": "Villa Amma Erna - Galle",
+        "Location": "Rathanyaka Estate Kalehe Wanchawala, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "26113",
+        "Budget_category": "High ",
+        "Contact_number": "076 801 0858",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Free breakfast, Free parking, Pool, Kid-friendly, Restaurant"
+    },
+    {
+        "Hotel_ID": "H035",
+        "Hotel_name": "Taavetti",
+        "Location": "266/10 SEA BREEZE GARDENT MAHAMODARA, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "31974",
+        "Budget_category": "Luxury",
+        "Contact_number": "077 500 6434",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Paid breakfast, Free parking, Indoor Pool, Air-conditioned, Laundary"
+    },
+    {
+        "Hotel_ID": "H036",
+        "Hotel_name": "The Fort House",
+        "Location": "72 Church Street, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "27978",
+        "Budget_category": "High ",
+        "Contact_number": "+91 99617 72274",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Free breakfast, Paid parking, Accessible, Air-conditioned, Laundry service"
+    },
+    {
+        "Hotel_ID": "H037",
+        "Hotel_name": "Samsara",
+        "Location": "292b Colombo - Galle Main Road, Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "17201",
+        "Budget_category": "High ",
+        "Contact_number": " 074 316 2803",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Free breakfast, Free parking, Pool, Kid-friendly, Restaurant"
+    },
+    {
+        "Hotel_ID": "H038",
+        "Hotel_name": "Villa Upper Dickson",
+        "Location": "7, Upper Dickson Road, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "15049",
+        "Budget_category": "Medium",
+        "Contact_number": "077 268 0477",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Free breakfast, Free parking, Pool, Air-conditioned, Kid-friendly"
+    },
+    {
+        "Hotel_ID": "H039",
+        "Hotel_name": "Ravo Hotel",
+        "Location": "No 206, Old Matara Road, Pettigalawatta, Galle, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "23685",
+        "Budget_category": "High ",
+        "Contact_number": "077 755 8855",
+        "City": "Galle",
+        "Property_amenities": "Free private parking, Garden, Wi-Fi"
+    },
+    {
+        "Hotel_ID": "H040",
+        "Hotel_name": "Care Galle Fort",
+        "Location": "21 Middle Street, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "7402",
+        "Budget_category": "Medium",
+        "Contact_number": " 071 334 4515",
+        "City": "Galle",
+        "Property_amenities": "Wi-Fi, Paid breakfast,  Parking, Air-conditioned, Laundry Service, Room Service"
+    },
+    {
+        "Hotel_ID": "H041",
+        "Hotel_name": "Moi Galle Fort by DBI",
+        "Location": "50 Leyn Baan Street, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "9512",
+        "Budget_category": "Medium",
+        "Contact_number": "074 123 2377",
+        "City": "Galle",
+        "Property_amenities": "Free private parking, Gastreet, 80000 galleen"
+    },
+    {
+        "Hotel_ID": "H042",
+        "Hotel_name": "Hilltop Fortview Galle",
+        "Location": "48 Dharmaraja Mawatha, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "9918",
+        "Budget_category": "Medium",
+        "Contact_number": "915587984",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Paid breakfast, Free Parking, Air-conditioned, Laundry Service, Room Service"
+    },
+    {
+        "Hotel_ID": "H043",
+        "Hotel_name": "Sri Lankan Villa",
+        "Location": "126, Giniwella Road Kathaluwa, Ahangama, 80650 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "14507",
+        "Budget_category": "Medium",
+        "Contact_number": "7727778051",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Paid Breakfast, Air-conditioned, Free Parking,  Pool"
+    },
+    {
+        "Hotel_ID": "H044",
+        "Hotel_name": "Arken Lanka",
+        "Location": "No 42 Sangamiththa Ln, Galle , Sri Lanka, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "5596",
+        "Budget_category": "Low",
+        "Contact_number": "0913 905 358",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Air- conditioned, Free Private parking, Room Service"
+    },
+    {
+        "Hotel_ID": "H045",
+        "Hotel_name": "ClosenBerg Hotel",
+        "Location": "11 Closenberg Road, Galle. Sri Lanka ., 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "22086",
+        "Budget_category": "High ",
+        "Contact_number": "074 153 1722",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Free breakfast, Parking, Outdoor Pool, Air-conditioned, Laudry service"
+    },
+    {
+        "Hotel_ID": "H046",
+        "Hotel_name": "Hotel Blue Heaven",
+        "Location": "305 Kanampitiya Road, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "7147",
+        "Budget_category": "Medium",
+        "Contact_number": "076 050 7450",
+        "City": "Galle",
+        "Property_amenities": "Wi-Fi, Paid breakfast, Free Parking, Air-conditioned, Laundry Service, Room Service"
+    },
+    {
+        "Hotel_ID": "H047",
+        "Hotel_name": "Arabella on Boossa",
+        "Location": "39 Galle Road,, 80280 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "51414",
+        "Budget_category": "Luxury",
+        "Contact_number": "077 704 5510",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Free breakfast, Parking, Outdoor Pool, Air-conditioned, Laudry service"
+    },
+    {
+        "Hotel_ID": "H048",
+        "Hotel_name": "Pinnacle Boutique Villas",
+        "Location": "No.443/2 C Wackwella Road, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "29606",
+        "Budget_category": "High ",
+        "Contact_number": "077 791 0747",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Free breakfast, Free parking, Pool, Air-conditioned, Kid-friendly"
+    },
+    {
+        "Hotel_ID": "H049",
+        "Hotel_name": "Linda Cottage",
+        "Location": "1/1,Templer's Road,Kaluwella,Galle, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "4441",
+        "Budget_category": "Low",
+        "Contact_number": " 076 489 9773",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Parking, Kid-friendly"
+    },
+    {
+        "Hotel_ID": "H050",
+        "Hotel_name": "Hotel Sea Line",
+        "Location": "108/1, Pettigalawatta., 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "10685",
+        "Budget_category": "Medium",
+        "Contact_number": " 0912 222 888",
+        "City": "Galle",
+        "Property_amenities": "Wi-Fi, Free breakfast, Parking, Kid-friendly, Restaurant"
+    },
+    {
+        "Hotel_ID": "H051",
+        "Hotel_name": "Galle Camelia",
+        "Location": "Kohobangawatha,Navinna road Kithulampitiya,Uluwitike, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "5921",
+        "Budget_category": "Low",
+        "Contact_number": "077 973 3624",
+        "City": "Galle",
+        "Property_amenities": "Air-conditioning, Minibar, Refrigerator, Free Wi-Fi"
+    },
+    {
+        "Hotel_ID": "H052",
+        "Hotel_name": "Villa Tranquil",
+        "Location": "4538, Madurumalgodawatta Road Pinnaduwa Exit, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "31974",
+        "Budget_category": "Luxury",
+        "Contact_number": "91784889",
+        "City": "Galle",
+        "Property_amenities": "Private beach, Beach access, Sun terrace, Garden area, Air conditioned"
+    },
+    {
+        "Hotel_ID": "H053",
+        "Hotel_name": "Shiranath Hotel",
+        "Location": "2nd cross road pettigalawatta, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "2665",
+        "Budget_category": "Low",
+        "Contact_number": " 0912 232 080",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Restaurant, Children activities, Free parking, "
+    },
+    {
+        "Hotel_ID": "H054",
+        "Hotel_name": "Sakuna Arana",
+        "Location": "Kosgaha Junction Shop, bentota sakuna arana, 80570 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "22205",
+        "Budget_category": "High ",
+        "Contact_number": "071 055 6556",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Free breakfast, Pool, Hot tub, Restaurant, Air-conditioned"
+    },
+    {
+        "Hotel_ID": "H055",
+        "Hotel_name": " Sun Shine Inn Unawatuna",
+        "Location": "2735+9CC Unawatuna, 80600 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "9237",
+        "Budget_category": "Medium",
+        "Contact_number": "0914 380 667",
+        "City": "Galle",
+        "Property_amenities": "Pool, Free private parking, Free Wi-Fi"
+    },
+    {
+        "Hotel_ID": "H056",
+        "Hotel_name": "8 Leyn Baan Street",
+        "Location": "no 8 Leyn Baan Street, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "45037",
+        "Budget_category": "Luxury",
+        "Contact_number": "077 900 0077",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Pool"
+    },
+    {
+        "Hotel_ID": "H057",
+        "Hotel_name": "Tharusha Hotel",
+        "Location": "502/A, Akuressa Road, Nugaduwa, Galle, Sri Lanka, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "29310",
+        "Budget_category": "High ",
+        "Contact_number": "0912 232 864",
+        "City": "Galle",
+        "Property_amenities": "Pool, Free private parking, Free Wi-Fi"
+    },
+    {
+        "Hotel_ID": "H058",
+        "Hotel_name": "JH Villa",
+        "Location": "JH Villa, Bathalawatte, Palatugaha, Thalpe, Habaraduwa, Sri Lanka, 80630 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "60618",
+        "Budget_category": "Luxury",
+        "Contact_number": "077 770 0352",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Paid breakfast, Free parking, Accessible, Outdoor Pool, Air-condtioned"
+    },
+    {
+        "Hotel_ID": "H059",
+        "Hotel_name": "The Coastal Village Cabanas",
+        "Location": "Kathaluwa Ahangama, 80650 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "17704",
+        "Budget_category": "High ",
+        "Contact_number": "071 864 3774",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Free breakfast, Free parking, Pool, Air-condtioned, Restaurant"
+    },
+    {
+        "Hotel_ID": "H060",
+        "Hotel_name": "Merenchi",
+        "Location": "535/4 Colombo Road, 80000 Galle, Sri Lanka",
+        "Price_per_Night_(LKR)": "16283",
+        "Budget_category": "High ",
+        "Contact_number": "768295906",
+        "City": "Galle",
+        "Property_amenities": "Free Wi-Fi, Paid breakfast, Free parking, Accessible, Outdoor Pool, Air-condtioned"
+    }
+]
