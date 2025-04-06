@@ -15,12 +15,6 @@ const GalleryCom = () => {
         <GalleryContainer />
       </div>
       
-      <footer className="w-full py-8 px-4 mt-auto bg-gradient-to-r from-blue-600 to-blue-800 text-white text-center">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-blue-100 mb-3">Experience the depth and beauty of Sri Lanka</p>
-          <p className="text-blue-100 text-sm">&copy; {new Date().getFullYear()} CheapChaser Collection</p>
-        </div>
-      </footer>
       <Footer/>
     </main>
   );
