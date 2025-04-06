@@ -1,0 +1,1502 @@
+[
+    {
+        "Restaurant Name": "KK Beach Bamboo Restaurant",
+        "Budget Range": "High",
+        "Meal Type": "Lunch",
+        "Price per Person": "4178",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Weligama",
+        "Cuisine Type": "Seafood",
+        "Contact Number": "+94 79 6383264"
+    },
+    {
+        "Restaurant Name": "The Lady Hill",
+        "Budget Range": "Low",
+        "Meal Type": "Dinner",
+        "Price per Person": "1281",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Galle",
+        "Cuisine Type": "Middle Eastern",
+        "Contact Number": "+94 79 5072716"
+    },
+    {
+        "Restaurant Name": "Fort Bazaar",
+        "Budget Range": "Luxury",
+        "Meal Type": "Breakfast",
+        "Price per Person": "2795",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Weligama",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 77 3866304"
+    },
+    {
+        "Restaurant Name": "The Sun House",
+        "Budget Range": "High",
+        "Meal Type": "Breakfast",
+        "Price per Person": "1712",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Unawatuna",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 74 9032806"
+    },
+    {
+        "Restaurant Name": "The Tree's Restaurant",
+        "Budget Range": "Low",
+        "Meal Type": "Dinner",
+        "Price per Person": "825",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Unawatuna",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 78 2970366"
+    },
+    {
+        "Restaurant Name": "Ocean View Caf\u00e9",
+        "Budget Range": "Low",
+        "Meal Type": "Breakfast",
+        "Price per Person": "956",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Galle",
+        "Cuisine Type": "Vegetarian",
+        "Contact Number": "+94 78 3527694"
+    },
+    {
+        "Restaurant Name": "Ceylon Curry House",
+        "Budget Range": "High",
+        "Meal Type": "Dinner",
+        "Price per Person": "4472",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Mirissa",
+        "Cuisine Type": "Caribbean",
+        "Contact Number": "+94 78 3002198"
+    },
+    {
+        "Restaurant Name": "The Tree's Restaurant",
+        "Budget Range": "Low",
+        "Meal Type": "Dinner",
+        "Price per Person": "1617",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Tangalle",
+        "Cuisine Type": "Italian",
+        "Contact Number": "+94 74 9385122"
+    },
+    {
+        "Restaurant Name": "A Minute by Tuk Tuk",
+        "Budget Range": "High",
+        "Meal Type": "Breakfast",
+        "Price per Person": "2416",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 72 3729943"
+    },
+    {
+        "Restaurant Name": "No. 1 Dewmini Roti Shop",
+        "Budget Range": "Low",
+        "Meal Type": "Breakfast",
+        "Price per Person": "526",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Unawatuna",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 74 9013067"
+    },
+    {
+        "Restaurant Name": "Mansion Cafe",
+        "Budget Range": "Medium",
+        "Meal Type": "Dinner",
+        "Price per Person": "2465",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Tangalle",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 77 4951520"
+    },
+    {
+        "Restaurant Name": "Dream Family Restaurant",
+        "Budget Range": "Medium",
+        "Meal Type": "Breakfast",
+        "Price per Person": "1260",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Bentota",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 70 8859768"
+    },
+    {
+        "Restaurant Name": "Rampart Hotel",
+        "Budget Range": "Luxury",
+        "Meal Type": "Breakfast",
+        "Price per Person": "3360",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Mirissa",
+        "Cuisine Type": "Caribbean",
+        "Contact Number": "+94 75 6335226"
+    },
+    {
+        "Restaurant Name": "The Bungalow Galle Fort",
+        "Budget Range": "High",
+        "Meal Type": "Dinner",
+        "Price per Person": "3864",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Tangalle",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 76 7987292"
+    },
+    {
+        "Restaurant Name": "Le Cafe Francais Bakery & Boutique",
+        "Budget Range": "Low",
+        "Meal Type": "Breakfast",
+        "Price per Person": "978",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 72 4463718"
+    },
+    {
+        "Restaurant Name": "The Lady Hill",
+        "Budget Range": "High",
+        "Meal Type": "Lunch",
+        "Price per Person": "4966",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Bentota",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 78 3554783"
+    },
+    {
+        "Restaurant Name": "Le Cafe Francais Bakery & Boutique",
+        "Budget Range": "Low",
+        "Meal Type": "Lunch",
+        "Price per Person": "1487",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Tangalle",
+        "Cuisine Type": "Chinese",
+        "Contact Number": "+94 78 1046537"
+    },
+    {
+        "Restaurant Name": "Rampart Hotel",
+        "Budget Range": "Luxury",
+        "Meal Type": "Lunch",
+        "Price per Person": "7982",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Ahangama",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 74 3144515"
+    },
+    {
+        "Restaurant Name": "Ceylon Curry House",
+        "Budget Range": "Medium",
+        "Meal Type": "Dinner",
+        "Price per Person": "2644",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 76 3295572"
+    },
+    {
+        "Restaurant Name": "Sea Green Restaurant",
+        "Budget Range": "Medium",
+        "Meal Type": "Lunch",
+        "Price per Person": "2082",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "Japanese",
+        "Contact Number": "+94 71 8506052"
+    },
+    {
+        "Restaurant Name": "Ceylon Curry House",
+        "Budget Range": "High",
+        "Meal Type": "Breakfast",
+        "Price per Person": "1744",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Unawatuna",
+        "Cuisine Type": "Chinese",
+        "Contact Number": "+94 77 5977634"
+    },
+    {
+        "Restaurant Name": "KK Beach Bamboo Restaurant",
+        "Budget Range": "Low",
+        "Meal Type": "Breakfast",
+        "Price per Person": "916",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 74 9470439"
+    },
+    {
+        "Restaurant Name": "Wild Beach Bar",
+        "Budget Range": "Luxury",
+        "Meal Type": "Breakfast",
+        "Price per Person": "3327",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 72 1199218"
+    },
+    {
+        "Restaurant Name": "Ceylon Curry House",
+        "Budget Range": "High",
+        "Meal Type": "Lunch",
+        "Price per Person": "5360",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Unawatuna",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 70 8136539"
+    },
+    {
+        "Restaurant Name": "Fort Bazaar",
+        "Budget Range": "Luxury",
+        "Meal Type": "Lunch",
+        "Price per Person": "7445",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Unawatuna",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 75 8150266"
+    },
+    {
+        "Restaurant Name": "No. 1 Dewmini Roti Shop",
+        "Budget Range": "Low",
+        "Meal Type": "Lunch",
+        "Price per Person": "1089",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Ahangama",
+        "Cuisine Type": "South Asian",
+        "Contact Number": "+94 70 8595245"
+    },
+    {
+        "Restaurant Name": "A Minute by Tuk Tuk",
+        "Budget Range": "Low",
+        "Meal Type": "Lunch",
+        "Price per Person": "1254",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Tangalle",
+        "Cuisine Type": "Latin American",
+        "Contact Number": "+94 70 1597487"
+    },
+    {
+        "Restaurant Name": "Ocean View Caf\u00e9",
+        "Budget Range": "Medium",
+        "Meal Type": "Lunch",
+        "Price per Person": "2795",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Ahangama",
+        "Cuisine Type": "South Asian",
+        "Contact Number": "+94 72 8648039"
+    },
+    {
+        "Restaurant Name": "Ceylon Curry House",
+        "Budget Range": "Low",
+        "Meal Type": "Dinner",
+        "Price per Person": "1339",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Tangalle",
+        "Cuisine Type": "Fusion",
+        "Contact Number": "+94 70 9043504"
+    },
+    {
+        "Restaurant Name": "Mansion Cafe",
+        "Budget Range": "Luxury",
+        "Meal Type": "Lunch",
+        "Price per Person": "6916",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Tangalle",
+        "Cuisine Type": "Fusion",
+        "Contact Number": "+94 73 2343136"
+    },
+    {
+        "Restaurant Name": "The Lady Hill",
+        "Budget Range": "Luxury",
+        "Meal Type": "Dinner",
+        "Price per Person": "7070",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "Seafood",
+        "Contact Number": "+94 77 7627981"
+    },
+    {
+        "Restaurant Name": "Fort Bazaar",
+        "Budget Range": "Luxury",
+        "Meal Type": "Breakfast",
+        "Price per Person": "3301",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Galle",
+        "Cuisine Type": "Turkish",
+        "Contact Number": "+94 72 2040572"
+    },
+    {
+        "Restaurant Name": "No. 1 Dewmini Roti Shop",
+        "Budget Range": "Medium",
+        "Meal Type": "Breakfast",
+        "Price per Person": "1125",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Bentota",
+        "Cuisine Type": "Japanese",
+        "Contact Number": "+94 70 7397348"
+    },
+    {
+        "Restaurant Name": "No. 1 Dewmini Roti Shop",
+        "Budget Range": "Low",
+        "Meal Type": "Breakfast",
+        "Price per Person": "747",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Mirissa",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 76 6257961"
+    },
+    {
+        "Restaurant Name": "The Tuna and The Crab",
+        "Budget Range": "Luxury",
+        "Meal Type": "Dinner",
+        "Price per Person": "7020",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Tangalle",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 71 9329670"
+    },
+    {
+        "Restaurant Name": "Ceylon Curry House",
+        "Budget Range": "Low",
+        "Meal Type": "Breakfast",
+        "Price per Person": "861",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 75 9515420"
+    },
+    {
+        "Restaurant Name": "The Lady Hill",
+        "Budget Range": "Medium",
+        "Meal Type": "Dinner",
+        "Price per Person": "2157",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Ahangama",
+        "Cuisine Type": "Caribbean",
+        "Contact Number": "+94 79 5570692"
+    },
+    {
+        "Restaurant Name": "Fort Bazaar",
+        "Budget Range": "Luxury",
+        "Meal Type": "Dinner",
+        "Price per Person": "6463",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Galle",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 77 1995166"
+    },
+    {
+        "Restaurant Name": "No. 1 Dewmini Roti Shop",
+        "Budget Range": "Luxury",
+        "Meal Type": "Dinner",
+        "Price per Person": "7105",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Tangalle",
+        "Cuisine Type": "Fusion",
+        "Contact Number": "+94 71 4690539"
+    },
+    {
+        "Restaurant Name": "The Tuna and The Crab",
+        "Budget Range": "Luxury",
+        "Meal Type": "Lunch",
+        "Price per Person": "6817",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Matara",
+        "Cuisine Type": "South Asian",
+        "Contact Number": "+94 71 2517072"
+    },
+    {
+        "Restaurant Name": "Lighthouse Grill",
+        "Budget Range": "Medium",
+        "Meal Type": "Breakfast",
+        "Price per Person": "1258",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "French",
+        "Contact Number": "+94 77 1106773"
+    },
+    {
+        "Restaurant Name": "Sea Green Restaurant",
+        "Budget Range": "Low",
+        "Meal Type": "Dinner",
+        "Price per Person": "1472",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Galle",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 71 4843580"
+    },
+    {
+        "Restaurant Name": "Lighthouse Grill",
+        "Budget Range": "High",
+        "Meal Type": "Breakfast",
+        "Price per Person": "2362",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Weligama",
+        "Cuisine Type": "Mexican",
+        "Contact Number": "+94 76 8784233"
+    },
+    {
+        "Restaurant Name": "Lighthouse Grill",
+        "Budget Range": "Low",
+        "Meal Type": "Lunch",
+        "Price per Person": "1212",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Galle",
+        "Cuisine Type": "Vegetarian",
+        "Contact Number": "+94 78 1576307"
+    },
+    {
+        "Restaurant Name": "The Tuna and The Crab",
+        "Budget Range": "Luxury",
+        "Meal Type": "Dinner",
+        "Price per Person": "6802",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Matara",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 78 4156427"
+    },
+    {
+        "Restaurant Name": "Mansion Cafe",
+        "Budget Range": "Low",
+        "Meal Type": "Dinner",
+        "Price per Person": "786",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Bentota",
+        "Cuisine Type": "Mexican",
+        "Contact Number": "+94 79 6828253"
+    },
+    {
+        "Restaurant Name": "The Tuna and The Crab",
+        "Budget Range": "Luxury",
+        "Meal Type": "Lunch",
+        "Price per Person": "5790",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Galle",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 79 2796698"
+    },
+    {
+        "Restaurant Name": "Mansion Cafe",
+        "Budget Range": "Luxury",
+        "Meal Type": "Dinner",
+        "Price per Person": "6806",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Tangalle",
+        "Cuisine Type": "Chinese",
+        "Contact Number": "+94 77 6817790"
+    },
+    {
+        "Restaurant Name": "The Tree's Restaurant",
+        "Budget Range": "Luxury",
+        "Meal Type": "Lunch",
+        "Price per Person": "8291",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Matara",
+        "Cuisine Type": "Thai",
+        "Contact Number": "+94 77 7427105"
+    },
+    {
+        "Restaurant Name": "Wild Beach Bar",
+        "Budget Range": "Low",
+        "Meal Type": "Dinner",
+        "Price per Person": "1629",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Mirissa",
+        "Cuisine Type": "South Asian",
+        "Contact Number": "+94 74 7406929"
+    },
+    {
+        "Restaurant Name": "Le Cafe Francais Bakery & Boutique",
+        "Budget Range": "High",
+        "Meal Type": "Dinner",
+        "Price per Person": "4580",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Mirissa",
+        "Cuisine Type": "Vegetarian",
+        "Contact Number": "+94 73 6991503"
+    },
+    {
+        "Restaurant Name": "The Tree's Restaurant",
+        "Budget Range": "Luxury",
+        "Meal Type": "Lunch",
+        "Price per Person": "6796",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Galle",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 79 8890496"
+    },
+    {
+        "Restaurant Name": "No. 1 Dewmini Roti Shop",
+        "Budget Range": "High",
+        "Meal Type": "Breakfast",
+        "Price per Person": "2309",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Mirissa",
+        "Cuisine Type": "Vegetarian",
+        "Contact Number": "+94 76 1810478"
+    },
+    {
+        "Restaurant Name": "Fort Bazaar",
+        "Budget Range": "Low",
+        "Meal Type": "Breakfast",
+        "Price per Person": "892",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Weligama",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 72 5675560"
+    },
+    {
+        "Restaurant Name": "Sea Green Restaurant",
+        "Budget Range": "Medium",
+        "Meal Type": "Breakfast",
+        "Price per Person": "1461",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Galle",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 78 4221261"
+    },
+    {
+        "Restaurant Name": "Ocean View Caf\u00e9",
+        "Budget Range": "Luxury",
+        "Meal Type": "Dinner",
+        "Price per Person": "6986",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Tangalle",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 73 4544724"
+    },
+    {
+        "Restaurant Name": "The Sun House",
+        "Budget Range": "Luxury",
+        "Meal Type": "Lunch",
+        "Price per Person": "6073",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Matara",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 71 3393759"
+    },
+    {
+        "Restaurant Name": "Fort Bazaar",
+        "Budget Range": "Medium",
+        "Meal Type": "Dinner",
+        "Price per Person": "1927",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Galle",
+        "Cuisine Type": "Thai",
+        "Contact Number": "+94 72 4202266"
+    },
+    {
+        "Restaurant Name": "Ceylon Curry House",
+        "Budget Range": "Medium",
+        "Meal Type": "Dinner",
+        "Price per Person": "1817",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Ahangama",
+        "Cuisine Type": "Seafood",
+        "Contact Number": "+94 70 1962464"
+    },
+    {
+        "Restaurant Name": "Lighthouse Grill",
+        "Budget Range": "High",
+        "Meal Type": "Lunch",
+        "Price per Person": "4036",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Mirissa",
+        "Cuisine Type": "Caribbean",
+        "Contact Number": "+94 72 8715406"
+    },
+    {
+        "Restaurant Name": "Wild Beach Bar",
+        "Budget Range": "Medium",
+        "Meal Type": "Lunch",
+        "Price per Person": "2011",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Galle",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 75 1906112"
+    },
+    {
+        "Restaurant Name": "No. 1 Dewmini Roti Shop",
+        "Budget Range": "Medium",
+        "Meal Type": "Lunch",
+        "Price per Person": "1899",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Bentota",
+        "Cuisine Type": "Vegetarian",
+        "Contact Number": "+94 77 9518018"
+    },
+    {
+        "Restaurant Name": "The Tree's Restaurant",
+        "Budget Range": "Medium",
+        "Meal Type": "Breakfast",
+        "Price per Person": "1175",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Unawatuna",
+        "Cuisine Type": "French",
+        "Contact Number": "+94 75 6836573"
+    },
+    {
+        "Restaurant Name": "The Sun House",
+        "Budget Range": "Low",
+        "Meal Type": "Dinner",
+        "Price per Person": "844",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "Caribbean",
+        "Contact Number": "+94 73 3061717"
+    },
+    {
+        "Restaurant Name": "Ocean View Caf\u00e9",
+        "Budget Range": "High",
+        "Meal Type": "Breakfast",
+        "Price per Person": "2209",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Weligama",
+        "Cuisine Type": "International",
+        "Contact Number": "+94 77 3737987"
+    },
+    {
+        "Restaurant Name": "Cactus Lounge Restaurant",
+        "Budget Range": "High",
+        "Meal Type": "Lunch",
+        "Price per Person": "4406",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Ahangama",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 78 7398471"
+    },
+    {
+        "Restaurant Name": "The Tree's Restaurant",
+        "Budget Range": "Medium",
+        "Meal Type": "Breakfast",
+        "Price per Person": "1115",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Galle",
+        "Cuisine Type": "Middle Eastern",
+        "Contact Number": "+94 77 5183304"
+    },
+    {
+        "Restaurant Name": "The Pasta Factory",
+        "Budget Range": "Medium",
+        "Meal Type": "Dinner",
+        "Price per Person": "2915",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Weligama",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 71 3904259"
+    },
+    {
+        "Restaurant Name": "Le Cafe Francais Bakery & Boutique",
+        "Budget Range": "Medium",
+        "Meal Type": "Lunch",
+        "Price per Person": "1990",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Unawatuna",
+        "Cuisine Type": "Italian",
+        "Contact Number": "+94 70 6914534"
+    },
+    {
+        "Restaurant Name": "Mansion Cafe",
+        "Budget Range": "Medium",
+        "Meal Type": "Lunch",
+        "Price per Person": "2779",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Unawatuna",
+        "Cuisine Type": "Middle Eastern",
+        "Contact Number": "+94 71 9243620"
+    },
+    {
+        "Restaurant Name": "Sea Green Restaurant",
+        "Budget Range": "Luxury",
+        "Meal Type": "Breakfast",
+        "Price per Person": "3293",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Matara",
+        "Cuisine Type": "Vegetarian",
+        "Contact Number": "+94 78 8923380"
+    },
+    {
+        "Restaurant Name": "Dream Family Restaurant",
+        "Budget Range": "Low",
+        "Meal Type": "Breakfast",
+        "Price per Person": "859",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Unawatuna",
+        "Cuisine Type": "Latin American",
+        "Contact Number": "+94 73 3751763"
+    },
+    {
+        "Restaurant Name": "KK Beach Bamboo Restaurant",
+        "Budget Range": "Medium",
+        "Meal Type": "Breakfast",
+        "Price per Person": "1404",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Matara",
+        "Cuisine Type": "South Asian",
+        "Contact Number": "+94 76 1837980"
+    },
+    {
+        "Restaurant Name": "Ceylon Curry House",
+        "Budget Range": "High",
+        "Meal Type": "Lunch",
+        "Price per Person": "3279",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Mirissa",
+        "Cuisine Type": "Mediterranean",
+        "Contact Number": "+94 72 1917980"
+    },
+    {
+        "Restaurant Name": "Fort Bazaar",
+        "Budget Range": "Luxury",
+        "Meal Type": "Dinner",
+        "Price per Person": "5024",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Galle",
+        "Cuisine Type": "Middle Eastern",
+        "Contact Number": "+94 72 8699167"
+    },
+    {
+        "Restaurant Name": "Fort Bazaar",
+        "Budget Range": "Low",
+        "Meal Type": "Dinner",
+        "Price per Person": "1615",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Unawatuna",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 78 3362921"
+    },
+    {
+        "Restaurant Name": "Rampart Hotel",
+        "Budget Range": "Low",
+        "Meal Type": "Lunch",
+        "Price per Person": "1083",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Tangalle",
+        "Cuisine Type": "Japanese",
+        "Contact Number": "+94 77 3304490"
+    },
+    {
+        "Restaurant Name": "No. 1 Dewmini Roti Shop",
+        "Budget Range": "High",
+        "Meal Type": "Breakfast",
+        "Price per Person": "2230",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Matara",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 70 5799717"
+    },
+    {
+        "Restaurant Name": "Wild Beach Bar",
+        "Budget Range": "Low",
+        "Meal Type": "Lunch",
+        "Price per Person": "1797",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Tangalle",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 72 7877614"
+    },
+    {
+        "Restaurant Name": "The Lady Hill",
+        "Budget Range": "Luxury",
+        "Meal Type": "Breakfast",
+        "Price per Person": "2850",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 75 6303376"
+    },
+    {
+        "Restaurant Name": "KK Beach Bamboo Restaurant",
+        "Budget Range": "High",
+        "Meal Type": "Dinner",
+        "Price per Person": "4899",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Bentota",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 71 4956343"
+    },
+    {
+        "Restaurant Name": "Ceylon Curry House",
+        "Budget Range": "Medium",
+        "Meal Type": "Breakfast",
+        "Price per Person": "1339",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Mirissa",
+        "Cuisine Type": "Middle Eastern",
+        "Contact Number": "+94 74 9386240"
+    },
+    {
+        "Restaurant Name": "Ceylon Curry House",
+        "Budget Range": "Luxury",
+        "Meal Type": "Dinner",
+        "Price per Person": "5134",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Matara",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 72 7144025"
+    },
+    {
+        "Restaurant Name": "Wild Beach Bar",
+        "Budget Range": "High",
+        "Meal Type": "Breakfast",
+        "Price per Person": "2306",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Tangalle",
+        "Cuisine Type": "Japanese",
+        "Contact Number": "+94 70 5758061"
+    },
+    {
+        "Restaurant Name": "Sea Green Restaurant",
+        "Budget Range": "Luxury",
+        "Meal Type": "Breakfast",
+        "Price per Person": "3039",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Bentota",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 73 1798316"
+    },
+    {
+        "Restaurant Name": "Ocean View Caf\u00e9",
+        "Budget Range": "Low",
+        "Meal Type": "Breakfast",
+        "Price per Person": "790",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "Turkish",
+        "Contact Number": "+94 78 5530448"
+    },
+    {
+        "Restaurant Name": "The Tuna and The Crab",
+        "Budget Range": "Medium",
+        "Meal Type": "Breakfast",
+        "Price per Person": "1302",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Tangalle",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 73 2738973"
+    },
+    {
+        "Restaurant Name": "The Pasta Factory",
+        "Budget Range": "Luxury",
+        "Meal Type": "Breakfast",
+        "Price per Person": "3321",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Ahangama",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 75 8966135"
+    },
+    {
+        "Restaurant Name": "The Tuna and The Crab",
+        "Budget Range": "Low",
+        "Meal Type": "Lunch",
+        "Price per Person": "860",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Weligama",
+        "Cuisine Type": "Mexican",
+        "Contact Number": "+94 70 1763345"
+    },
+    {
+        "Restaurant Name": "Wild Beach Bar",
+        "Budget Range": "Medium",
+        "Meal Type": "Breakfast",
+        "Price per Person": "1018",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Galle",
+        "Cuisine Type": "Mexican",
+        "Contact Number": "+94 71 8488779"
+    },
+    {
+        "Restaurant Name": "The Sun House",
+        "Budget Range": "High",
+        "Meal Type": "Lunch",
+        "Price per Person": "5296",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Mirissa",
+        "Cuisine Type": "Seafood",
+        "Contact Number": "+94 74 1297337"
+    },
+    {
+        "Restaurant Name": "Cactus Lounge Restaurant",
+        "Budget Range": "Luxury",
+        "Meal Type": "Lunch",
+        "Price per Person": "7996",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Unawatuna",
+        "Cuisine Type": "Mexican",
+        "Contact Number": "+94 73 6013312"
+    },
+    {
+        "Restaurant Name": "Dream Family Restaurant",
+        "Budget Range": "Low",
+        "Meal Type": "Breakfast",
+        "Price per Person": "818",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Bentota",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 75 1297868"
+    },
+    {
+        "Restaurant Name": "Fort Bazaar",
+        "Budget Range": "Medium",
+        "Meal Type": "Dinner",
+        "Price per Person": "2623",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "International",
+        "Contact Number": "+94 77 1461379"
+    },
+    {
+        "Restaurant Name": "Fort Bazaar",
+        "Budget Range": "Low",
+        "Meal Type": "Lunch",
+        "Price per Person": "1009",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Galle",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 76 2048466"
+    },
+    {
+        "Restaurant Name": "Rampart Hotel",
+        "Budget Range": "Medium",
+        "Meal Type": "Lunch",
+        "Price per Person": "2825",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Ahangama",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 75 6394010"
+    },
+    {
+        "Restaurant Name": "The Bungalow Galle Fort",
+        "Budget Range": "High",
+        "Meal Type": "Dinner",
+        "Price per Person": "4291",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Weligama",
+        "Cuisine Type": "Vegetarian",
+        "Contact Number": "+94 78 5647347"
+    },
+    {
+        "Restaurant Name": "Fort Bazaar",
+        "Budget Range": "Luxury",
+        "Meal Type": "Lunch",
+        "Price per Person": "7402",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "Fusion",
+        "Contact Number": "+94 72 3276728"
+    },
+    {
+        "Restaurant Name": "The Sun House",
+        "Budget Range": "Medium",
+        "Meal Type": "Breakfast",
+        "Price per Person": "1352",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Unawatuna",
+        "Cuisine Type": "French",
+        "Contact Number": "+94 72 5304474"
+    },
+    {
+        "Restaurant Name": "KK Beach Bamboo Restaurant",
+        "Budget Range": "Luxury",
+        "Meal Type": "Lunch",
+        "Price per Person": "7588",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 70 7939431"
+    },
+    {
+        "Restaurant Name": "Dream Family Restaurant",
+        "Budget Range": "High",
+        "Meal Type": "Breakfast",
+        "Price per Person": "1773",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Matara",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 73 4895379"
+    },
+    {
+        "Restaurant Name": "Cactus Lounge Restaurant",
+        "Budget Range": "Medium",
+        "Meal Type": "Breakfast",
+        "Price per Person": "1001",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "French",
+        "Contact Number": "+94 78 2783510"
+    },
+    {
+        "Restaurant Name": "Dream Family Restaurant",
+        "Budget Range": "Low",
+        "Meal Type": "Dinner",
+        "Price per Person": "840",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Unawatuna",
+        "Cuisine Type": "Italian",
+        "Contact Number": "+94 76 7447244"
+    },
+    {
+        "Restaurant Name": "The Lady Hill",
+        "Budget Range": "Low",
+        "Meal Type": "Breakfast",
+        "Price per Person": "714",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Bentota",
+        "Cuisine Type": "Mediterranean",
+        "Contact Number": "+94 70 3260452"
+    },
+    {
+        "Restaurant Name": "Lighthouse Grill",
+        "Budget Range": "High",
+        "Meal Type": "Dinner",
+        "Price per Person": "4612",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Matara",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 75 6434238"
+    },
+    {
+        "Restaurant Name": "Le Cafe Francais Bakery & Boutique",
+        "Budget Range": "Medium",
+        "Meal Type": "Dinner",
+        "Price per Person": "1842",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Ahangama",
+        "Cuisine Type": "Chinese",
+        "Contact Number": "+94 77 4355712"
+    },
+    {
+        "Restaurant Name": "The Tree's Restaurant",
+        "Budget Range": "Medium",
+        "Meal Type": "Lunch",
+        "Price per Person": "2048",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Unawatuna",
+        "Cuisine Type": "Fusion",
+        "Contact Number": "+94 71 6033988"
+    },
+    {
+        "Restaurant Name": "Wild Beach Bar",
+        "Budget Range": "High",
+        "Meal Type": "Dinner",
+        "Price per Person": "4265",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Ahangama",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 76 3574044"
+    },
+    {
+        "Restaurant Name": "The Pasta Factory",
+        "Budget Range": "Medium",
+        "Meal Type": "Dinner",
+        "Price per Person": "2110",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Weligama",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 70 6106010"
+    },
+    {
+        "Restaurant Name": "The Tree's Restaurant",
+        "Budget Range": "Medium",
+        "Meal Type": "Dinner",
+        "Price per Person": "2835",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Matara",
+        "Cuisine Type": "Thai",
+        "Contact Number": "+94 70 7317245"
+    },
+    {
+        "Restaurant Name": "Rampart Hotel",
+        "Budget Range": "Medium",
+        "Meal Type": "Dinner",
+        "Price per Person": "2042",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Mirissa",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 78 4099272"
+    },
+    {
+        "Restaurant Name": "Cactus Lounge Restaurant",
+        "Budget Range": "High",
+        "Meal Type": "Lunch",
+        "Price per Person": "5168",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Galle",
+        "Cuisine Type": "French",
+        "Contact Number": "+94 71 1320853"
+    },
+    {
+        "Restaurant Name": "Cactus Lounge Restaurant",
+        "Budget Range": "Luxury",
+        "Meal Type": "Breakfast",
+        "Price per Person": "2582",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Tangalle",
+        "Cuisine Type": "Thai",
+        "Contact Number": "+94 72 5079655"
+    },
+    {
+        "Restaurant Name": "Ceylon Curry House",
+        "Budget Range": "Medium",
+        "Meal Type": "Breakfast",
+        "Price per Person": "1419",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "Thai",
+        "Contact Number": "+94 76 4478797"
+    },
+    {
+        "Restaurant Name": "A Minute by Tuk Tuk",
+        "Budget Range": "High",
+        "Meal Type": "Lunch",
+        "Price per Person": "5350",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Unawatuna",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 77 2597552"
+    },
+    {
+        "Restaurant Name": "Cactus Lounge Restaurant",
+        "Budget Range": "Medium",
+        "Meal Type": "Dinner",
+        "Price per Person": "1729",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Tangalle",
+        "Cuisine Type": "Chinese",
+        "Contact Number": "+94 70 5836572"
+    },
+    {
+        "Restaurant Name": "Rampart Hotel",
+        "Budget Range": "High",
+        "Meal Type": "Lunch",
+        "Price per Person": "4793",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "Mediterranean",
+        "Contact Number": "+94 77 5337075"
+    },
+    {
+        "Restaurant Name": "Ocean View Caf\u00e9",
+        "Budget Range": "Medium",
+        "Meal Type": "Lunch",
+        "Price per Person": "1934",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 74 3510185"
+    },
+    {
+        "Restaurant Name": "The Bungalow Galle Fort",
+        "Budget Range": "Medium",
+        "Meal Type": "Dinner",
+        "Price per Person": "2870",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Weligama",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 74 4800517"
+    },
+    {
+        "Restaurant Name": "The Pasta Factory",
+        "Budget Range": "Low",
+        "Meal Type": "Breakfast",
+        "Price per Person": "767",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Unawatuna",
+        "Cuisine Type": "Mediterranean",
+        "Contact Number": "+94 74 2751875"
+    },
+    {
+        "Restaurant Name": "Mansion Cafe",
+        "Budget Range": "Low",
+        "Meal Type": "Breakfast",
+        "Price per Person": "835",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Galle",
+        "Cuisine Type": "Thai",
+        "Contact Number": "+94 75 8138242"
+    },
+    {
+        "Restaurant Name": "No. 1 Dewmini Roti Shop",
+        "Budget Range": "Low",
+        "Meal Type": "Lunch",
+        "Price per Person": "1685",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Ahangama",
+        "Cuisine Type": "Turkish",
+        "Contact Number": "+94 75 1208523"
+    },
+    {
+        "Restaurant Name": "Fort Bazaar",
+        "Budget Range": "High",
+        "Meal Type": "Dinner",
+        "Price per Person": "4133",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Unawatuna",
+        "Cuisine Type": "Mediterranean",
+        "Contact Number": "+94 75 6410747"
+    },
+    {
+        "Restaurant Name": "The Pasta Factory",
+        "Budget Range": "High",
+        "Meal Type": "Dinner",
+        "Price per Person": "4803",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "Middle Eastern",
+        "Contact Number": "+94 70 6682128"
+    },
+    {
+        "Restaurant Name": "The Pasta Factory",
+        "Budget Range": "Medium",
+        "Meal Type": "Dinner",
+        "Price per Person": "2857",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Bentota",
+        "Cuisine Type": "Indian",
+        "Contact Number": "+94 72 5067400"
+    },
+    {
+        "Restaurant Name": "Dream Family Restaurant",
+        "Budget Range": "Luxury",
+        "Meal Type": "Breakfast",
+        "Price per Person": "3370",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Weligama",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 71 3588387"
+    },
+    {
+        "Restaurant Name": "KK Beach Bamboo Restaurant",
+        "Budget Range": "Low",
+        "Meal Type": "Breakfast",
+        "Price per Person": "824",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Ahangama",
+        "Cuisine Type": "French",
+        "Contact Number": "+94 71 7181015"
+    },
+    {
+        "Restaurant Name": "Dream Family Restaurant",
+        "Budget Range": "Luxury",
+        "Meal Type": "Lunch",
+        "Price per Person": "6014",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Unawatuna",
+        "Cuisine Type": "Caribbean",
+        "Contact Number": "+94 75 6496477"
+    },
+    {
+        "Restaurant Name": "KK Beach Bamboo Restaurant",
+        "Budget Range": "Low",
+        "Meal Type": "Lunch",
+        "Price per Person": "1513",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 75 3059237"
+    },
+    {
+        "Restaurant Name": "The Tuna and The Crab",
+        "Budget Range": "Luxury",
+        "Meal Type": "Breakfast",
+        "Price per Person": "3176",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Galle",
+        "Cuisine Type": "Italian",
+        "Contact Number": "+94 71 7264094"
+    },
+    {
+        "Restaurant Name": "Fort Bazaar",
+        "Budget Range": "Luxury",
+        "Meal Type": "Dinner",
+        "Price per Person": "6585",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "South Asian",
+        "Contact Number": "+94 79 6821155"
+    },
+    {
+        "Restaurant Name": "Dream Family Restaurant",
+        "Budget Range": "Luxury",
+        "Meal Type": "Breakfast",
+        "Price per Person": "3112",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Unawatuna",
+        "Cuisine Type": "Chinese",
+        "Contact Number": "+94 78 3515075"
+    },
+    {
+        "Restaurant Name": "A Minute by Tuk Tuk",
+        "Budget Range": "Medium",
+        "Meal Type": "Breakfast",
+        "Price per Person": "1384",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Ahangama",
+        "Cuisine Type": "Vegetarian",
+        "Contact Number": "+94 76 5936313"
+    },
+    {
+        "Restaurant Name": "Le Cafe Francais Bakery & Boutique",
+        "Budget Range": "Medium",
+        "Meal Type": "Breakfast",
+        "Price per Person": "1287",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Tangalle",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 71 9691614"
+    },
+    {
+        "Restaurant Name": "Le Cafe Francais Bakery & Boutique",
+        "Budget Range": "High",
+        "Meal Type": "Dinner",
+        "Price per Person": "3914",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Mirissa",
+        "Cuisine Type": "Caribbean",
+        "Contact Number": "+94 75 2203403"
+    },
+    {
+        "Restaurant Name": "Sea Green Restaurant",
+        "Budget Range": "Luxury",
+        "Meal Type": "Breakfast",
+        "Price per Person": "2597",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 77 1301638"
+    },
+    {
+        "Restaurant Name": "KK Beach Bamboo Restaurant",
+        "Budget Range": "Low",
+        "Meal Type": "Dinner",
+        "Price per Person": "1444",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Matara",
+        "Cuisine Type": "International",
+        "Contact Number": "+94 77 1239006"
+    },
+    {
+        "Restaurant Name": "The Pasta Factory",
+        "Budget Range": "Medium",
+        "Meal Type": "Breakfast",
+        "Price per Person": "1352",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Weligama",
+        "Cuisine Type": "French",
+        "Contact Number": "+94 79 5524486"
+    },
+    {
+        "Restaurant Name": "The Bungalow Galle Fort",
+        "Budget Range": "Low",
+        "Meal Type": "Breakfast",
+        "Price per Person": "797",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Bentota",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 79 6780794"
+    },
+    {
+        "Restaurant Name": "The Tree's Restaurant",
+        "Budget Range": "Low",
+        "Meal Type": "Breakfast",
+        "Price per Person": "642",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Weligama",
+        "Cuisine Type": "Mediterranean",
+        "Contact Number": "+94 74 7387111"
+    },
+    {
+        "Restaurant Name": "A Minute by Tuk Tuk",
+        "Budget Range": "Low",
+        "Meal Type": "Dinner",
+        "Price per Person": "1600",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Galle",
+        "Cuisine Type": "Chinese",
+        "Contact Number": "+94 74 8842161"
+    },
+    {
+        "Restaurant Name": "A Minute by Tuk Tuk",
+        "Budget Range": "Low",
+        "Meal Type": "Dinner",
+        "Price per Person": "730",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "International",
+        "Contact Number": "+94 77 7297532"
+    },
+    {
+        "Restaurant Name": "KK Beach Bamboo Restaurant",
+        "Budget Range": "High",
+        "Meal Type": "Lunch",
+        "Price per Person": "3176",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Tangalle",
+        "Cuisine Type": "Sri Lankan",
+        "Contact Number": "+94 73 3278537"
+    },
+    {
+        "Restaurant Name": "Dream Family Restaurant",
+        "Budget Range": "Low",
+        "Meal Type": "Breakfast",
+        "Price per Person": "952",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Weligama",
+        "Cuisine Type": "Mediterranean",
+        "Contact Number": "+94 79 6168867"
+    },
+    {
+        "Restaurant Name": "Le Cafe Francais Bakery & Boutique",
+        "Budget Range": "Luxury",
+        "Meal Type": "Lunch",
+        "Price per Person": "7573",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Weligama",
+        "Cuisine Type": "Seafood",
+        "Contact Number": "+94 72 9995907"
+    },
+    {
+        "Restaurant Name": "The Pasta Factory",
+        "Budget Range": "Low",
+        "Meal Type": "Dinner",
+        "Price per Person": "1187",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Weligama",
+        "Cuisine Type": "South Asian",
+        "Contact Number": "+94 72 6169506"
+    },
+    {
+        "Restaurant Name": "Ocean View Caf\u00e9",
+        "Budget Range": "Luxury",
+        "Meal Type": "Dinner",
+        "Price per Person": "5678",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Unawatuna",
+        "Cuisine Type": "International",
+        "Contact Number": "+94 79 6743518"
+    },
+    {
+        "Restaurant Name": "Lighthouse Grill",
+        "Budget Range": "Medium",
+        "Meal Type": "Breakfast",
+        "Price per Person": "1314",
+        "Opening Hours": "7:00 AM - 10:00 AM",
+        "Location": "Unawatuna",
+        "Cuisine Type": "Mexican",
+        "Contact Number": "+94 70 8148055"
+    },
+    {
+        "Restaurant Name": "The Tree's Restaurant",
+        "Budget Range": "High",
+        "Meal Type": "Lunch",
+        "Price per Person": "4348",
+        "Opening Hours": "12:00 PM - 3:00 PM",
+        "Location": "Weligama",
+        "Cuisine Type": "Chinese",
+        "Contact Number": "+94 74 8655133"
+    },
+    {
+        "Restaurant Name": "Ocean View Caf\u00e9",
+        "Budget Range": "Medium",
+        "Meal Type": "Dinner",
+        "Price per Person": "2999",
+        "Opening Hours": "6:00 PM - 10:00 PM",
+        "Location": "Hikkaduwa",
+        "Cuisine Type": "Thai",
+        "Contact Number": "+94 77 1838757"
+    }
+]
