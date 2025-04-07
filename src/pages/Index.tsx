@@ -22,7 +22,6 @@ interface Feedback {
 
 const Index = () => {
   const navigate = useNavigate();
-
   const [feedbacks, setFeedbacks] = useState<Feedback[]>([
     {
       id: 1,
@@ -46,7 +45,7 @@ const Index = () => {
     const observerOptions = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.1,
+      threshold: 0.1
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -83,7 +82,7 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-
+      
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
@@ -94,7 +93,7 @@ const Index = () => {
           />
           <div className="absolute inset-0 bg-black/30" />
         </div>
-
+        
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
             Discover Sri Lanka
@@ -102,7 +101,7 @@ const Index = () => {
           <p className="text-xl sm:text-2xl text-white/90 mb-8 max-w-2xl mx-auto animate-fade-in">
             Experience the beauty of paradise on a budget
           </p>
-          <button
+          <button 
             onClick={() => navigate('/trip-planner')}
             className="bg-primary text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-primary/90 transition-colors animate-float inline-block"
           >
@@ -179,7 +178,7 @@ const Index = () => {
       </section>
 
       {/* Feedback Section */}
-      <section id="feedback" className="py-20 bg-white">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -212,15 +211,7 @@ const Index = () => {
   );
 };
 
-const FeatureCard = ({
-  icon,
-  title,
-  description,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}) => (
+const FeatureCard = ({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) => (
   <div className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow animate-on-scroll opacity-0 hover:bg-[#F0F8FF] hover:text-white">
     <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4">
       {icon}
@@ -230,15 +221,7 @@ const FeatureCard = ({
   </div>
 );
 
-const DestinationCard = ({
-  image,
-  title,
-  description,
-}: {
-  image: string;
-  title: string;
-  description: string;
-}) => (
+const DestinationCard = ({ image, title, description }: { image: string; title: string; description: string }) => (
   <div className="group rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow animate-on-scroll opacity-0">
     <div className="relative h-64 overflow-hidden">
       <img
