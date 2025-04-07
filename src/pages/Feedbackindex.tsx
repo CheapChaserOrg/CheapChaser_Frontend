@@ -43,3 +43,20 @@ const Index = () => {
     };
     setFeedbacks([feedback, ...feedbacks]);
   };
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
+      <div className="hero-section mb-12">
+        <div className="container mx-auto px-4 py-24 text-center text-white">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 fade-in">
+            Share Your Journey
+          </h1>
+          <p className="text-xl md:text-2xl mb-8 fade-in">
+            Help others plan their perfect trip with your valuable feedback
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Index;
