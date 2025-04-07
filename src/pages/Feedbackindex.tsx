@@ -30,3 +30,16 @@ const Index = () => {
       date: "2024-02-19",
     },
   ]);
+  const handleSubmitFeedback = (newFeedback: {
+    rating: number;
+    country: string;
+    age: string;
+    comment: string;
+  }) => {
+    const feedback: Feedback = {
+      id: feedbacks.length + 1,
+      ...newFeedback,
+      date: new Date().toISOString().split('T')[0],
+    };
+    setFeedbacks([feedback, ...feedbacks]);
+  };
