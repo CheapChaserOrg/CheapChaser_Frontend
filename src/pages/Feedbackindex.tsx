@@ -65,6 +65,17 @@ const Index = () => {
             </p>
           </div>
 
+          <div className="mb-16">
+            <FeedbackForm onSubmit={handleSubmitFeedback} />
+          </div>
+
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Recent Feedback</h2>
+            <p className="text-gray-600">
+              See what other travelers are saying about their experiences
+            </p>
+          </div>
+
           <FeedbackList feedbacks={feedbacks} />
         </div>
       </div>
