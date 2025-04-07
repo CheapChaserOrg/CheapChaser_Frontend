@@ -55,6 +55,19 @@ const Index = () => {
           </p>
         </div>
       </div>
+
+      <div className="container mx-auto px-4 py-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">x
+            <h2 className="text-3xl font-bold mb-4">Submit Your Feedback</h2>
+            <p className="text-gray-600">
+              Your feedback helps us improve and helps other travelers make better decisions
+            </p>
+          </div>
+
+          <FeedbackList feedbacks={feedbacks} />
+        </div>
+      </div>
     </div>
   );
 };
