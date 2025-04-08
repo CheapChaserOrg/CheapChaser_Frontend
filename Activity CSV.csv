@@ -1,0 +1,140 @@
+Activity name,ID,Location,Price,Budget range,Duration,Activity Provider
+Trekking ,Act001,·       Kanneliya Rainforest Trek,LKR 5000.00,Medium,3 to 4 hours,AP001
+Trekking ,Act002,·       Galle Fort Walking Tour,LKR 4800.00,Medium,3 to 4 hours,AP002
+Trekking ,Act003,·       Sinharaja Rainforest Day Tour,"LKR 8,400.00",High,3 to 4 hours,AP003
+Trekking ,Act004,·       Multi-Day Trekking Expeditions,"LKR 15,000.00",High,3 to 4 hours,AP004
+Trekking ,Act005,·       Comprehensive Adventure Tours,LKR 32500.00,Luxury,3 to 4 hours,AP005
+Scuba Diving,Act006,·       Unawatuna Dive Center,LKR 5000.00,Medium,3 to 4 hours,AP006
+Scuba Diving,Act007,"·       Poseidon Diving Station, Hikkaduwa",LKR 5000.00,Medium,Around 4 hours,AP007
+Scuba Diving,Act008,·       Mirissa Dive Center,LKR 5000.00,Medium,Around 4 hours,AP008
+Scuba Diving,Act009,"·       Blue Deep Diving, Unawatuna",LKR 8500.00,High,Around 4 hours,AP009
+Scuba Diving,Act010,"·       Dive For You, Hikkaduwa",LKR 8500.00,High,Around 4 hours,AP010
+Scuba Diving,Act011,·       Mirissa Water Sports,LKR 8500.00,High,Around 4 hours,AP011
+Scuba Diving,Act012,"·       Sea Horse Divers, Galle",LKR 8500.00,High,Around 4 hours,AP012
+Scuba Diving,Act013,"·       Sri Lanka Diving Tours, Galle",LKR 20000.00,Luxury,Around 4 hours,AP013
+Scuba Diving,Act014,"·       Dive Seenigama, Hikkaduwa",LKR 20000.00,Luxury,Around 4 hours,AP014
+Scuba Diving,Act015,"·       Taprobane Divers, Weligama",LKR 33000.00,Luxury,Around 4 hours,AP015
+Scuba Diving,Act016,"·       Elite Diving, Unawatuna",LKR 20000.00,Luxury,Around 4 hours,AP016
+Scuba Diving,Act017,"·       Private Dive Sri Lanka, Galle",LKR 33000.00,Luxury,Around 4 hours,AP017
+Village Experiences,Act018,·       Galle Village Tour,LKR 4000.00,Low,1.5 to 2.5 hours,AP018
+Village Experiences,Act019,·       Unawatuna Village Walk,LKR 4000.00,Low,1.5 to 2.5 hours,AP019
+Village Experiences,Act020,·       Habaraduwa Village Tour,LKR 4000.00,Low,1.5 to 2.5 hours,AP020
+Village Experiences,Act021,·       Koggala Folk Museum,LKR 4000.00,Low,1.5 to 2.5 hours,AP021
+Village Experiences,Act022,·       Handunugoda Tea Estate,LKR 9000.00,High,1.5 to 2.5 hours,AP022
+Village Experiences,Act023,·       Koggala Lake Island Tour,LKR 9000.00,High,1.5 to 2.5 hours,AP023
+Village Experiences,Act024,·       Ahangama Cultural Experience,LKR 9000.00,High,1.5 to 2.5 hours,AP024
+Village Experiences,Act025,·       Mirissa Village Cycling Tour,LKR 9000.00,High,1.5 to 2.5 hours,AP025
+Village Experiences,Act026,"·       Cinnamon Plantation Tour, Koggala",LKR 20000.00,Luxury,1.5 to 2.5 hours,AP026
+Village Experiences,Act027,"·       Private Village Safari, Galle",LKR 20000.00,Luxury,1.5 to 2.5 hours,AP027
+Village Experiences,Act028,"·       Luxury Tuk-Tuk Tours, Unawatuna",LKR 20000.00,Luxury,1.5 to 2.5 hours,AP028
+Village Experiences,Act029,·       Galle Fort Heritage Stay,LKR 34000.00,Luxury,1.5 to 2.5 hours,AP029
+Whale Watching,Act030,·       Mirissa Whale Watching Club,LKR 3500.00,Low,4 to 5 hours,AP030
+Whale Watching,Act031,"·       Raja & the Whales, Mirissa",LKR 3500.00,Low,4 to 5 hours,AP031
+Whale Watching,Act032,"·       Whale Watching Club, Mirissa",LKR 3500.00,Low,4 to 5 hours,AP032
+Whale Watching,Act033,·       Mirissa Water Sports,LKR 3500.00,Low,4 to 5 hours,AP033
+Whale Watching,Act034,·       Whale Watching Mirissa with Whale Watching Club, LKR 8500.00,High,4 to 5 hours,AP034
+Whale Watching,Act035,"·       Raja & the Whales, Mirissa", LKR 8500.00,High,4 to 5 hours,AP035
+Whale Watching,Act036,·       Mirissa Whale Warriors, LKR 8500.00,High,4 to 5 hours,AP036
+Whale Watching,Act037,"·       Whale Horizon, Mirissa", LKR 8500.00,High,4 to 5 hours,AP037
+Whale Watching,Act038,"·       Sri Lanka Navy Whale Watching, Galle",LKR 18500.00,Luxury,4 to 5 hours,AP038
+Whale Watching,Act039,"·       Whale Watching Cruise, Galle",LKR 18500.00,Luxury,4 to 5 hours,AP039
+Whale Watching,Act040,"·       Exclusive Whale Watching Charter, Mirissa",LKR 18500.00,Luxury,4 to 5 hours,AP040
+Whale Watching,Act041,"·       Luxury Whale Watching Tours, Mirissa",LKR 18500.00,Luxury,4 to 5 hours,AP041
+Whale Watching,Act042,"·       Private Yacht Whale Watching, Mirissa",LKR 35000.00,Luxury,4 to 5 hours,AP042
+Whale Watching,Act043,·       Cinnamon Air Whale Watching Packages,LKR 35000.00,Luxury,4 to 5 hours,AP043
+Whale Watching,Act044,·       Resplendent Ceylon Whale Watching Experience,LKR 35000.00,Luxury,4 to 5 hours,AP044
+Whale Watching,Act045,·       Anantara Peace Haven Tangalle Resort,LKR 35000.00,Luxury,4 to 5 hours,AP045
+Cookery Classes,Act046,·       Galle Cooking Class,LKR 5000.00,Medium,About 3 hours,AP046
+Cookery Classes,Act047,·       Unawatuna Cooking Class,LKR 5000.00,Medium,About 3 hours,AP047
+Cookery Classes,Act048,·       Mirissa Cooking Class,LKR 5000.00,Medium,About 3 hours,AP048
+Cookery Classes,Act049,·       Hikkaduwa Cooking Class,LKR 5000.00,Medium,About 3 hours,AP049
+Cookery Classes,Act050,"·       Amma's Cooking School, Galle",LKR 11600.00,High,About 3 hours,AP050
+Cookery Classes,Act051,"·       Cook with Wasantha, Unawatuna",LKR 11600.00,High,About 3 hours,AP051
+Cookery Classes,Act052,"·       Sri Lankan Cooking Class, Mirissa",LKR 11600.00,High,About 3 hours,AP052
+Cookery Classes,Act053,"·       Seafood Cooking Class, Hikkaduwa",LKR 11600.00,High,About 3 hours,AP053
+Cookery Classes,Act054,"·       Fort Bazaar Cooking Class, Galle",LKR 20000.00,Luxury,About 3 hours,AP054
+Cookery Classes,Act055,"·       Ceylon Culinary Experience, Galle",LKR 20000.00,Luxury,About 3 hours,AP055
+Cookery Classes,Act056,"·       Luxury Cooking Class, Unawatuna",LKR 20000.00,Luxury,About 3 hours,AP056
+Cookery Classes,Act057,"·       Gourmet Sri Lankan Cooking, Mirissa",LKR 20000.00,Luxury,About 3 hours,AP057
+Cookery Classes,Act058,"·       Private Chef Cooking Experience, Galle",LKR 33000.00,Luxury,About 3 hours,AP058
+Cookery Classes,Act059,·       Cape Weligama Culinary Class,LKR 33000.00,Luxury,About 3 hours,AP059
+Cookery Classes,Act060,"·       Amangalla Cooking Experience, Galle",LKR 33000.00,Luxury,About 3 hours,AP060
+Surfing,Act061,·       Weligama beach,LKR 5000.00,Medium,2.5 to 3.5 hours,AP061
+Surfing,Act062,·       Midigama beach,LKR 5000.00,Medium,2.5 to 3.5 hours,AP062
+Surfing,Act063,·       Hikkaduwa,LKR 5000.00,Medium,2.5 to 3.5 hours,AP063
+Surfing,Act064,·       Unawatuna,LKR 5000.00,Medium,2.5 to 3.5 hours,AP064
+Surfing,Act065,·       Ahangama,LKR 10500.00,High,2.5 to 3.5 hours,AP065
+Surfing,Act066,·       Mirissa,LKR 10500.00,High,2.5 to 3.5 hours,AP066
+Surfing,Act067,·       Kabalana beach,LKR 10500.00,High,2.5 to 3.5 hours,AP067
+Surfing,Act068,"·       Cinnamon surfing center,Hikkaduwa",LKR 25000.00,Luxury,2.5 to 3.5 hours,AP068
+Surfing,Act069,·       Surf school sri lanka ahangama,LKR 25000.00,Luxury,2.5 to 3.5 hours,AP069
+Surfing,Act070,"·       The Surf beach Camp, Weligama",LKR 25000.00,Luxury,2.5 to 3.5 hours,AP070
+Surfing,Act071,"·       Soul and surf, Ahnagama",LKR 25000.00,Luxury,2.5 to 3.5 hours,AP071
+Surfing,Act072,·       Cape Weligama,LKR 35000.00,Luxury,2.5 to 3.5 hours,AP072
+Surfing,Act073,"·       KK Beach, Habaraduwa",LKR 35000.00,Luxury,2.5 to 3.5 hours,AP073
+Surfing,Act074,"·       Ceylon Sliders, Weligama",LKR 35000.00,Luxury,2.5 to 3.5 hours,AP074
+Surfing,Act075,"·       The Fortress Resort & Spa, Koggala",LKR 35000.00,Luxury,2.5 to 3.5 hours,AP075
+Ayurveda & Spa,Act076,·       Galle Ayurveda Center,LKR 45000.00,Luxury,3 hours,AP076
+Ayurveda & Spa,Act077,·       Unawatuna Ayurveda Spa,LKR 45000.00,Luxury,3 hours,AP077
+Ayurveda & Spa,Act078,·       Mirissa Herbal Spa,LKR 45000.00,Luxury,3 hours,AP078
+Ayurveda & Spa,Act079,·       Hikkaduwa Wellness Spa,LKR 45000.00,Luxury,3 hours,AP079
+Ayurveda & Spa,Act080,"·       Amara Ayurveda Spa, Galle",LKR 9000.00,High,3 hours,AP080
+Ayurveda & Spa,Act081,"·       Sanctuary Spa, Unawatuna",LKR 9000.00,High,3 hours,AP081
+Ayurveda & Spa,Act082,"·       Secret Root Spa, Mirissa",LKR 9000.00,High,3 hours,AP082
+Ayurveda & Spa,Act083,"·       Swastha Ayurveda, Hikkaduwa",LKR 9000.00,High,3 hours,AP083
+Ayurveda & Spa,Act084,"·       Tamarind Hill Spa, Galle",LKR 27000.00,Luxury,3 hours,AP084
+Ayurveda & Spa,Act085,"·       The Fortress Resort & Spa, Koggala",LKR 27000.00,Luxury,3 hours,AP085
+Ayurveda & Spa,Act086,"·       Sri Villas Spa, Bentota",LKR 27000.00,Luxury,3 hours,AP086
+Ayurveda & Spa,Act087,"·       Aditya Resort Spa, Rathgama",LKR 27000.00,Luxury,3 hours,AP087
+Cycling,Act088,·       Galle Fort Cycling Tour,LKR 5500.00,Medium,Around 2 to 3 hours,AP088
+Cycling,Act089,·       Unawatuna Coastal Ride,LKR 5500.00,Medium,Around 2 to 3 hours,AP089
+Cycling,Act090,·       Koggala Lake Cycling,LKR 5500.00,Medium,Around 2 to 3 hours,AP090
+Cycling,Act091,·       Hikkaduwa Countryside Cycling,LKR 5500.00,Medium,Around 2 to 3 hours,AP091
+Cycling,Act092,"·       Idle Bikes, Galle",LKR 10500.00,High,Around 2 to 3 hours,AP092
+Cycling,Act093,"·       Chameera Cycling, Unawatuna",LKR 10500.00,High,Around 2 to 3 hours,AP093
+Cycling,Act094,·       Galleon Cycling Tours,LKR 10500.00,High,Around 2 to 3 hours,AP094
+Cycling,Act095,"·       Bike Tours Sri Lanka, Galle",LKR 10500.00,High,Around 2 to 3 hours,AP095
+Cycling,Act096,·       Sri Lanka Tailor-Made Cycling Tours,LKR 17000.00,Luxury,Around 2 to 3 hours,AP096
+Cycling,Act097,"·       Luxury Bike Tours, Galle",LKR 17000.00,Luxury,Around 2 to 3 hours,AP097
+Cycling,Act098,·       Ceylon Cycling Safari,LKR 17000.00,Luxury,Around 2 to 3 hours,AP098
+Cycling,Act099,·       Galle Heritage Cycling Tour,LKR 5500.00,Medium,Around 2 to 3 hours,AP099
+Cycling,Act100,·       Resplendent Ceylon Cycling Experience,LKR 31500.00,Luxury,Around 2 to 3 hours,AP100
+Cycling,Act101,·       Anantara Peace Haven Cycling Retreat,LKR 31500.00,Luxury,Around 2 to 3 hours,AP101
+Cycling,Act102,·       Cape Weligama Cycling Package,LKR 31500.00,Luxury,Around 2 to 3 hours,AP102
+Cycling,Act103,"·       Amangalla Cycling Experience, Galle",LKR 31500.00,Luxury,Around 2 to 3 hours,AP103
+Jetski,Act104,·       Hikkaduwa Water Sports,LKR 4700.00,Medium,1 ½ hour,AP104
+Jetski,Act105,·       Unawatuna Jet Ski,LKR 4700.00,Medium,1 ½ hour,AP105
+Jetski,Act106,·       Bentota Jet Ski Rentals,LKR 4700.00,Medium,1 ½ hour,AP106
+Jetski,Act107,·       Mirissa Water Sports,LKR 4700.00,Medium,1 ½ hour,AP107
+Jetski,Act108,"·       Malu Banna Water Sports Centre, Bentota",LKR 7500.00,Medium,1 ½ hour,AP108
+Jetski,Act109,"·       Sunshine Water Sports Centre, Bentota",LKR 7500.00,Medium,1 ½ hour,AP109
+Jetski,Act110,"·       Aqua Jet Ski, Hikkaduwa",LKR 7500.00,Medium,1 ½ hour,AP110
+Jetski,Act111,"·       Lagoon Adventure, Unawatuna",LKR 7500.00,Medium,1 ½ hour,AP111
+Jetski,Act112,·       Bentota Water Sports Centre,LKR 20000.00,Luxury,1 ½ hour,AP112
+Jetski,Act113,"·       Jet Ski Lanka, Bentota",LKR 20000.00,Luxury,1 ½ hour,AP113
+Jetski,Act114,"·       Luxury Jet Ski Tours, Galle",LKR 20000.00,Luxury,1 ½ hour,AP114
+Jetski,Act115,"·       Exclusive Jet Ski Rentals, Mirissa",LKR 20000.00,Luxury,1 ½ hour,AP115
+Jetski,Act116,·       Cape Weligama Water Adventures,LKR 32000.00,Luxury,1 ½ hour,AP116
+Snorkling,Act117,·       Hikkaduwa Coral Sanctuary,LKR 5500.00,Medium,1 to 2 hours,AP117
+Snorkling,Act118,·       Unawatuna Beach,LKR 5500.00,Medium,1 to 2 hours,AP118
+Snorkling,Act119,"Jungle Beach, Unawatuna",LKR 9000.00,High,1 to 2 hours,AP119
+Snorkling,Act120,·       Mirissa Snorkeling Tours,LKR 10500.00,High,1 to 2 hours,AP120
+Snorkling,Act121,·       Koggala Reef Exploration,LKR 10500.00,High,1 to 2 hours,AP121
+Snorkling,Act122,·       Private Yacht Snorkeling,LKR 31000.00,Luxury,1 to 2 hours,AP122
+Snorkling,Act123,·       Luxury Resort Packages,LKR 31000.00,Luxury,1 to 2 hours,AP123
+Stilt Fishing,Act124,·       Koggala Beach,LKR 5000.00,Medium,3 to 4 hours,AP124
+Stilt Fishing,Act125,·       Ahangama Beach,LKR 5000.00,Medium,3 to 4 hours,AP125
+Stilt Fishing,Act126,·       Guided Tours,LKR 7000 - 15000,High,3 to 4 hours,AP126
+Stilt Fishing,Act127,·       Interactive Fishing Experience,"LKR 16,000 to 30,000.",Luxury,3 to 4 hours,AP127
+Stilt Fishing,Act128,·       Exclusive Cultural Packages,LKR 32000.00,Luxury,3 to 4 hours,AP128
+Boat Riding(Madu River),Act129,·       Standard Boat Safari,LKR 8000.00,Medium,30 minutes,AP129
+Boat Riding(Madu River),Act130,·       Extended Boat Tours,LKR 9500.00,High,30 minutes,AP130
+Boat Riding(Madu River),Act131,·       Comprehensive River Experience,LKR 14500.00,High,30 minutes,AP131
+Boat Riding(Madu River),Act132,·       Customized Luxury Cruises,LKR 31000.00,Luxury,30 minutes,AP132
+Boat Riding( Koggala Lake),Act133,·       Group Boat Tours,"LKR 2,500 to 5,500",Low,30 minutes,AP133
+Boat Riding( Koggala Lake),Act134,·       Private Island Tours,"LKR 7,000 to 15,000.",High,30 minutes,AP134
+Boat Riding( Koggala Lake),Act135,·       Eco-Tourism Packages,"LKR 16,000 to 30,000.",Luxury,30 minutes,AP135
+Turtle watching,Act136,·       Habaraduwa Turtle Hatchery,LKR 2000,Low,1 hour,AP136
+Turtle watching,Act137,·       Rehabilitation Center Visits,"LKR 7,000 to 15,000.",High,1 hour,AP137
+Turtle watching,Act138,·       Night-Time Nesting Tours,"LKR 16,000 to 30,000",Luxury,1 hour,AP138
+Turtle watching,Act139,·       Private Conservation Experiences,"LKR 31,000.",Luxury,1 hour,AP139
